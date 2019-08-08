@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+div {
+    text-align: center;
+}
+
+.SignUpForm {
+    display: inline-block;
+    border: 1px solid #2E1114;
+    margin: 50px;
+    padding: 50px;
+}
+
+Input {
+    margin-top: 25px;
+    height: 40px;
+    width: 200px;
+}
+
+label {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.SignUpForm_Submit {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+}

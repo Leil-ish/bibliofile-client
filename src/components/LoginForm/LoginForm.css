@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box
+}
+
+.Login_Submit {
+    display: inline-block;
+    margin-top: 25px;
+    border-radius: 5%;
+    font-style: none;
+    color: white;
+    background-color: midnightblue;
+    padding: 15px 60px;
+}
