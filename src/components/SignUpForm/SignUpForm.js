@@ -78,7 +78,7 @@ export default class SignUpForm extends Component {
               id='SignUpForm_nick_name'>
             </Input>
           </div>
-          <Link className='SignUpForm_Submit' to='/library'>
+          <Link className='SignUpForm_Submit' to='/add-book'>
             Sign Up
           </Link>
       </form>

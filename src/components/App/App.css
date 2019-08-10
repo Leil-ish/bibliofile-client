@@ -1,17 +1,7 @@
-h1 {
+.App_header {
     background-color: #83677B;
-    font-size: 60px;
-    font-style: none;
-    text-decoration: none;
-    color: #2E1114;
-}
-
-h2 {
-    background-color: #83677B;
-    text-align: center;
-    margin-top: 0px;
-    padding: 0px 0px 50px 0px;
-    font-size: 30px;
+    display:block;
+    font-size: 40px;
     font-style: none;
     text-decoration: none;
     color: #2E1114;
@@ -22,6 +12,6 @@ a {
     color: #2E1114;
 }
 
-p {
-    padding: 5% 30%;
+h1 {
+    margin: 0;
 }

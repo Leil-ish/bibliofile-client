@@ -11,142 +11,58 @@ import SingleNotePage from '../../routes/SingleNotePage/SingleNotePage'
 import SearchPage from '../../routes/SearchPage/SearchPage'
 import AddNotePage from '../../routes/AddNotePage/AddNotePage'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
-import ApiContext from '../../ApiContext'
+import dummyStore from '../../dummy-store'
+import {findNote, findBook, getBooksForLibrary} from '../../library-helper'
 import './App.css';
 
 class App extends Component {
-  state = {
-    books: [],
-    notes: [],
-  };
 
-  handleSubmit(searchTerm) {
+    state = {
+        books:[],
+        notes:[],
+        printType: "All",
+        bookType: "All"
+    };
+  
 
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${process.env.REACT_APP_API_KEY}`
-    
-    fetch(url)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error('Something went wrong, please try again later.');
-        }
-        return response;
-      })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-         books: data.items
-        })
-      })
-      .catch(err => this.setState({
-        error: err.message
-      }))
-  }
-
-  handlePrintFilter(printType) {
-    this.setState({
-      printType: printType
-    })
-  }
-
-  handleBookFilter(bookType) {
-    console.log(bookType)
-    this.setState({
-      bookType: bookType
-    })
-  }
-
-  handleAddBook = book => {
-    this.setState({
-      books: [
-        ...this.state.books,
-        book
-      ]
-    })
-  }
-
-  handleAddNote = note => {
-    this.setState({
-      notes: [
-        ...this.state.notes,
-        note
-      ]
-    })
-  }
-
-  handleDeleteNote = noteId => {
-    this.setState({
-      notes: this.state.notes.filter(note => note.id !== noteId)
-    })
-  }
-
-  handleDeleteBook = bookId => {
-    this.setState({
-      books: this.state.books.filter(book => book.id !== bookId)
-    })
-  }
-
-  renderNavRoutes() {
-    return (
-      <>
-        <Route
-          path='/library'
-          component={Nav}
-        />
-        <Route
-          path='/library/bookId'
-          component={Nav}
-        />
-        <Route
-          path='/notes'
-          component={Nav}
-        />
-        <Route
-          path='/notes/:noteId'
-          component={Nav}
-        />
-        <Route
-          path='/add-book'
-          component={Nav}
-        />
-        <Route
-          path='/add-note'
-          component={Nav}
-        />
-      </>
-    )
+  componentDidMount() {
+    setTimeout(() => this.setState(dummyStore), 600)
   }
 
   renderMainRoutes() {
+    const { books, notes } = this.state
     return (
       <>
         <Switch>
-          <Route
-            exact path='/'
-            component={LandingPage}
-          />
-          <Route
-            path='/login'
-            component={LoginPage}
-          />
-          <Route
-            path='/signup'
-            component={SignUpPage}
-          />
-          <Route
-            path='/library'
-            component={LibraryPage}
-          />
-          <Route
-            path='/library/bookId'
-            component={SingleBookPage}
-          />
-          <Route
-            path='/notes'
-            component={NotesPage}
-          />
+          `{['/book/:libraryId'].map(path =>
+            <Route
+              exact
+              key={path}
+              path={path}
+              render={routeProps => {
+                const { libraryId } = routeProps.match.params
+                const booksForLibrary = getBooksForLibrary(books, libraryId)
+                return (
+                  <SingleBookPage
+                    {...routeProps}
+                    books={booksForLibrary}
+                  />
+                )
+              }}
+            />
+          )}
           <Route
             path='/notes/:noteId'
-            component={SingleNotePage}
+            render={routeProps => {
+              const { noteId } = routeProps.match.params
+              const note = findNote(notes, noteId)
+              return (
+                <SingleNotePage
+                  {...routeProps}
+                  note={note}
+                />
+              )
+            }}
           />
           <Route
             path='/add-book'
@@ -154,31 +70,98 @@ class App extends Component {
           />
           <Route
             path='/add-note'
-            component={AddNotePage}
+            render={routeProps => {
+              return (
+                <AddNotePage
+                  {...routeProps}
+                  books={books}
+                />
+              )
+            }}
           />
-          <Route
-            component={NotFoundPage}
-          />
+            <Route
+              exact path='/'
+              component={LandingPage}
+            />
+            <Route
+              path='/login'
+              component={LoginPage}
+            />
+            <Route
+              path='/signup'
+              component={SignUpPage}
+            />
+            <Route
+              path='/library'
+              component={LibraryPage}
+            />
+            <Route
+              path='/notes'
+              component={NotesPage}
+            />
+            <Route
+              component={NotFoundPage}
+            />
         </Switch>
       </>
     )
   }
 
-  render() {
-    const value = {
-      notes: this.state.notes,
-      books: this.state.books,
-      addBook: this.handleAddBook,
-      addNote: this.handleAddNote,
-      deleteNote: this.handleDeleteNote,
-      deleteBook: this.handleDeleteBook,
-    }
+  renderNavRoutes() {
+    const {books, notes} = this.state
     return (
-      <ApiContext.Provider value={value}>
+      <>
+       {['/library/:libraryId'].map(path =>
+          <Route
+            exact
+            key={path}
+            path={path}
+            render={routeProps =>
+              <Nav
+                books={books}
+                notes={notes}
+                {...routeProps}
+              />
+            }
+          />
+        )}
+        <Route
+          path='/notes/:noteId'
+          render={routeProps => {
+            const { noteId } = routeProps.match.params
+            const note = findNote(notes, noteId) || {}
+            const book = findBook(books, note.libraryId)
+            return (
+              <Nav
+                {...routeProps}
+                book={book}
+              />
+            )
+          }}
+          />
+          <Route
+            path='/library'
+            component={Nav}
+          />
+          <Route
+            path='/notes'
+            component={Nav}
+          />
+          <Route
+            path='/add-book'
+            component={Nav}
+          />
+          <Route
+            path='/add-note'
+            component={Nav}
+          />
+      </>
+    )
+  }
+
+  render() {
+    return (
         <div className='App'>
-          <nav className='App_nav'>
-            {this.renderNavRoutes()}
-          </nav>
           <header className='App_header'>
             <h1>
               <Link to='/'>Bibliofile</Link>
@@ -188,8 +171,10 @@ class App extends Component {
           <main className='App_main'>
             {this.renderMainRoutes()}
           </main>
+          <nav className='App_nav'>
+            {this.renderNavRoutes()}
+          </nav>
         </div>
-      </ApiContext.Provider>
     )
   }
 }

@@ -1,11 +1,24 @@
-* {
-    box-sizing: border-box;
+.LibraryNav_list {
+    list-style-type: none;
+    margin: 130px 0 0;
+    padding: 0;
 }
 
-h1 {
-    color: white;
-    text-align:center;
-    background-color:black;
-    padding: 60px 20px;
-    margin:0;
+.LibraryNav_link {
+    background-color: #2E1114;
+    color: #ADADAD;
+    background-color: #030f1f;
+    color: #b5b3b3;
+    display: block;
+    font-size: 20px;
+    margin: 0 auto 8px 0;
+    max-width: 180px;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.LibraryNav_link:hover {
+    background-color: #83677B;
+    color: #2E1114;
+    
 }

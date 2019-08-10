@@ -1,10 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import ApiContext from '../../ApiContext'
 import './Nav.css'
 
 export default class LibraryNav extends React.Component {
-  static contextType = ApiContext;
 
   render() {
     return (
@@ -34,7 +32,6 @@ export default class LibraryNav extends React.Component {
                 Book Search
               </Link>
             </li>
-          )}
         </ul>
       </div>
     )

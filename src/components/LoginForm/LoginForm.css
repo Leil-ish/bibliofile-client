@@ -1,13 +1,32 @@
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
-.Login_Submit {
+div {
+    text-align: center;
+}
+
+.LoginForm {
     display: inline-block;
+    border: 1px solid #2E1114;
+    margin: 50px;
+    padding: 50px;
+}
+
+Input {
     margin-top: 25px;
-    border-radius: 5%;
-    font-style: none;
-    color: white;
-    background-color: midnightblue;
-    padding: 15px 60px;
+    height: 40px;
+    width: 200px;
+}
+
+label {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.LoginForm_Submit {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
 }

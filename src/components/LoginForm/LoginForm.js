@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {Input} from '../Utils/Utils'
 import './LoginForm.css'
 
-export default class Login extends Component {
+export default class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {}
   }
@@ -14,14 +14,14 @@ export default class Login extends Component {
     const { error } = this.state
     return (
       <form
-        className='Login'
+        className='LoginForm'
         onSubmit={this.handleSubmitBasicAuth}
       >
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
         <div className='user_name'>
-          <label htmlFor='Login_user_name'>
+          <label htmlFor='LoginForm_user_name'>
             User name
           </label>
           <Input
@@ -31,7 +31,7 @@ export default class Login extends Component {
           </Input>
         </div>
         <div className='password'>
-          <label htmlFor='Login_password'>
+          <label htmlFor='LoginForm_password'>
             Password
           </label>
           <Input
@@ -41,7 +41,7 @@ export default class Login extends Component {
             id='Login_password'>
           </Input>
         </div>
-        <Link className='Login_Submit' to='/library'>
+        <Link className='LoginForm_Submit' to='/library'>
           Login
         </Link>
       </form>
