@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <>
         <Switch>
-          `{['/book/:libraryId'].map(path =>
+          `{['/library/:libraryId'].map(path =>
             <Route
               exact
               key={path}
@@ -74,7 +74,7 @@ class App extends Component {
               return (
                 <AddNotePage
                   {...routeProps}
-                  books={books}
+                  notes={notes}
                 />
               )
             }}
