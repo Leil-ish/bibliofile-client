@@ -1,3 +1,6 @@
 .bookList {
+    display:block;
     list-style: none;
+    max-width: 70%;
+    float: right;
 }

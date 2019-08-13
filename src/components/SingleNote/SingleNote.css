@@ -1,0 +1,9 @@
+.single-note {
+    max-width: 700px;
+    margin-right: 20%;
+    float:right;
+}
+
+ul {
+    list-style: none;
+}

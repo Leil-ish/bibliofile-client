@@ -27,9 +27,9 @@ export default class LibraryNav extends React.Component {
             <li>
               <Link
                 className='LibraryNav_link'
-                to={`/search`}
+                to={`/add-book`}
               >
-                Book Search
+                Look Up A Book
               </Link>
             </li>
         </ul>

@@ -1,13 +1,26 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import SingleBook from '../../components/SingleBook/SingleBook'
+import dummyStore from '../../dummy-store'
 import './LibraryPage.css'
 
-export default function LibraryPage (props) {
+export default class LibraryPage extends React.Component {
+
+  state = {
+    books: [],
+    notes: [],
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState(dummyStore), 600)
+  }
+  
+  render() {
+    console.log(this.state)
+
     return (
       <section className='LibraryPage'>
         <ul>
-          {props.books.map(book =>
+          {this.state.books.map(book =>
             <li key={book.libraryId}>
               <SingleBook
                 libraryId={book.libraryId}
@@ -18,21 +31,7 @@ export default function LibraryPage (props) {
             </li>
           )}
         </ul>
-        <div className='link-container'>
-          <Link
-            tag={Link}
-            to='/add-note'
-            type='button'
-            className='LibraryPage_add-book-button'
-          >
-            <br />
-            Book
-          </Link>
-        </div>
       </section>
     )
   }
-
-LibraryPage.defaultProps = {
-    notes: [],
 }

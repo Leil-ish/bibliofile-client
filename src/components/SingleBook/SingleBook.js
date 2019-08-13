@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
+import './SingleBook.css'
 
-class Book extends Component {
+class SingleBook extends Component {
+
   render() {
-    let author;
-    if (this.props.volumeInfo.authors) {
-      author = this.props.volumeInfo.authors[0];
-    }
-    else (
-      author = "No authors listed"
-    )
+    let {title, author, description} = this.props
+    console.log(this.props.author)
+      if (this.props.author) {
+        author = this.props.author;
+      }
+      else (
+        author = "No authors listed"
+      )
+
     return (
-      <li>
-          <h3>{this.props.volumeInfo.title}</h3>
-          <h4>{author}</h4>
-          <p>{this.props.volumeInfo.description}</p>
-      </li>
+        <ul className = 'single-book'>
+            <h3>{title}</h3>
+            <h4>{author}</h4>
+            <p>{description}</p>
+        </ul>
     );
   }
 }
 
-export default Book;
+export default SingleBook;

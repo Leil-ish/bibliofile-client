@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SingleBook from '../SingleBook/SingleBook'
+import ApiBook from '../SingleBook/ApiBook'
 import './Results.css'
 
 
@@ -9,11 +9,11 @@ class Results extends Component {
     const list = this.props.books
     .filter(book => (printFilter === "All" || book.volumeInfo.printType === printFilter)
      && (bookFilter === "All" || (book.saleInfo.isEbook && bookFilter === "eBook") || (!book.saleInfo.isEbook && bookFilter === "paper")))    
-    .map((book, key) => <SingleBook {...book} key={key}/>);
+    .map((book, key) => <ApiBook {...book} key={key}/>);
 
     return (
         <ul className="bookList">
-            { list }
+            {list}
         </ul>
     );
   }

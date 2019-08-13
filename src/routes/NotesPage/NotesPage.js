@@ -1,37 +1,31 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import SingleNote from '../../components/SingleNote/SingleNote'
+import ApiContext from '../../services/ApiContext'
 import './NotesPage.css'
 
-export default function NotesPage(props) {
-  return (
-    <section className='NotesPage'>
-      <ul>
-        {props.notes.map(note =>
-          <li key={note.noteId}>
-            <SingleNote
-              id={note.noteId}
-              name={note.title}
-              modified={note.modified}
-              content={note.content}
-            />
-          </li>
-        )}
-      </ul>
-      <div className='NotesPage_button-container'>
-        <Link
-          to='/add-note'
-          type='button'
-          className='NotesPage_add-note-button'
-        >
-          <br />
-          Note
-        </Link>
-      </div>
-    </section>
-  )
-}
+export default class NotesPage extends React.Component {
 
-NotesPage.defaultProps = {
-  notes: [],
+  static defaultProps = {
+    books: [],
+    notes: []
+  }
+  static contextType = ApiContext;
+  
+  render() {
+    return (
+      <section className='NotesPage'>
+        <ul>
+          {this.context.notes.map(note =>
+            <li key={note.libraryId}>
+              <SingleNote
+                title={note.title}
+                modified={note.modified}
+                content={note.content}
+              />
+            </li>
+          )}
+        </ul>
+      </section>
+    )
+  }
 }

@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "leil-ish-bibliofile-app",
+    "name": "bibliofile-app",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
