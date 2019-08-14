@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import{Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './SingleBook.css'
 
 class SingleBook extends Component {
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
 
   render() {
     let {title, author, description} = this.props
@@ -12,6 +17,7 @@ class SingleBook extends Component {
       else (
         author = "No authors listed"
       )
+      const {libraryId} = this.props
 
     return (
         <ul className = 'single-book'>
@@ -20,7 +26,7 @@ class SingleBook extends Component {
             <p>{description}</p>
             <div className='buttons'>
             <Link
-              to='/add-note'
+              to={`/library/${libraryId}/add-note`}
               type='button'
               className='Add-note-button'
             >
@@ -28,7 +34,7 @@ class SingleBook extends Component {
               Add a note to this book
             </Link>
             <Link
-              to='/notes/:libraryId'
+              to={`/notes/${libraryId}`}
               type='button'
               className='View-notes-button'
             >
