@@ -1,6 +1,8 @@
 .searchTerms {
+    display:block;
     border: 1px solid #2E1114;
     padding: 15px;
     max-width: 70%;
     float: right;
+    margin-bottom: 50px;
 }

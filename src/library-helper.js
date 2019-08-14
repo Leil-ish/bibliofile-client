@@ -1,8 +1,8 @@
 export const findBook = (books=[], libraryId) =>
   books.find(book => book.libraryId === libraryId)
 
-export const findNote = (notes=[], noteId) =>
-  notes.find(note => note.noteId === noteId)
+export const findNote = (notes=[], libraryId) =>
+  notes.find(note => note.libraryId === libraryId)
 
 export const getNotesForBook = (notes=[], libraryId) => (
   (!libraryId)

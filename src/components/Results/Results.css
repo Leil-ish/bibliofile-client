@@ -1,6 +1,11 @@
-.bookList {
-    display:block;
+.bookList ul {
     list-style: none;
-    max-width: 70%;
+    margin-left: 45%;
+    margin-right: 0;
+    margin-top: 20px;
     float: right;
+}
+
+.bookList p {
+    text-align: left;
 }

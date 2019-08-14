@@ -1,9 +1,18 @@
 .single-book {
+    display:block;
     max-width: 700px;
+    padding: 10px;
+    float: right;
     margin-right: 20%;
-    float:right;
+    border: solid #2E1114;
 }
 
-ul {
+.single-book ul {
     list-style: none;
+    padding: 0;
+}
+
+.single-book p {
+    list-style: none;
+    padding: 0;
 }

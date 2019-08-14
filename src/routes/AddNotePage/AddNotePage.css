@@ -1,7 +1,10 @@
 .AddNotePage {
-    display:inline-block;
     max-width: 70%;
-    margin-left:0;
+    margin-right: 35%;
+    float:right;
+    padding: 20px;
+    margin-top: 40px;
+    border: 1px solid #2E1114;
 }
 
 .AddNotePage h2 {

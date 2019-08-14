@@ -1,14 +1,12 @@
 .LibraryNav_list {
     list-style-type: none;
-    margin: 130px 0 0;
     padding: 0;
+    max-height: 50px;
 }
 
 .LibraryNav_link {
-    background-color: #2E1114;
+    background-color: rgb(17, 8, 19);
     color: #ADADAD;
-    background-color: #030f1f;
-    color: #b5b3b3;
     display: block;
     font-size: 20px;
     margin: 0 auto 8px 0;

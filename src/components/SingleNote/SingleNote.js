@@ -3,6 +3,11 @@ import './SingleNote.css'
 
 class SingleNote extends Component {
 
+    static defaultProps = {
+        books: [],
+        notes: []
+      }
+
   render() {
     let {title, modified, content} = this.props
 

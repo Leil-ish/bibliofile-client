@@ -5,23 +5,24 @@ import {findNote} from '../../library-helper'
 import './SingleNotePage.css'
 
 export default class SingleNotePage extends React.Component {
-  static defaultProps = {
-    match: {
-      params: {}
-    }
-  }
+    static defaultProps = {
+        books: [],
+        notes: []
+      }
+
   static contextType = ApiContext
 
   render() {
-    const {notes=[]} = this.context
+      
+    const {notes} = this.context
     const {libraryId} = this.props.match.params
-    const note = findNote(notes, libraryId) || { content: '' }
+    const note = findNote(notes, libraryId) || {content: ''}
     return (
       <section className='SingleNotePage'>
         <SingleNote
           title={note.title}
-          author={note.author}
-          description={note.description}
+          modified={note.modified}
+          content={note.content}
         />
       </section>
     )

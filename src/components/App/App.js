@@ -13,7 +13,7 @@ import AddNotePage from '../../routes/AddNotePage/AddNotePage'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import ApiContext from '../../services/ApiContext'
 import dummyStore from '../../dummy-store'
-import {findNote, findBook, getBooksForLibrary, getNotesForBook} from '../../library-helper'
+import {findNote, getBooksForLibrary, getNotesForBook} from '../../library-helper'
 import './App.css';
 
 class App extends Component {
@@ -50,10 +50,10 @@ class App extends Component {
             />
           )}
           <Route
-            path='/notes/:noteId'
+            path='/notes/:libraryId'
             render={routeProps => {
-              const { noteId } = routeProps.match.params
-              const note = findNote(notes, noteId)
+              const {libraryId} = routeProps.match.params
+              const note = findNote(notes, libraryId)
               return (
                 <SingleNotePage
                   {...routeProps}
@@ -132,10 +132,10 @@ class App extends Component {
         )}
         <Route
           exact
-          path='/notes/:noteId'
+          path='/notes/:libraryId'
           render={routeProps => {
-            const { noteId } = routeProps.match.params
-            const note = findNote(notes, noteId) || {}
+            const {libraryId} = routeProps.match.params
+            const note = findNote(notes, libraryId) || {}
             return (
               <Nav
                 {...routeProps}
@@ -159,7 +159,7 @@ class App extends Component {
             component={Nav}
           />
           <Route
-            path='/add-note'
+            path='/library/:libraryId/add-note'
             component={Nav}
           />
       </>

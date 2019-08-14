@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './SingleBook.css'
+import {Link} from 'react-router-dom'
+import './ApiBook.css'
 
 class ApiBook extends Component {
   render() {
@@ -11,10 +12,31 @@ class ApiBook extends Component {
       author = "No authors listed"
     )
     return (
-      <ul className = 'single-book'>
-          <h3>{this.props.volumeInfo.title}</h3>
-          <h4>{author}</h4>
-          <p>{this.props.volumeInfo.description}</p>
+      <ul className = 'api-book'>
+          <h3>Title: {this.props.volumeInfo.title}</h3>
+          <h4>Author: {author}</h4>
+          <div className = 'api-book-content'>
+            <img src={this.props.volumeInfo.imageLinks.thumbnail} alt='book cover thumbnail'></img>
+            <p>Description: {this.props.volumeInfo.description}</p>
+          </div>
+          <div className='buttons'>
+            <Link
+              to='/library'
+              type='button'
+              className='Add-book-button'
+            >
+            <br />
+              Add book
+            </Link>
+            <Link
+              to='/add-book'
+              type='button'
+              className='Cancel-add-book-button'
+            >
+            <br />
+              Cancel
+            </Link>
+          </div>
       </ul>
     );
   }

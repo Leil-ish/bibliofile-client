@@ -9,6 +9,7 @@ export default class NotesPage extends React.Component {
     books: [],
     notes: []
   }
+  
   static contextType = ApiContext;
   
   render() {

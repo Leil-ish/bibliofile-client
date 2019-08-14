@@ -61,7 +61,7 @@ class SearchPage extends Component {
               onSubmit={searchTerm => this.handleSubmit(searchTerm)}
               onPrintFilter={printType => this.handlePrintFilter(printType)}
               onBookFilter={bookType => this.handleBookFilter(bookType)}/>
-             {error}  
+             {error}
             <Results 
               books={this.state.books} 
               printFilter={this.state.printType}

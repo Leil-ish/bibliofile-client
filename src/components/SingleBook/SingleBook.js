@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import{Link} from 'react-router-dom'
 import './SingleBook.css'
 
 class SingleBook extends Component {
 
   render() {
     let {title, author, description} = this.props
-    console.log(this.props.author)
       if (this.props.author) {
         author = this.props.author;
       }
@@ -18,6 +18,24 @@ class SingleBook extends Component {
             <h3>{title}</h3>
             <h4>{author}</h4>
             <p>{description}</p>
+            <div className='buttons'>
+            <Link
+              to='/add-note'
+              type='button'
+              className='Add-note-button'
+            >
+            <br />
+              Add a note to this book
+            </Link>
+            <Link
+              to='/notes/:libraryId'
+              type='button'
+              className='View-notes-button'
+            >
+            <br />
+              View notes for this book
+            </Link>
+          </div>
         </ul>
     );
   }

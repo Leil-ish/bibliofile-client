@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Form from '../../components/Form/Form'
 import ApiContext from '../../services/ApiContext'
+import {findBook} from '../../library-helper'
 import './AddNotePage.css'
 
 export default class AddNote extends Component {
@@ -12,12 +13,14 @@ export default class AddNote extends Component {
   static contextType = ApiContext;
 
   render() {
-    const {books=[]} = this.context
+    const {books} = this.context
+    const {libraryId} = this.props.match.params
+    const book = findBook(books, libraryId) || {content: ''}
     console.log(books)
     return (
       <section className='AddNotePage'>
         <h2>
-          {books.title}
+          Add Note for {book.title}
         </h2>
         <Form>
           <div className='field'>
@@ -40,6 +43,14 @@ export default class AddNote extends Component {
             >
             <br />
               Add Note
+            </Link>
+            <Link
+              to='/notes'
+              type='button'
+              className='Cancel-add-note-button'
+            >
+            <br />
+              Cancel
             </Link>
           </div>
         </Form>
