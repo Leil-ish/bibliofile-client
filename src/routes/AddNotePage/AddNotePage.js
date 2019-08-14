@@ -45,7 +45,7 @@ export default class AddNote extends Component {
               Add Note
             </Link>
             <Link
-              to='/notes'
+              to='/library'
               type='button'
               className='Cancel-add-note-button'
             >
