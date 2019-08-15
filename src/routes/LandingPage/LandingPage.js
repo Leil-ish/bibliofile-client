@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../LandingPage/LandingPage.css'
 
-export default class Landing extends React.Component {
+export default class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className='Landing'>
+      <div className='Landing_Page'>
           <h2>Your Personal Virtual Library</h2>
           <p>Bibliofile is a virtual library app that allows people to add any books they have in their personal 
               libraries to a digital management system. From there, they have options to post notes about each book - 

@@ -1,8 +1,8 @@
-* {
+.Landing_Page * {
     box-sizing: border-box;
 }
 
-h2 {
+.Landing_Page h2 {
     background-color: #83677B;
     text-align: center;
     margin-top: 0px;
@@ -14,18 +14,19 @@ h2 {
     margin-bottom: 0;
 }
 
-a {
+
+.Landing_Page a {
     text-decoration: none;
-    color: #2E1114;
+    color: #83677B;
 }
 
-p {
+.Landing_Page p {
     margin:0;
     padding: 5% 30%;
     background-color: #F1EDF1;
 }
 
-img {
+.Landing_Page img {
     width: 50px;
     margin: 25px;
 }
@@ -37,16 +38,9 @@ img {
     color: #F1EDF1;
 }
 
-h3 {
+.Landing_Page h3 {
     margin-top: 0;
     margin-bottom: 10px;
     padding: 25px;
 }
 
-.SignUp_link {
-    color: #83677B;
-}
-
-.Login_link {
-    color: #83677B;
-}

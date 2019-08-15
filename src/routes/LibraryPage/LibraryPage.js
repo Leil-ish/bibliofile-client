@@ -1,26 +1,23 @@
 import React from 'react'
 import SingleBook from '../../components/SingleBook/SingleBook'
-import dummyStore from '../../dummy-store'
+import ApiContext from '../../services/ApiContext'
 import './LibraryPage.css'
 
 export default class LibraryPage extends React.Component {
 
-  state = {
+  static defaultProps = {
     books: [],
-    notes: [],
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.setState(dummyStore), 600)
+    notes: []
   }
   
-  render() {
-    console.log(this.state)
+  static contextType = ApiContext;
 
+  render() {
     return (
       <section className='LibraryPage'>
+        <h2>Library</h2>
         <ul>
-          {this.state.books.map(book =>
+          {this.context.books.map(book =>
             <li key={book.libraryId}>
               <SingleBook
                 libraryId={book.libraryId}

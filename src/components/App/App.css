@@ -1,17 +1,19 @@
 .App_header {
     background-color: #83677B;
     display:block;
-    font-size: 40px;
+    font-size: 30px;
     font-style: none;
     text-decoration: none;
     color: #2E1114;
+    height: 150px;
 }
 
-a {
+.App_header a {
     text-decoration: none;
     color: #2E1114;
 }
 
-h1 {
+.App_header h1 {
     margin: 0;
+    text-align: center;
 }

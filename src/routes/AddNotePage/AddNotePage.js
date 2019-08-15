@@ -16,7 +16,6 @@ export default class AddNote extends Component {
     const {books} = this.context
     const {libraryId} = this.props.match.params
     const book = findBook(books, libraryId) || {content: ''}
-    console.log(books)
     return (
       <section className='AddNotePage'>
         <h2>

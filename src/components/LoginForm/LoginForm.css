@@ -1,13 +1,6 @@
-* {
-    box-sizing: border-box;
-}
-
-div {
-    text-align: center;
-}
-
 .LoginForm {
-    display: inline-block;
+    display: block;
+    max-width: 50%;
     border: 1px solid #2E1114;
     margin: 50px;
     padding: 50px;
@@ -25,8 +18,12 @@ label {
 }
 
 .LoginForm_Submit {
-    display: inline-block;
+    display: block;
+    text-align: center;
     margin: 20px;
     padding: 10px;
-    border: 1px solid black;
+    color: #2E1114;
+    border: 1px solid #2E1114;
+    background-color: #83677B;
+    text-decoration: none;
 }

@@ -176,7 +176,7 @@ class App extends Component {
         <div className='App'>
           <header className='App_header'>
             <h1>
-              <Link to='/'>Bibliofile</Link>
+              <Link to='/'>Biblio<br/>file</Link>
               {' '}
             </h1>
           </header>

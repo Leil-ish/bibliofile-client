@@ -4,6 +4,7 @@ import './ApiBook.css'
 
 class ApiBook extends Component {
   render() {
+    
     let author;
     if (this.props.volumeInfo.authors) {
       author = this.props.volumeInfo.authors[0];
@@ -11,13 +12,22 @@ class ApiBook extends Component {
     else (
       author = "No authors listed"
     )
+
+    let description;
+    if (this.props.volumeInfo.description) {
+      description = this.props.volumeInfo.description;
+    }
+    else (
+      description = "No description included for this book."
+    )
+
     return (
       <ul className = 'api-book'>
           <h3>Title: {this.props.volumeInfo.title}</h3>
           <h4>Author: {author}</h4>
           <div className = 'api-book-content'>
             <img src={this.props.volumeInfo.imageLinks.thumbnail} alt='book cover thumbnail'></img>
-            <p>Description: {this.props.volumeInfo.description}</p>
+            <p>Description: {description}</p>
           </div>
           <div className='buttons'>
             <Link
@@ -26,15 +36,7 @@ class ApiBook extends Component {
               className='Add-book-button'
             >
             <br />
-              Add book
-            </Link>
-            <Link
-              to='/add-book'
-              type='button'
-              className='Cancel-add-book-button'
-            >
-            <br />
-              Cancel
+              Add book to Library
             </Link>
           </div>
       </ul>

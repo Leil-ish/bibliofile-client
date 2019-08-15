@@ -1,22 +1,24 @@
 .LibraryNav_list {
-    list-style-type: none;
-    padding: 0;
-    max-height: 50px;
+  list-style-type: none;
+  padding: 0;
+  max-height: 50px;
+  position: absolute;
+  top: 0px;
 }
 
 .LibraryNav_link {
-    background-color: rgb(17, 8, 19);
-    color: #ADADAD;
-    display: block;
-    font-size: 20px;
-    margin: 0 auto 8px 0;
-    max-width: 180px;
-    padding: 8px 16px;
-    text-decoration: none;
+  background-color: rgb(17, 8, 19);
+  color: #ADADAD;
+  display: block;
+  font-size: 20px;
+  margin: 0 auto 8px 0;
+  max-width: 180px;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 
 .LibraryNav_link:hover {
-    background-color: #83677B;
-    color: #2E1114;
-    
+  background-color: #83677B;
+  color: #2E1114;
+  
 }

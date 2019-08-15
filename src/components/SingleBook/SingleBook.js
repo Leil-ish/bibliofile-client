@@ -17,10 +17,19 @@ class SingleBook extends Component {
       else (
         author = "No authors listed"
       )
+
+      if (this.props.description) {
+        description = this.props.description;
+      }
+      else (
+        description = "No description included for this book."
+      )
+
       const {libraryId} = this.props
 
     return (
-        <ul className = 'single-book'>
+        <div className = 'single-book'>
+          <ul>
             <h3>{title}</h3>
             <h4>{author}</h4>
             <p>{description}</p>
@@ -43,6 +52,7 @@ class SingleBook extends Component {
             </Link>
           </div>
         </ul>
+      </div>
     );
   }
 }

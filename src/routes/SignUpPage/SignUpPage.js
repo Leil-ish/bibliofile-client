@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Section} from '../../components/Utils/Utils'
 import SignUpForm from '../../components/SignUpForm/SignUpForm'
+import './SignUpPage.css'
 
 export default class SignUpPage extends Component {
   static defaultProps = {

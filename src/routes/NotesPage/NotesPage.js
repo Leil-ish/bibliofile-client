@@ -20,6 +20,7 @@ export default class NotesPage extends React.Component {
             <li key={note.libraryId}>
               <SingleNote
                 title={note.title}
+                book={note.book}
                 modified={note.modified}
                 content={note.content}
               />
