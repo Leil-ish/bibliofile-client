@@ -13,12 +13,12 @@ class ApiBook extends Component {
       author = "No authors listed"
     )
 
-    let textSnippet;
-    if (this.props.searchInfo.textSnippet) {
-      textSnippet = this.props.searchInfo.textSnippet;
+    let description;
+    if (this.props.volumeInfo.description) {
+      description = this.props.volumeInfo.description;
     }
     else (
-      textSnippet = "No description included for this book."
+      description = "No description included for this book."
     )
 
     return (
@@ -27,7 +27,7 @@ class ApiBook extends Component {
           <h4>Author: {author}</h4>
           <div className = 'api-book-content'>
             <img src={this.props.volumeInfo.imageLinks.thumbnail} alt='book cover thumbnail'></img>
-            <p>Description: {textSnippet}</p>
+            <p>Description: {description}</p>
           </div>
           <div className='buttons'>
             <Link

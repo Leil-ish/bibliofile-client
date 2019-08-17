@@ -5,7 +5,7 @@ export default {
         'title': 'How to Win',
         'author': "Lou Zer",
         'categories': "Self-Help",
-        'textSnippet': 'Corporis accusamus placeat quas non voluptas.',
+        'description': 'Corporis accusamus placeat quas non voluptas.',
         'rating':5,
         'borrowed': false
       },
@@ -14,7 +14,7 @@ export default {
         'title': 'Becoming Jane',
         'author': "Not Jane",
         'categories': "Romance",
-        'textSnippet': 'Corporis accusamus placeat quas non voluptas.',
+        'description': 'Corporis accusamus placeat quas non voluptas.',
         'rating':4,
         'borrowed': false
       },
@@ -23,7 +23,7 @@ export default {
         'title': 'On Ontology',
         'author': "Bee Ing",
         'categories': "Philosophy",
-        'textSnippet': 'Corporis accusamus placeat quas non voluptas.',
+        'description': 'Corporis accusamus placeat quas non voluptas.',
         'rating':3,
         'borrowed': true
       }

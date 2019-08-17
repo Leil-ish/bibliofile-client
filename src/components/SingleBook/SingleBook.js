@@ -10,7 +10,7 @@ class SingleBook extends Component {
   }
 
   render() {
-    let {title, author, textSnippet, rating} = this.props
+    let {title, author, description, rating} = this.props
       if (this.props.author) {
         author = this.props.author;
       }
@@ -18,11 +18,11 @@ class SingleBook extends Component {
         author = "No authors listed"
       )
 
-      if (this.props.textSnippet) {
-        textSnippet = this.props.textSnippet;
+      if (this.props.description) {
+        description = this.props.description;
       }
       else (
-        textSnippet = "No description included for this book."
+        description = "No description included for this book."
       )
 
       const {libraryId} = this.props
@@ -31,7 +31,7 @@ class SingleBook extends Component {
           <ul>
             <h3>{title}</h3>
             <h4>{author}</h4>
-            <p>{textSnippet}</p>
+            <p>{description}</p>
             <p>{rating} &#9733;</p>
             <div className='buttons'>
             <Link
