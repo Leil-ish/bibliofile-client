@@ -1,0 +1,10 @@
+.SearchError {
+    padding: 20px;
+}
+
+.SearchError a {
+    text-decoration: none;
+    color: #2E1112;
+    border: 1px solid #2E1112;
+    padding: 5px;
+}

@@ -21,7 +21,9 @@ export default class SingleBookPage extends React.Component {
         <SingleBook
           title={book.title}
           author={book.author}
-          description={book.description}
+          categories={book.categories}
+          textSnippet={book.textSnippet}
+          rating={book.rating}
         />
       </section>
     )

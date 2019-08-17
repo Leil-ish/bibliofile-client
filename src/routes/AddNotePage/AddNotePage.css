@@ -21,4 +21,6 @@
  textarea {
      display:block;
      margin:15px;
+     height: 150px;
+     width:60%;
  }

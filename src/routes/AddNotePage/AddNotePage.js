@@ -5,7 +5,7 @@ import ApiContext from '../../services/ApiContext'
 import {findBook} from '../../library-helper'
 import './AddNotePage.css'
 
-export default class AddNote extends Component {
+export default class AddNotePage extends Component {
   static defaultProps = {
     books: [],
     notes: []

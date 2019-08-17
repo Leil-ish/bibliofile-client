@@ -4,19 +4,28 @@ export default {
         'libraryId': '1',
         'title': 'How to Win',
         'author': "Lou Zer",
-        'description': 'Corporis accusamus placeat quas non voluptas.'
+        'categories': "Self-Help",
+        'textSnippet': 'Corporis accusamus placeat quas non voluptas.',
+        'rating':5,
+        'borrowed': false
       },
       {
         'libraryId': '2',
         'title': 'Becoming Jane',
         'author': "Not Jane",
-        'description': 'Corporis accusamus placeat quas non voluptas.'
+        'categories': "Romance",
+        'textSnippet': 'Corporis accusamus placeat quas non voluptas.',
+        'rating':4,
+        'borrowed': false
       },
       {
         'libraryId': '3',
         'title': 'On Ontology',
         'author': "Bee Ing",
-        'description': 'Corporis accusamus placeat quas non voluptas.'
+        'categories': "Philosophy",
+        'textSnippet': 'Corporis accusamus placeat quas non voluptas.',
+        'rating':3,
+        'borrowed': true
       }
     ],
     'notes': [

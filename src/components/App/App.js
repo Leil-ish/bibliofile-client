@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Route, Switch, Link} from 'react-router-dom'
 import Nav from '../Nav/Nav'
+import AddBookPage from '../../routes/AddBookPage/AddBookPage'
 import LandingPage from '../../routes/LandingPage/LandingPage'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import SignUpPage from '../../routes/SignUpPage/SignUpPage'
@@ -21,6 +22,7 @@ class App extends Component {
     state = {
         books:[],
         notes:[],
+        error: false,
     };
   
   componentDidMount() {
@@ -63,8 +65,12 @@ class App extends Component {
             }}
           />
           <Route
-            path='/add-book'
+            path='/find-book'
             component={SearchPage}
+          />
+          <Route
+            path='/add-book'
+            component={AddBookPage}
           />
           `{['/library/:libraryId/add-note'].map(path =>
             <Route

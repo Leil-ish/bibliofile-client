@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Results from '../../components/Results/Results';
 import './SearchPage.css'
@@ -9,6 +10,7 @@ class SearchPage extends Component {
         super(props);
         this.state = {
             books:[],
+            error: false,
             printType: "All",
             bookType: "All"
         };
@@ -36,9 +38,21 @@ class SearchPage extends Component {
             if(!response.ok) {
               throw new Error('Something went wrong, please try again later.');
             }
+            this.setState({
+              error: true
+            })
             return response;
           })
           .then(response => response.json())
+          .then(data => {
+            if(!data.items) {
+              throw new Error('There are no results for that search. Try using different search terms or manually add the book.');
+            }
+            this.setState({
+              error: true
+            })
+            return data;
+          })
           .then(data => {
             this.setState({
              books: data.items
@@ -53,7 +67,12 @@ class SearchPage extends Component {
     
       render() {
         
-        const error = this.state.error ? <div className="SearchError">{this.state.error}</div> : "";
+        const error = this.state.error 
+        ? <div className="SearchError">
+          <h3>{this.state.error}</h3>
+          <Link to={`/add-book-info`}>Enter Book Info Yourself</Link>
+        </div> 
+        : "";
     
         return (
           <main className='SearchPage'>

@@ -18,7 +18,6 @@ class SearchBox extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        //this.props.onSubmit(e.target.value)
         const search = this.state.searchTerm.split(' ').join('+');
         this.props.onSubmit(search);
     }
