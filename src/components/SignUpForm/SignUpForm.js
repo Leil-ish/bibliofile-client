@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import {Input, Required} from '../Utils/Utils'
+import {Button, Input, Required} from '../Utils/Utils'
+import AuthApiService from '../../services/auth-api-service'
 import './SignUpForm.css'
 
 export default class SignUpForm extends Component {
@@ -8,20 +8,29 @@ export default class SignUpForm extends Component {
     onSignUpSuccess: () => {}
   }
 
-  state = { error: null }
+  state = {error: null}
 
   handleSubmit = ev => {
     ev.preventDefault()
-    const { full_name, nick_name, user_name, password } = ev.target
+    const {firstName, lastName, username, password } = ev.target
 
-    console.log('registration form submitted')
-    console.log({ full_name, nick_name, user_name, password })
-
-    full_name.value = ''
-    nick_name.value = ''
-    user_name.value = ''
-    password.value = ''
-    this.props.onSignUpSuccess()
+    this.setState({ error: null })
+    AuthApiService.postUser({
+      username: username.value,
+      password: password.value,
+      firstName: firstName.value,
+      lastName: lastName.value,
+    })
+      .then(user => {
+        firstName.value = ''
+        lastName.value = ''
+        username.value = ''
+        password.value = ''
+        this.props.onRegistrationSuccess()
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
   }
 
   render() {
@@ -34,26 +43,37 @@ export default class SignUpForm extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-          <div className='full_name'>
-            <label htmlFor='SignUpForm_full_name'>
-              Full name <Required />
+          <div className='firstName'>
+            <label htmlFor='SignUpForm_firstName'>
+              First name <Required />
             </label>
             <Input
-              name='full_name'
+              name='firstName'
               type='text'
               required
-              id='SignUpForm_full_name'>
+              id='SignUpForm_firstName'>
             </Input>
           </div>
-          <div className='user_name'>
-            <label htmlFor='SignUpForm_user_name'>
-              User name <Required />
+          <div className='lastName'>
+            <label htmlFor='SignUpForm_lastName'>
+              Last Name <Required />
             </label>
             <Input
-              name='user_name'
+              name='lastName'
               type='text'
               required
-              id='SignUpForm_user_name'>
+              id='SignUpForm_lastName'>
+            </Input>
+          </div>
+          <div className='username'>
+            <label htmlFor='SignUpForm_username'>
+              Username <Required />
+            </label>
+            <Input
+              name='username'
+              type='text'
+              required
+              id='SignUpForm_username'>
             </Input>
           </div>
           <div className='password'>
@@ -67,20 +87,9 @@ export default class SignUpForm extends Component {
               id='SignUpForm_password'>
             </Input>
           </div>
-          <div className='nick_name'>
-            <label htmlFor='SignUpForm_nick_name'>
-              Nickname
-            </label>
-            <Input
-              name='nick_name'
-              type='text'
-              required
-              id='SignUpForm_nick_name'>
-            </Input>
-          </div>
-          <Link className='SignUpForm_Submit' to='/add-book'>
-            Sign Up
-          </Link>
+          <Button type='submit'>
+            Register
+          </Button>
       </form>
     )
   }

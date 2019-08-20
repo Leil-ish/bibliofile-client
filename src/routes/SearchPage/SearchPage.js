@@ -70,7 +70,7 @@ class SearchPage extends Component {
         const error = this.state.error 
         ? <div className="SearchError">
             <h3>{this.state.error}</h3>
-            <Link to={`/add-book-info`}>Enter Book Info Yourself</Link>
+            <Link to={`/add-book`}>Enter Book Info Yourself</Link>
           </div> 
         : "";
     
@@ -79,12 +79,10 @@ class SearchPage extends Component {
             <h2>Search for a Book to Add to Your Library</h2>
             <SearchBar 
               onSubmit={searchTerm => this.handleSubmit(searchTerm)}
-              onPrintFilter={printType => this.handlePrintFilter(printType)}
               onBookFilter={bookType => this.handleBookFilter(bookType)}/>
              {error}
             <Results 
               books={this.state.books} 
-              printFilter={this.state.printType}
               bookFilter={this.state.bookType}/>
           </main>
         );

@@ -5,10 +5,10 @@ import './Results.css'
 
 class Results extends Component {
   render() {
-    const {printFilter, bookFilter} = this.props;
+    const {bookFilter} = this.props;
     const list = this.props.books
-    .filter(book => (printFilter === "All" || book.volumeInfo.printType === printFilter)
-     && (bookFilter === "All" || (book.saleInfo.isEbook && bookFilter === "eBook") || (!book.saleInfo.isEbook && bookFilter === "paper")))    
+    .filter(book => 
+      (bookFilter === "All" || (book.saleInfo.isEbook && bookFilter === "eBook") || (!book.saleInfo.isEbook && bookFilter === "paper")))    
     .map((book, key) => <ApiBook {...book} key={key}/>);
 
     return (

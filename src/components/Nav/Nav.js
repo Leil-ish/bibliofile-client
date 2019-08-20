@@ -1,13 +1,52 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { Hyph } from '../Utils/Utils'
+import TokenService from '../../services/token-service'
 import './Nav.css'
 
 export default class LibraryNav extends React.Component {
+
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken()
+  }
+
+  renderLogoutLink() {
+    return (
+      <div className='Nav_logged-in'>
+        <Link
+          onClick={this.handleLogoutClick}
+          to='/'>
+          Logout
+        </Link>
+      </div>
+    )
+  }
+
+  renderLoginLink() {
+    return (
+      <div className='Nav_not-logged-in'>
+        <Link
+          to='/signup'>
+          Register
+        </Link>
+        <Hyph />
+        <Link
+          to='/login'>
+          Log in
+        </Link>
+      </div>
+    )
+  }
 
   render() {
     return (
       <div className='LibraryNav'>
         <ul className='LibraryNav_list'>
+            <li>
+              {TokenService.hasAuthToken()
+                ? this.renderLogoutLink()
+                : this.renderLoginLink()}
+            </li>
             <li>
               <Link
                 className='LibraryNav_link'

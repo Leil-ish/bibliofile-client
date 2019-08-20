@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import {Input} from '../Utils/Utils'
+import TokenService from '../../services/token-service'
+import AuthApiService from '../../services/auth-api-service'
+import {Button, Input} from '../Utils/Utils'
 import './LoginForm.css'
 
 export default class LoginForm extends Component {
@@ -8,26 +9,46 @@ export default class LoginForm extends Component {
     onLoginSuccess: () => {}
   }
 
-  state = { error: null }
+  state = {error: null}
+
+  handleSubmitJwtAuth = ev => {
+    ev.preventDefault()
+    this.setState({ error: null })
+    const {username, password} = ev.target
+
+    AuthApiService.postLogin({
+      username: username.value,
+      password: password.value,
+    })
+      .then(res => {
+        username.value = ''
+        password.value = ''
+        TokenService.saveAuthToken(res.authToken)
+        this.props.onLoginSuccess()
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
+    }
 
   render() {
-    const { error } = this.state
+    const {error} = this.state
     return (
       <form
         className='LoginForm'
-        onSubmit={this.handleSubmitBasicAuth}
+        onSubmit={this.handleSubmitJwtAuth}
       >
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <div className='user_name'>
-          <label htmlFor='LoginForm_user_name'>
-            User name
+        <div className='username'>
+          <label htmlFor='LoginForm_username'>
+            Username
           </label>
           <Input
             required
-            name='user_name'
-            id='Login_user_name'>
+            name='username'
+            id='Login_username'>
           </Input>
         </div>
         <div className='password'>
@@ -41,9 +62,9 @@ export default class LoginForm extends Component {
             id='Login_password'>
           </Input>
         </div>
-        <Link className='LoginForm_Submit' to='/library'>
+        <Button type='submit'>
           Login
-        </Link>
+        </Button>
       </form>
     )
   }

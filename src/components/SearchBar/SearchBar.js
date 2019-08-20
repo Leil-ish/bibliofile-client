@@ -10,7 +10,6 @@ class SearchBar extends Component {
       <div className='searchTerms'>
         <SearchBox className onSubmit={this.props.onSubmit}/>
         <Filters className 
-          onPrintFilter={this.props.onPrintFilter}
           onBookFilter={this.props.onBookFilter}/>
       </div>
     );
