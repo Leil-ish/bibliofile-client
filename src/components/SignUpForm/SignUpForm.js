@@ -26,7 +26,7 @@ export default class SignUpForm extends Component {
         lastName.value = ''
         username.value = ''
         password.value = ''
-        this.props.onRegistrationSuccess()
+        this.props.onSignUpSuccess()
       })
       .catch(res => {
         this.setState({ error: res.error })

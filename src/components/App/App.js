@@ -14,21 +14,18 @@ import SingleNotePage from '../../routes/SingleNotePage/SingleNotePage'
 import SearchPage from '../../routes/SearchPage/SearchPage'
 import AddNotePage from '../../routes/AddNotePage/AddNotePage'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
-import ApiContext from '../../services/ApiContext'
 import {findNote, getBooksForLibrary, getNotesForBook} from '../../library-helper'
 import './App.css';
 
 class App extends Component {
 
     state = {
-        books:[],
-        notes:[],
-        error: false,
+        hasError: false,
     };
 
     static getDerivedStateFromError(error) {
       console.error(error)
-      return { hasError: true }
+      return {hasError: true}
     }
   
   renderMainRoutes() {
@@ -177,12 +174,7 @@ class App extends Component {
   }
 
   render() {
-    const value = {
-      books: this.state.books,
-      notes: this.state.notes,
-    }
     return (
-      <ApiContext.Provider value={value}>
         <div className='App'>
           <header className='App_header'>
             <h1>
@@ -197,7 +189,6 @@ class App extends Component {
             {this.renderNavRoutes()}
           </nav>
         </div>
-      </ApiContext.Provider>
     )
   }
 }

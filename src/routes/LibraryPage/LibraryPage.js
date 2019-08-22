@@ -1,18 +1,23 @@
 import React from 'react'
 import SingleBook from '../../components/SingleBook/SingleBook'
-import ApiContext from '../../services/ApiContext'
+import LibraryContext from '../../contexts/LibraryContext'
+import BookApiService from '../../services/book-api-service'
+import {Section} from '../../components/Utils/Utils'
 import './LibraryPage.css'
 
 export default class LibraryPage extends React.Component {
 
-  static defaultProps = {
-    books: [],
-    notes: []
-  }
-  
-  static contextType = ApiContext;
+  static contextType = LibraryContext;
 
-  render() {
+  componentDidMount() {
+    this.context.clearError()
+    BookApiService.getBooks()
+      .then(this.context.setBookList)
+      .catch(this.context.setError)
+  }
+
+  renderLibrary() {
+    const {library = []} = this.context
     return (
       <section className='LibraryPage'>
         <h2>Library</h2>
@@ -38,20 +43,27 @@ export default class LibraryPage extends React.Component {
             </select>
           </div>
         <ul>
-          {this.context.books.map(book =>
-            <li key={book.libraryId}>
-              <SingleBook
-                libraryId={book.libraryId}
-                title={book.title}
-                author={book.author}
-                categories={book.categories}
-                description={book.description}
-                rating={book.rating}
-              />
-            </li>
+          {library.map(book =>
+            <SingleBook
+              key={book.libraryId}
+              book={book}
+            />
           )}
         </ul>
       </section>
     )
   }
+
+  render() {
+    console.log(this.context)
+    const {error} = this.context
+    return (
+      <Section list className='LibraryPage'>
+        {error
+          ? <p className='red'>There was an error, try again</p>
+          : this.renderLibrary()}
+      </Section>
+    )
+  }
+
 }
