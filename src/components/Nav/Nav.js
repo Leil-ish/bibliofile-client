@@ -12,7 +12,7 @@ export default class LibraryNav extends React.Component {
 
   renderLogoutLink() {
     return (
-      <div className='Nav_logged-in'>
+      <div className='LibraryNav_link'>
         <Link
           onClick={this.handleLogoutClick}
           to='/'>
@@ -24,7 +24,7 @@ export default class LibraryNav extends React.Component {
 
   renderLoginLink() {
     return (
-      <div className='Nav_not-logged-in'>
+      <div className='LibraryNav_link'>
         <Link
           to='/signup'>
           Register

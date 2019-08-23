@@ -25,7 +25,7 @@ class SingleBook extends Component {
         description = "No description included for this book."
       )
 
-      const {libraryId} = this.props
+      const {bookId} = this.props
     return (
         <div className = 'single-book'>
           <ul>
@@ -35,7 +35,7 @@ class SingleBook extends Component {
             <p>{rating} &#9733;</p>
             <div className='buttons'>
             <Link
-              to={`/library/${libraryId}/add-note`}
+              to={`/library/${bookId}/add-note`}
               type='button'
               className='Add-note-button'
             >
@@ -43,7 +43,7 @@ class SingleBook extends Component {
               Add a note to this book
             </Link>
             <Link
-              to={`/notes/${libraryId}`}
+              to={`/notes/${bookId}`}
               type='button'
               className='View-notes-button'
             >

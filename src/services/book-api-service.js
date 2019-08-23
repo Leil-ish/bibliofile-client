@@ -13,8 +13,8 @@ const BookApiService = {
           : res.json()
       )
   },
-  getBook(libraryId) {
-    return fetch(`${config.API_ENDPOINT}/library/${libraryId}`, {
+  getBook(bookId) {
+    return fetch(`${config.API_ENDPOINT}/library/${bookId}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -25,8 +25,8 @@ const BookApiService = {
           : res.json()
       )
   },
-  getBookNotes(libraryId) {
-    return fetch(`${config.API_ENDPOINT}/library/${libraryId}/notes`, {
+  getBookNotes(bookId) {
+    return fetch(`${config.API_ENDPOINT}/library/${bookId}/notes`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -37,7 +37,7 @@ const BookApiService = {
           : res.json()
       )
   },
-  postNote(libraryId, text) {
+  postNote(bookId, text) {
     return fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
@@ -45,7 +45,7 @@ const BookApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        libraryId: libraryId,
+        bookId: bookId,
         text,
       }),
     })

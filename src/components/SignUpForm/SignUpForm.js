@@ -12,18 +12,18 @@ export default class SignUpForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    const {firstName, lastName, username, password } = ev.target
+    const {first_name, last_name, username, password } = ev.target
 
     this.setState({ error: null })
     AuthApiService.postUser({
       username: username.value,
       password: password.value,
-      firstName: firstName.value,
-      lastName: lastName.value,
+      first_name: first_name.value,
+      last_name: last_name.value,
     })
       .then(user => {
-        firstName.value = ''
-        lastName.value = ''
+        first_name.value = ''
+        last_name.value = ''
         username.value = ''
         password.value = ''
         this.props.onSignUpSuccess()
@@ -43,26 +43,26 @@ export default class SignUpForm extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-          <div className='firstName'>
-            <label htmlFor='SignUpForm_firstName'>
+          <div className='first_name'>
+            <label htmlFor='SignUpForm_first_name'>
               First name <Required />
             </label>
             <Input
-              name='firstName'
+              name='first_name'
               type='text'
               required
-              id='SignUpForm_firstName'>
+              id='SignUpForm_first_name'>
             </Input>
           </div>
-          <div className='lastName'>
-            <label htmlFor='SignUpForm_lastName'>
+          <div className='last_name'>
+            <label htmlFor='SignUpForm_last_name'>
               Last Name <Required />
             </label>
             <Input
-              name='lastName'
+              name='last_name'
               type='text'
               required
-              id='SignUpForm_lastName'>
+              id='SignUpForm_last_name'>
             </Input>
           </div>
           <div className='username'>

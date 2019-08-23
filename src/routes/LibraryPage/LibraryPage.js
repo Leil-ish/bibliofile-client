@@ -45,7 +45,7 @@ export default class LibraryPage extends React.Component {
         <ul>
           {library.map(book =>
             <SingleBook
-              key={book.libraryId}
+              key={book.bookId}
               book={book}
             />
           )}
@@ -55,7 +55,6 @@ export default class LibraryPage extends React.Component {
   }
 
   render() {
-    console.log(this.context)
     const {error} = this.context
     return (
       <Section list className='LibraryPage'>

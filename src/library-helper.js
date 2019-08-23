@@ -1,20 +1,20 @@
-export const findBook = (books=[], libraryId) =>
-  books.find(book => book.libraryId === libraryId)
+export const findBook = (books=[], bookId) =>
+  books.find(book => book.id === bookId)
 
-export const findNote = (notes=[], libraryId) =>
-  notes.find(note => note.libraryId === libraryId)
+export const findNote = (notes=[], noteId) =>
+  notes.find(note => note.id === noteId)
 
-export const getNotesForBook = (notes=[], libraryId) => (
-  (!libraryId)
+export const getNotesForBook = (notes=[], bookId) => (
+  (!bookId)
     ? notes
-    : notes.filter(note => note.libraryId === libraryId)
+    : notes.filter(note => note.bookId === bookId)
 )
 
-export const getBooksForLibrary = (books=[], libraryId) => (
-  (!libraryId)
+export const getBooksForLibrary = (books=[], bookId) => (
+  (!bookId)
     ? books
-    : books.filter(book => book.libraryId === libraryId)
+    : books.filter(book => book.bookId === bookId)
 )
 
-export const countNotesForBook = (notes=[], libraryId) =>
-  notes.filter(note => note.libraryId === libraryId).length
+export const countNotesForBook = (notes=[], bookId) =>
+  notes.filter(note => note.bookId === bookId).length

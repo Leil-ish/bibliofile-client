@@ -14,12 +14,12 @@ export default class SingleBookPage extends React.Component {
   static contextType = BookContext
 
   componentDidMount() {
-    const {libraryId} = this.props.match.params
+    const {bookId} = this.props.match.params
     this.context.clearError()
-    BookApiService.getBook(libraryId)
+    BookApiService.getBook(bookId)
       .then(this.context.setBook)
       .catch(this.context.setError)
-    BookApiService.getBookNotes(libraryId)
+    BookApiService.getBookNotes(bookId)
       .then(this.context.setNotes)
       .catch(this.context.setError)
   }
@@ -30,8 +30,8 @@ export default class SingleBookPage extends React.Component {
 
   renderBook() {
     const {books=[]} = this.context
-    const {libraryId} = this.props.match.params
-    const book = findBook(books, libraryId) || { content: '' }
+    const {bookId} = this.props.match.params
+    const book = findBook(books, bookId) || { content: '' }
     return (
       <section className='SingleBookPage'>
         <SingleBook

@@ -34,14 +34,14 @@ class App extends Component {
       <div className='App-main'>
         {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
           <Switch>
-            `{['/library/:libraryId'].map(path =>
+            `{['/library/:bookId'].map(path =>
               <PrivateRoute
                 exact
                 key={path}
                 path={path}
                 render={routeProps => {    
-                  const {libraryId} = routeProps.match.params
-                  const booksForLibrary = getBooksForLibrary(books, libraryId)
+                  const {bookId} = routeProps.match.params
+                  const booksForLibrary = getBooksForLibrary(books, bookId)
                   return (
                     <SingleBookPage
                       {...routeProps}
@@ -52,10 +52,10 @@ class App extends Component {
               />
             )}
             <PrivateRoute
-              path='/notes/:libraryId'
+              path='/notes/:bookId'
               render={routeProps => {
-                const {libraryId} = routeProps.match.params
-                const note = findNote(notes, libraryId)
+                const {bookId} = routeProps.match.params
+                const note = findNote(notes, bookId)
                 return (
                   <SingleNotePage
                     {...routeProps}
@@ -72,14 +72,14 @@ class App extends Component {
               path='/add-book'
               component={AddBookPage}
             />
-            `{['/library/:libraryId/add-note'].map(path =>
+            `{['/library/:bookId/add-note'].map(path =>
               <PrivateRoute
                 exact
                 key={path}
                 path={path}
                 render={routeProps => {
-                  const {libraryId} = routeProps.match.params
-                  const notesForBook = getNotesForBook(notes, libraryId)
+                  const {bookId} = routeProps.match.params
+                  const notesForBook = getNotesForBook(notes, bookId)
                   return (
                     <AddNotePage
                       {...routeProps}
@@ -123,7 +123,7 @@ class App extends Component {
     return (
       <div className='App-nav'>
         {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
-          {['/library/:libraryId'].map(path =>
+          {['/library/:bookId'].map(path =>
             <PrivateRoute
               exact
               key={path}
@@ -139,10 +139,10 @@ class App extends Component {
           )}
           <PrivateRoute
             exact
-            path='/notes/:libraryId'
+            path='/notes/:bookId'
             render={routeProps => {
-              const {libraryId} = routeProps.match.params
-              const note = findNote(notes, libraryId) || {}
+              const {bookId} = routeProps.match.params
+              const note = findNote(notes, bookId) || {}
               return (
                 <Nav
                   {...routeProps}
@@ -166,7 +166,7 @@ class App extends Component {
               component={Nav}
             />
             <PrivateRoute
-              path='/library/:libraryId/add-note'
+              path='/library/:bookId/add-note'
               component={Nav}
             />
       </div>

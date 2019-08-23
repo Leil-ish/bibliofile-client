@@ -15,8 +15,8 @@ export default class SingleNotePage extends React.Component {
   render() {
       
     const {notes} = this.context
-    const {libraryId} = this.props.match.params
-    const note = findNote(notes, libraryId) || {content: ''}
+    const {bookId} = this.props.match.params
+    const note = findNote(notes, bookId) || {content: ''}
     return (
       <section className='SingleNotePage'>
         <SingleNote

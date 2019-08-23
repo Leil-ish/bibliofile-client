@@ -17,7 +17,7 @@ export default class NotesPage extends React.Component {
       <section className='NotesPage'>
         <ul>
           {this.context.notes.map(note =>
-            <li key={note.libraryId}>
+            <li key={note.bookId}>
               <SingleNote
                 title={note.title}
                 book={note.book}
