@@ -9,7 +9,21 @@ class SingleBook extends Component {
     }
   }
 
+  constructor(props){
+    super(props);
+    this.state = {
+      borrowed: false,
+    };
+  }
+
+  handleClick = () => {
+    this.setState(prevState => ({
+      borrowed: !prevState.borrowed
+    }));
+  }
+
   render() {
+
     let {title, author, description, rating} = this.props
       if (this.props.author) {
         author = this.props.author;
@@ -26,34 +40,36 @@ class SingleBook extends Component {
       )
 
       const {libraryId} = this.props
-    return (
-        <div className = 'single-book'>
-          <ul>
-            <h3>{title}</h3>
-            <h4>{author}</h4>
-            <p>{description}</p>
-            <p>{rating} &#9733;</p>
-            <div className='buttons'>
-            <Link
-              to={`/library/${libraryId}/add-note`}
-              type='button'
-              className='Add-note-button'
-            >
-            <br />
-              Add a note to this book
-            </Link>
-            <Link
-              to={`/notes/${libraryId}`}
-              type='button'
-              className='View-notes-button'
-            >
-            <br />
-              View notes for this book
-            </Link>
-          </div>
-        </ul>
-      </div>
-    );
+    
+      return (
+          <div className = 'single-book'>
+            <ul>
+              <h3>{title}</h3>
+              <h4>{author}</h4>
+              <p>{description}</p>
+              <p>{rating} &#9733;</p>
+              <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
+              <div className='buttons'>
+              <Link
+                to={`/library/${libraryId}/add-note`}
+                type='button'
+                className='Add-note-button'
+              >
+              <br />
+                Add a note to this book
+              </Link>
+              <Link
+                to={`/notes/${libraryId}`}
+                type='button'
+                className='View-notes-button'
+              >
+              <br />
+                View notes for this book
+              </Link>
+            </div>
+          </ul>
+        </div>
+      );
   }
 }
 

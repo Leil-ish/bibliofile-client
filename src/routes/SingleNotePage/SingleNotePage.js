@@ -20,6 +20,7 @@ export default class SingleNotePage extends React.Component {
     return (
       <section className='SingleNotePage'>
         <SingleNote
+          libraryId={note.libraryId}
           title={note.title}
           book={note.book}
           modified={note.modified}

@@ -19,11 +19,15 @@ import './App.css';
 
 class App extends Component {
 
-    state = {
-        books:[],
-        notes:[],
-        error: false,
+  constructor(props){
+    super(props);
+    this.state = {
+      books:[],
+      notes:[],
+      error: false,
+      borrowed: false,
     };
+  }
   
   componentDidMount() {
     setTimeout(() => this.setState(dummyStore), 600)
@@ -158,6 +162,10 @@ class App extends Component {
           <Route
             exact
             path='/notes'
+            component={Nav}
+          />
+          <Route
+            path='/find-book'
             component={Nav}
           />
           <Route
