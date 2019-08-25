@@ -19,9 +19,13 @@ import './App.css';
 
 class App extends Component {
 
-    state = {
+  constructor(props){
+    super(props);
+    this.state = {
         hasError: false,
+        borrowed: false,
     };
+  }
 
     static getDerivedStateFromError(error) {
       console.error(error)
@@ -159,6 +163,10 @@ class App extends Component {
             <PrivateRoute
               exact
               path='/notes'
+              component={Nav}
+            />
+            <PrivateRoute
+              path='/find-book'
               component={Nav}
             />
             <PrivateRoute

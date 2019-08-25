@@ -12,12 +12,13 @@ export default class LibraryPage extends React.Component {
   componentDidMount() {
     this.context.clearError()
     BookApiService.getBooks()
-      .then(this.context.setBookList)
+      .then(this.context.setLibrary)
       .catch(this.context.setError)
   }
 
   renderLibrary() {
     const {library = []} = this.context
+    console.log(this.context)
     return (
       <section className='LibraryPage'>
         <h2>Library</h2>
@@ -45,8 +46,14 @@ export default class LibraryPage extends React.Component {
         <ul>
           {library.map(book =>
             <SingleBook
-              key={book.bookId}
-              book={book}
+              key={book.id}
+              title={book.title}
+              authors={book.authors}
+              categories={book.categories}
+              description={book.description}
+              image_links={book.image_links}
+              borrowed={book.borrowed}
+              rating={book.rating}
             />
           )}
         </ul>

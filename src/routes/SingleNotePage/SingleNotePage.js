@@ -1,6 +1,6 @@
 import React from 'react'
 import SingleNote from '../../components/SingleNote/SingleNote'
-import ApiContext from '../../services/ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 import {findNote} from '../../library-helper'
 import './SingleNotePage.css'
 
@@ -20,6 +20,7 @@ export default class SingleNotePage extends React.Component {
     return (
       <section className='SingleNotePage'>
         <SingleNote
+          book_id={note.book_id}
           title={note.title}
           book={note.book}
           modified={note.modified}

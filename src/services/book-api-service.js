@@ -45,7 +45,7 @@ const BookApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        bookId: bookId,
+        book_id: bookId,
         text,
       }),
     })

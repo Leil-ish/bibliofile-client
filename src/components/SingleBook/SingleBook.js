@@ -3,19 +3,26 @@ import {Link} from 'react-router-dom'
 import './SingleBook.css'
 
 class SingleBook extends Component {
-  static defaultProps = {
-    match: {
-      params: {}
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      borrowed: false,
+    };
+  }
+
+   handleClick = () => {
+    this.setState(prevState => ({
+      borrowed: !prevState.borrowed
+    }));
   }
 
   render() {
-    let {title, author, description, rating} = this.props
-      if (this.props.author) {
-        author = this.props.author;
+    let {title, authors, description, rating} = this.props
+      if (this.props.authors) {
+        authors = this.props.authors;
       }
       else (
-        author = "No authors listed"
+        authors = "No authors listed"
       )
 
       if (this.props.description) {
@@ -30,9 +37,10 @@ class SingleBook extends Component {
         <div className = 'single-book'>
           <ul>
             <h3>{title}</h3>
-            <h4>{author}</h4>
+            <h4>{authors}</h4>
             <p>{description}</p>
             <p>{rating} &#9733;</p>
+            <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
             <div className='buttons'>
             <Link
               to={`/library/${bookId}/add-note`}
