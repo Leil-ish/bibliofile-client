@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 
 export const nullBook = {
-  author: {},
-  tags: [],
+  authors: {},
+}
+
+export const nullNote = {
+  note_name: {},
 }
 
 const BookContext = React.createContext({
   book: nullBook,
-  notes: [],
+  note: nullNote,
   error: null,
   setError: () => {},
   clearError: () => { },
@@ -15,6 +18,7 @@ const BookContext = React.createContext({
   clearBook: () => {},
   setNotes: () => {},
   addNote: () => {},
+  clearNote: () => {},
 })
 
 export default BookContext
@@ -22,6 +26,7 @@ export default BookContext
 export class BookProvider extends Component {
   state = {
     book: nullBook,
+    note: nullNote,
     error: null,
   };
 
@@ -38,12 +43,21 @@ export class BookProvider extends Component {
     this.setState({book})
   }
 
+  setNote = note => {
+    this.setState({note})
+  }
+
   setNotes = notes => {
     this.setState({notes})
   }
 
   clearBook = () => {
     this.setBook(nullBook)
+    this.setNotes([])
+  }
+
+  clearNote = () => {
+    this.setNote(nullNote)
     this.setNotes([])
   }
 
@@ -57,13 +71,16 @@ export class BookProvider extends Component {
   render() {
     const value = {
       book: this.state.book,
+      note: this.state.note,
       notes: this.state.notes,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setBook: this.setBook,
+      setNote: this.setNote,
       setNotes: this.setNotes,
       clearBook: this.clearBook,
+      clearNote: this.clearNote,
       addNote: this.addNote,
     }
     return (

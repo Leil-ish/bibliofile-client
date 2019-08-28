@@ -1,42 +1,59 @@
 import React from 'react'
 import SingleNote from '../../components/SingleNote/SingleNote'
-import NoteListContext from '../../contexts/NoteListContext'
-import NoteApiService from '../../services/note-api-service'
+import LibraryContext from '../../contexts/LibraryContext'
+import BookApiService from '../../services/book-api-service'
+import {Section} from '../../components/Utils/Utils'
 import './NotesPage.css'
 
 export default class NotesPage extends React.Component {
 
+  static contextType = LibraryContext;
+
   static defaultProps = {
-    books: [],
-    notes: []
+    match: {
+      params: {}
+    }
   }
-  
-  static contextType = NoteListContext;
 
   componentDidMount() {
     this.context.clearError()
-    NoteApiService.getNotes()
+    BookApiService.getBooks()
+      .then(this.context.setLibrary)
+      .catch(this.context.setError)
+    BookApiService.getNotes()
       .then(this.context.setNoteList)
       .catch(this.context.setError)
   }
-  
-  render() {
+
+  renderNotes() {
+    const {notes = []} = this.context
     return (
       <section className='NotesPage'>
         <ul>
-          {this.context.notes.map(note =>
-            <li key={note.bookId}>
+          {notes.map(note =>
+            <li>
               <SingleNote
+                key={note.id}
                 book_id={note.book_id}
-                title={note.title}
-                book={note.book}
-                modified={note.modified}
+                note_name={note.note_name}
                 content={note.content}
+                modified={note.modified}
               />
             </li>
           )}
         </ul>
       </section>
+    )
+  }
+
+  render() {
+    const {error} = this.context
+    return (
+      <Section list className='NotesPage'>
+        {error
+          ? <p className='red'>There was an error, try again</p>
+          : this.renderNotes()}
+      </Section>
     )
   }
 }

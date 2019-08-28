@@ -1,22 +1,29 @@
 import React, {Component} from 'react'
 
 const LibraryContext = React.createContext({
-  library: [],
+  books: [],
+  notes: [],
   error: null,
   setError: () => {},
   clearError: () => {},
   setLibrary: () => {},
+  setNoteList: () => {},
 })
 export default LibraryContext
 
 export class LibraryProvider extends Component {
   state = {
-    library: [],
+    books: [],
+    notes: [],
     error: null,
   };
 
-  setLibrary = library => {
-    this.setState({ library })
+  setLibrary = books => {
+    this.setState({ books })
+  }
+
+  setNoteList = notes => {
+    this.setState({ notes })
   }
 
   setError = error => {
@@ -30,11 +37,13 @@ export class LibraryProvider extends Component {
 
   render() {
     const value = {
-      library: this.state.library,
+      books: this.state.books,
+      notes: this.state.notes,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setLibrary: this.setLibrary,
+      setNoteList: this.setNoteList,
     }
     return (
       <LibraryContext.Provider value={value}>

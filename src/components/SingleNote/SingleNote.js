@@ -4,14 +4,16 @@ import './SingleNote.css'
 
 class SingleNote extends Component {
 
-    static defaultProps = {
-        match: {
-          params: {}
-        }
-      }
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
+
 
   render() {
-    let {book, title, modified, content, book_id} = this.props
+    const {book_id, title, note_name, content} = this.props
+    console.log(this.props)
 
     return (
         <ul className = 'single-note'>
@@ -19,17 +21,16 @@ class SingleNote extends Component {
               to={`/notes/${book_id}`}
               type='button'
               className='Add-note-button'>
-                <h2>Note for: <i>{book}</i></h2>
+                <h2>Note for: <i>{title}</i></h2>
             </Link>
-            <h3>{title}</h3>
-            <h4>{modified}</h4>
-            <p>{content}</p>
+            <h3>{note_name}</h3>
+            <h4>{content}</h4>
             <Link
                 to={`/library/${book_id}/add-note`}
                 type='button'
                 className='Add-note-button'
               >
-            Add a New Note for <i>{book}</i>
+            Add a New Note for <i>{title}</i>
             </Link>
         </ul>
     );

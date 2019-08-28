@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import BookContext from '../../contexts/BookContext'
 import './SingleBook.css'
 
 class SingleBook extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      borrowed: false,
-    };
+
+  static contextType = BookContext;
+
+  
+  state = {
+    borrowed:false,
   }
 
    handleClick = () => {
@@ -17,7 +19,7 @@ class SingleBook extends Component {
   }
 
   render() {
-    let {title, authors, description, rating} = this.props
+    let {title, authors, description, rating, book_id} = this.props
       if (this.props.authors) {
         authors = this.props.authors;
       }
@@ -31,8 +33,6 @@ class SingleBook extends Component {
       else (
         description = "No description included for this book."
       )
-
-      const {bookId} = this.props
     return (
         <div className = 'single-book'>
           <ul>
@@ -43,7 +43,7 @@ class SingleBook extends Component {
             <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
             <div className='buttons'>
             <Link
-              to={`/library/${bookId}/add-note`}
+              to={`/library/${book_id}/add-note`}
               type='button'
               className='Add-note-button'
             >
@@ -51,7 +51,7 @@ class SingleBook extends Component {
               Add a note to this book
             </Link>
             <Link
-              to={`/notes/${bookId}`}
+              to={`/notes/${book_id}`}
               type='button'
               className='View-notes-button'
             >

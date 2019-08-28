@@ -17,8 +17,7 @@ export default class LibraryPage extends React.Component {
   }
 
   renderLibrary() {
-    const {library = []} = this.context
-    console.log(this.context)
+    const {books = []} = this.context
     return (
       <section className='LibraryPage'>
         <h2>Library</h2>
@@ -44,7 +43,7 @@ export default class LibraryPage extends React.Component {
             </select>
           </div>
         <ul>
-          {library.map(book =>
+          {books.map(book =>
             <SingleBook
               key={book.id}
               title={book.title}

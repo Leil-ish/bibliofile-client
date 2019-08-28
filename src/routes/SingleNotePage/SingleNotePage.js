@@ -1,6 +1,6 @@
 import React from 'react'
 import SingleNote from '../../components/SingleNote/SingleNote'
-import ApiContext from '../../contexts/ApiContext'
+import BookContext from '../../contexts/BookContext'
 import {findNote} from '../../library-helper'
 import './SingleNotePage.css'
 
@@ -10,7 +10,7 @@ export default class SingleNotePage extends React.Component {
         notes: []
       }
 
-  static contextType = ApiContext
+  static contextType = BookContext
 
   render() {
       
@@ -20,11 +20,9 @@ export default class SingleNotePage extends React.Component {
     return (
       <section className='SingleNotePage'>
         <SingleNote
-          book_id={note.book_id}
-          title={note.title}
-          book={note.book}
-          modified={note.modified}
+          note_name={note.note_name}
           content={note.content}
+          modified={note.modified}
         />
       </section>
     )
