@@ -1,6 +1,6 @@
 import React from 'react'
 import SingleBook from '../../components/SingleBook/SingleBook'
-import BookContext from '../../services/ApiContext'
+import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
 import {findBook} from '../../library-helper'
 import './SingleBookPage.css'
