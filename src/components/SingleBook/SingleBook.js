@@ -19,7 +19,8 @@ class SingleBook extends Component {
   }
 
   render() {
-    let {title, authors, description, rating, book_id} = this.props
+    let {id, title, authors, description, rating} = this.props
+    console.log(this.props)
       if (this.props.authors) {
         authors = this.props.authors;
       }
@@ -36,14 +37,19 @@ class SingleBook extends Component {
     return (
         <div className = 'single-book'>
           <ul>
-            <h3>{title}</h3>
+            <Link
+              to={`/library/${id}`}
+              type='button'
+              className='Add-note-button'>
+                <h3>{title}</h3>
+            </Link>
             <h4>{authors}</h4>
             <p>{description}</p>
             <p>{rating} &#9733;</p>
             <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
             <div className='buttons'>
             <Link
-              to={`/library/${book_id}/add-note`}
+              to={`/library/${id}/add-note`}
               type='button'
               className='Add-note-button'
             >
@@ -51,7 +57,7 @@ class SingleBook extends Component {
               Add a note to this book
             </Link>
             <Link
-              to={`/notes/${book_id}`}
+              to={`/notes/${id}`}
               type='button'
               className='View-notes-button'
             >

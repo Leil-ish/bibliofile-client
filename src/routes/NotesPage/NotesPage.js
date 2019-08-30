@@ -26,21 +26,21 @@ export default class NotesPage extends React.Component {
   }
 
   renderNotes() {
-    const {notes = []} = this.context
+    let {notes = []} = this.context
+    console.log(this.context)
+
     return (
       <section className='NotesPage'>
         <ul>
-          {notes.map(note =>
-            <li>
-              <SingleNote
-                key={note.id}
-                book_id={note.book_id}
-                note_name={note.note_name}
-                content={note.content}
-                modified={note.modified}
-              />
-            </li>
-          )}
+          <li>
+            {notes.map(note =>
+                <SingleNote
+                  key={note.book_id}
+                  note_name={note.note_name}
+                  content={note.content}
+                />
+            )}
+          </li>
         </ul>
       </section>
     )

@@ -45,7 +45,7 @@ export default class LibraryPage extends React.Component {
         <ul>
           {books.map(book =>
             <SingleBook
-              key={book.id}
+              id={book.id}
               title={book.title}
               authors={book.authors}
               categories={book.categories}
