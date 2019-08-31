@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ApiBook from '../SingleBook/ApiBook'
-import './Results.css'
+import ApiBook from '../SingleBook/ApiBook';
+import './Results.css';
 
 
 class Results extends Component {

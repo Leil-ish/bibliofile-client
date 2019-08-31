@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {Component} from 'react';
 import SingleBook from '../../components/SingleBook/SingleBook'
+import SingleNote from '../../components/SingleNote/SingleNote'
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
-import {findBook} from '../../library-helper'
+import {findBook, findNote} from '../../library-helper'
 import './SingleBookPage.css'
 
-export default class SingleBookPage extends React.Component {
+class SingleBookPage extends Component {
 
   static defaultProps = {
     match: { params: {} },
@@ -29,9 +30,11 @@ export default class SingleBookPage extends React.Component {
   }
 
   render() {
-    const {books=[]} = this.context
+    const {books=[], notes=[]} = this.context
     const {bookId} = this.props.match.params
     const book = findBook(books, bookId) || { content: '' }
+    const note = findNote(notes, bookId) || { content: '' }
+
     return (
       <section className='SingleBookPage'>
         <SingleBook
@@ -41,7 +44,14 @@ export default class SingleBookPage extends React.Component {
           description={book.description}
           rating={book.rating}
         />
+        <SingleNote
+          key={note.book_id}
+          note_name={note.note_name}
+          content={note.content}
+        />
       </section>
     )
   }
 }
+
+export default SingleBookPage

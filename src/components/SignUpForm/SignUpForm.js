@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {Button, Input, Required} from '../Utils/Utils'
-import AuthApiService from '../../services/auth-api-service'
-import './SignUpForm.css'
+import React, {Component} from 'react';
+import {Button, Input, Required} from '../Utils/Utils';
+import AuthApiService from '../../services/auth-api-service';
+import './SignUpForm.css';
 
 export default class SignUpForm extends Component {
   static defaultProps = {

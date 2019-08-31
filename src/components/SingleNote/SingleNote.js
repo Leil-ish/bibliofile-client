@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
-import './SingleNote.css'
+import {Link} from 'react-router-dom';
+import BookContext from '../../contexts/BookContext';
+import './SingleNote.css';
 
 export default class SingleNote extends Component {
+
+  static contextType = BookContext;
 
   render() {
 

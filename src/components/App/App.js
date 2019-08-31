@@ -1,23 +1,27 @@
-import React, {Component} from 'react'
-import {Route, Switch, Link} from 'react-router-dom'
-import Nav from '../Nav/Nav'
-import PrivateRoute from '../Utils/PrivateRoute'
-import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
-import AddBookPage from '../../routes/AddBookPage/AddBookPage'
-import LandingPage from '../../routes/LandingPage/LandingPage'
-import LoginPage from '../../routes/LoginPage/LoginPage'
-import SignUpPage from '../../routes/SignUpPage/SignUpPage'
-import LibraryPage from '../../routes/LibraryPage/LibraryPage'
-import NotesPage from '../../routes/NotesPage/NotesPage'
-import SingleBookPage from '../../routes/SingleBookPage/SingleBookPage'
-import SingleNotePage from '../../routes/SingleNotePage/SingleNotePage'
-import SearchPage from '../../routes/SearchPage/SearchPage'
-import AddNotePage from '../../routes/AddNotePage/AddNotePage'
-import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
-import {findNote, getBooksForLibrary, getNotesForBook} from '../../library-helper'
+import React, {Component} from 'react';
+import {Route, Switch, Link} from 'react-router-dom';
+import Nav from '../Nav/Nav';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
+import AddBookPage from '../../routes/AddBookPage/AddBookPage';
+import LandingPage from '../../routes/LandingPage/LandingPage';
+import LoginPage from '../../routes/LoginPage/LoginPage';
+import SignUpPage from '../../routes/SignUpPage/SignUpPage';
+import LibraryPage from '../../routes/LibraryPage/LibraryPage';
+import NotesPage from '../../routes/NotesPage/NotesPage';
+import SingleBookPage from '../../routes/SingleBookPage/SingleBookPage';
+import SingleNotePage from '../../routes/SingleNotePage/SingleNotePage';
+import SearchPage from '../../routes/SearchPage/SearchPage';
+import LibraryContext from '../../contexts/LibraryContext';
+import AddNotePage from '../../routes/AddNotePage/AddNotePage';
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
+import {findNote, getBooksForLibrary, getNotesForBook} from '../../library-helper';
 import './App.css';
 
 class App extends Component {
+
+  static contextType = LibraryContext;
+
 
   constructor(props){
     super(props);
@@ -38,36 +42,36 @@ class App extends Component {
       <div className='App-main'>
         {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
           <Switch>
-            `{['/library/:bookId'].map(path =>
+              `{['/library/:bookId'].map(path =>
+                <PrivateRoute
+                  exact
+                  key={path}
+                  path={path}
+                  component={routeProps => {    
+                    const {bookId} = routeProps.match.params
+                    const booksForLibrary = getBooksForLibrary(books, bookId)
+                    return (
+                      <SingleBookPage
+                        {...routeProps}
+                        books={booksForLibrary}
+                      />
+                    )
+                  }}
+                />
+              )}
               <PrivateRoute
-                exact
-                key={path}
-                path={path}
-                render={routeProps => {    
+                path='/notes/:bookId'
+                component={routeProps => {
                   const {bookId} = routeProps.match.params
-                  const booksForLibrary = getBooksForLibrary(books, bookId)
+                  const note = findNote(notes, bookId)
                   return (
-                    <SingleBookPage
+                    <SingleNotePage
                       {...routeProps}
-                      books={booksForLibrary}
+                      note={note}
                     />
                   )
                 }}
               />
-            )}
-            <PrivateRoute
-              path='/notes/:bookId'
-              render={routeProps => {
-                const {bookId} = routeProps.match.params
-                const note = findNote(notes, bookId)
-                return (
-                  <SingleNotePage
-                    {...routeProps}
-                    note={note}
-                  />
-                )
-              }}
-            />
             <PrivateRoute
               path='/find-book'
               component={SearchPage}
@@ -76,12 +80,12 @@ class App extends Component {
               path='/add-book'
               component={AddBookPage}
             />
-            `{['/library/:bookId/add-note'].map(path =>
+            {['/library/:bookId/add-note'].map(path =>
               <PrivateRoute
                 exact
                 key={path}
                 path={path}
-                render={routeProps => {
+                component={routeProps => {
                   const {bookId} = routeProps.match.params
                   const notesForBook = getNotesForBook(notes, bookId)
                   return (
@@ -93,7 +97,6 @@ class App extends Component {
                 }}
               />
             )}
-              />
               <Route
                 exact path='/'
                 component={LandingPage}
@@ -132,7 +135,7 @@ class App extends Component {
               exact
               key={path}
               path={path}
-              render={routeProps =>
+              component={routeProps =>
                 <Nav
                   books={books}
                   notes={notes}
@@ -144,7 +147,7 @@ class App extends Component {
           <PrivateRoute
             exact
             path='/notes/:bookId'
-            render={routeProps => {
+            component={routeProps => {
               const {bookId} = routeProps.match.params
               const note = findNote(notes, bookId) || {}
               return (

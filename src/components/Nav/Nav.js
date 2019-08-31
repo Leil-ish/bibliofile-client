@@ -1,8 +1,8 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import { Hyph } from '../Utils/Utils'
-import TokenService from '../../services/token-service'
-import './Nav.css'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import { Hyph } from '../Utils/Utils';
+import TokenService from '../../services/token-service';
+import './Nav.css';
 
 export default class LibraryNav extends React.Component {
 

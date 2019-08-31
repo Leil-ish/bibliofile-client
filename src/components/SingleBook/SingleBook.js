@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import BookContext from '../../contexts/BookContext'
-import './SingleBook.css'
+import {Link} from 'react-router-dom';
+import BookContext from '../../contexts/BookContext';
+import './SingleBook.css';
 
 class SingleBook extends Component {
 
   static contextType = BookContext;
 
-  
   state = {
     borrowed:false,
   }
@@ -20,7 +19,6 @@ class SingleBook extends Component {
 
   render() {
     let {id, title, authors, description, rating} = this.props
-    console.log(this.props)
       if (this.props.authors) {
         authors = this.props.authors;
       }
