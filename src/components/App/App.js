@@ -10,7 +10,7 @@ import SignUpPage from '../../routes/SignUpPage/SignUpPage';
 import LibraryPage from '../../routes/LibraryPage/LibraryPage';
 import NotesPage from '../../routes/NotesPage/NotesPage';
 import SingleBookPage from '../../routes/SingleBookPage/SingleBookPage';
-import BookNotesPage from '../../routes/BookNotesPage/BookNotesPage';
+import BookNotesPage from '../../routes/BookNotesPage/BookNotesPage'
 import SearchPage from '../../routes/SearchPage/SearchPage';
 import LibraryContext from '../../contexts/LibraryContext';
 import AddNotePage from '../../routes/AddNotePage/AddNotePage';
