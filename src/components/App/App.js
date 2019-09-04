@@ -10,12 +10,12 @@ import SignUpPage from '../../routes/SignUpPage/SignUpPage';
 import LibraryPage from '../../routes/LibraryPage/LibraryPage';
 import NotesPage from '../../routes/NotesPage/NotesPage';
 import SingleBookPage from '../../routes/SingleBookPage/SingleBookPage';
-import SingleNotePage from '../../routes/SingleNotePage/SingleNotePage';
+import BookNotesPage from '../../routes/BookNotesPage/BookNotesPage';
 import SearchPage from '../../routes/SearchPage/SearchPage';
 import LibraryContext from '../../contexts/LibraryContext';
 import AddNotePage from '../../routes/AddNotePage/AddNotePage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
-import {findNote, getBooksForLibrary, getNotesForBook} from '../../library-helper';
+import {getBooksForLibrary, getNotesForBook} from '../../library-helper';
 import './App.css';
 
 class App extends Component {
@@ -60,14 +60,14 @@ class App extends Component {
                 />
               )}
               <PrivateRoute
-                path='/notes/:bookId'
+                path='/library/:bookId/notes'
                 component={routeProps => {
                   const {bookId} = routeProps.match.params
-                  const note = findNote(notes, bookId)
+                  const notesForBook = getNotesForBook(notes, bookId)
                   return (
-                    <SingleNotePage
+                    <BookNotesPage
                       {...routeProps}
-                      note={note}
+                      notes={notesForBook}
                     />
                   )
                 }}
@@ -146,14 +146,14 @@ class App extends Component {
           )}
           <PrivateRoute
             exact
-            path='/notes/:bookId'
+            path='/library/:bookId/notes'
             component={routeProps => {
               const {bookId} = routeProps.match.params
-              const note = findNote(notes, bookId) || {}
+              const notesForBook = getNotesForBook(notes, bookId)
               return (
                 <Nav
                   {...routeProps}
-                  note={note}
+                  notesForBook={notesForBook}
                 />
               )
             }}

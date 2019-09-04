@@ -18,8 +18,8 @@ export default class AddBookPage extends Component {
     BookApiService.getBook(bookId)
       .then(this.context.setBook)
       .catch(this.context.setError)
-    BookApiService.getBookComments(bookId)
-      .then(this.context.setComments)
+    BookApiService.getBookNotes(bookId)
+      .then(this.context.setNotes)
       .catch(this.context.setError)
   }
 

@@ -9,25 +9,24 @@ export default class SingleNote extends Component {
 
   render() {
 
-    const note_name = this.props.note_name
-    const book_id = this.props.book_id
-    const content = this.props.content
+    let {note} = this.props
 
     return (
       <ul className = 'single-note'>
+            <h3>{note.note_name}</h3>
+            <h4>{note.content}</h4>
         <Link
-              to={`/notes/${book_id}`}
+              to={`/library/${note.book_id}/notes`}
               type='button'
               className='View-note-button'>
+            <h3>View All Notes for this Book</h3>
         </Link>
-            <h3>{note_name}</h3>
-            <h4>{content}</h4>
         <Link
-            to={`/library/${book_id}/add-note`}
+            to={`/library/${note.book_id}/add-note`}
             type='button'
             className='Add-note-button'
           >
-          Add a New Note
+          <h3>Add a New Note to this Book</h3>
         </Link>
         </ul>
     );

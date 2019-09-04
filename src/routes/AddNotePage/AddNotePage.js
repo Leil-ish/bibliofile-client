@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Form from '../../components/Form/Form'
 import BookApiService from '../../services/book-api-service'
 import BookContext from '../../contexts/BookContext'
-import {findBook} from '../../library-helper'
+import {Textarea, Button} from '../../components/Utils/Utils'
 import './AddNotePage.css'
 
 export default class AddNotePage extends Component {
@@ -13,14 +13,27 @@ export default class AddNotePage extends Component {
 
   static contextType = BookContext
 
+  handleSubmit = ev => {
+    ev.preventDefault()
+    const {book} = this.context
+    const {content, note_name} = ev.target
+    BookApiService.postNote(book.id, content.value, note_name.value)
+      .then(this.context.addNote)
+      .then(() => {
+        content.value = ''
+        note_name.value = ''
+      })
+      .catch(this.context.setError)
+  }
+
   componentDidMount() {
     const { bookId } = this.props.match.params
     this.context.clearError()
     BookApiService.getBook(bookId)
       .then(this.context.setBook)
       .catch(this.context.setError)
-    BookApiService.getBookComments(bookId)
-      .then(this.context.setComments)
+    BookApiService.getBookNotes(bookId)
+      .then(this.context.setNotes)
       .catch(this.context.setError)
   }
 
@@ -29,36 +42,40 @@ export default class AddNotePage extends Component {
   }
 
   render() {
-    const {books} = this.context
-    const {bookId} = this.props.match.params
-    const book = findBook(books, bookId) || {content: ''}
+    const {book} = this.context
+
     return (
       <section className='AddNotePage'>
         <h2>
           Add Note for {book.title}
         </h2>
-        <Form>
+        <Form 
+          className='AddNoteForm'
+          onSubmit={this.handleSubmit}>
           <div className='field'>
             <label htmlFor='note-name-input'>
               Name
             </label>
-            <input type='text' id='note-name-input' />
+            <input type='text' id='note_name' name='note_name' />
           </div>
-          <div className='field'>
+          <div className='text'>
             <label htmlFor='note-content-input'>
               Content
             </label>
-            <textarea id='note-content-input' />
+            <Textarea
+              required
+              aria-label='Type your note...'
+              name='content'
+              id='content'
+              cols='30'
+              rows='3'
+              placeholder='Type your note..'>
+          </Textarea>
           </div>
           <div className='buttons'>
-            <Link
-              to='/notes'
-              type='button'
-              className='Add-note-button'
-            >
-            <br />
+            <Button type='submit'>
               Add Note
-            </Link>
+            </Button>
             <Link
               to='/library'
               type='button'
@@ -73,3 +90,5 @@ export default class AddNotePage extends Component {
     )
   }
 }
+
+//Wasn't there an episode of Star Trek with sentient mists?

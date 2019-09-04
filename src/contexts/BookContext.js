@@ -18,6 +18,7 @@ const BookContext = React.createContext({
   clearBook: () => {},
   setNotes: () => {},
   addNote: () => {},
+  deleteNote: () => {},
   clearNote: () => {},
 })
 

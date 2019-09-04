@@ -1,0 +1,10 @@
+.BookPage_content {
+    margin: 25px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.BookPage_note-list {
+    margin: 25px;
+    border: 1px solid black;
+}

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import BookContext from '../../contexts/BookContext';
+import LibraryContext from '../../contexts/LibraryContext';
 import './SingleBook.css';
 
 class SingleBook extends Component {
 
-  static contextType = BookContext;
+  static contextType = LibraryContext;
 
   state = {
     borrowed:false,
+    book: []
   }
 
    handleClick = () => {
@@ -18,8 +19,9 @@ class SingleBook extends Component {
   }
 
   render() {
-    let {id, title, authors, description, rating} = this.props
-      if (this.props.authors) {
+      let {book} = this.props
+
+      /*if (this.props.authors) {
         authors = this.props.authors;
       }
       else (
@@ -31,23 +33,25 @@ class SingleBook extends Component {
       }
       else (
         description = "No description included for this book."
-      )
+      )*/
+
+
     return (
         <div className = 'single-book'>
           <ul>
             <Link
-              to={`/library/${id}`}
+              to={`/library/${book.id}`}
               type='button'
               className='Add-note-button'>
-                <h3>{title}</h3>
+                <h3>{book.title}</h3>
             </Link>
-            <h4>{authors}</h4>
-            <p>{description}</p>
-            <p>{rating} &#9733;</p>
+            <h4>{book.authors}</h4>
+            <p>{book.description}</p>
+            <p>{book.rating} &#9733;</p>
             <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
             <div className='buttons'>
             <Link
-              to={`/library/${id}/add-note`}
+              to={`/library/${book.id}/add-note`}
               type='button'
               className='Add-note-button'
             >
@@ -55,7 +59,7 @@ class SingleBook extends Component {
               Add a note to this book
             </Link>
             <Link
-              to={`/notes/${id}`}
+              to={`/notes/${book.id}`}
               type='button'
               className='View-notes-button'
             >

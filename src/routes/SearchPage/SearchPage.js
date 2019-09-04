@@ -11,19 +11,11 @@ class SearchPage extends Component {
         this.state = {
             books:[],
             error: false,
-            printType: "All",
             bookType: "All"
         };
       }
-    
-      handlePrintFilter(printType) {
-        this.setState({
-          printType: printType
-        })
-      }
-    
+
       handleBookFilter(bookType) {
-        console.log(bookType)
         this.setState({
           bookType: bookType
         })

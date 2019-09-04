@@ -5,6 +5,7 @@ const BookApiService = {
   getBooks() {
     return fetch(`${config.API_ENDPOINT}/library`, {
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -17,6 +18,7 @@ const BookApiService = {
   getBook(bookId) {
     return fetch(`${config.API_ENDPOINT}/library/${bookId}`, {
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -30,6 +32,7 @@ const BookApiService = {
   getNotes() {
     return fetch(`${config.API_ENDPOINT}/notes`, {
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -43,6 +46,7 @@ const BookApiService = {
   getBookNotes(bookId) {
     return fetch(`${config.API_ENDPOINT}/library/${bookId}/notes`, {
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -53,21 +57,7 @@ const BookApiService = {
       )
   },
 
-  getNote(bookId) {
-    return fetch(`${config.API_ENDPOINT}/notes/${bookId}`, {
-      headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
-  },
-
-
-  postNote(bookId, text) {
+  postNote(bookId, content, note_name) {
     return fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
@@ -76,7 +66,8 @@ const BookApiService = {
       },
       body: JSON.stringify({
         book_id: bookId,
-        text,
+        content,
+        note_name,
       }),
     })
       .then(res =>
@@ -84,7 +75,8 @@ const BookApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
-  }
+  },
+
 }
 
 export default BookApiService
