@@ -34,6 +34,13 @@ export function Required({ className, ...props }) {
   )
 }
 
+export function sortBooks (property) {
+
+  return function (a, b) {
+    return (a[property] > b[property]) ? 1 : ((a[property] < b[property]) ? -1 : 0);
+  }
+}
+
 export function Section({ className, list, ...props }) {
   const classes = [
     'Section',

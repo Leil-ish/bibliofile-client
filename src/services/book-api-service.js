@@ -29,8 +29,8 @@ const BookApiService = {
       )
   },
 
-  getNotes() {
-    return fetch(`${config.API_ENDPOINT}/notes`, {
+  getNote(bookId, noteId) {
+    return fetch(`${config.API_ENDPOINT}/library/${bookId}/notes/${noteId}`, {
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,

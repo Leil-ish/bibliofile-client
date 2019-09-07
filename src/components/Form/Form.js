@@ -7,7 +7,7 @@ export default function Form(props) {
     <form
       className={['Form', className].join(' ')}
       action='#'
-      {...otherProps}
+      {...otherProps} 
     />
   )
 }

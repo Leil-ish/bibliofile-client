@@ -1,10 +1,10 @@
 import React from 'react'
 import {Section} from '../../components/Utils/Utils'
+import {Link} from 'react-router-dom'
 import Form from '../../components/Form/Form'
 import BookContext from '../../contexts/BookContext'
+import SingleNote from '../../components/SingleNote/SingleNote'
 import BookApiService from '../../services/book-api-service'
-import TokenService from '../../services/token-service'
-import config from '../../config'
 import './BookNotesPage.css'
 
 export default class BookNotesPage extends React.Component {
@@ -18,30 +18,6 @@ export default class BookNotesPage extends React.Component {
     notes: []
   }
 
-  handleClickDelete = e => {
-    e.preventDefault()
-    const noteId = this.props.id
-
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-          return res.json()
-      })
-      .then(() => {
-        this.context.deleteNote(noteId)
-        this.props.onDeleteNote(noteId)
-      })
-      .catch(error => {
-        console.error({ error })
-      })
-  }
 
   componentDidMount() {
     const {bookId} = this.props.match.params
@@ -49,29 +25,40 @@ export default class BookNotesPage extends React.Component {
     BookApiService.getBookNotes(bookId)
       .then(this.context.setNotes)
       .catch(this.context.setError)
+    BookApiService.getBook(bookId)
+      .then(this.context.setBook)
+      .catch(this.context.setError)
   }
 
   componentWillUnmount() {
     this.context.clearNote()
   }
+  
   renderNote() {
-    const { book, note } = this.context
+    const { book, notes } = this.context
+    console.log(this.context)
     return <>
       <h2>Note for {book.title}</h2>
-      <h3>{note.note_name}</h3>
-      <NoteContent note={note} />
+      <Link
+            to={`/library/${book.id}/add-note`}
+            type='button'
+            className='Add-note-button'
+          >
+          <h3>Add a New Note to this Book</h3>
+      </Link>
+      <NotesContent notes = {notes} />
       <Form />
     </>
   }
 
   render() {
-    const { error, note } = this.context
+    const { error, notes } = this.context
     let content
     if (error) {
       content = (error.error === `Book doesn't exist`)
         ? <p className='red'>Note not found</p>
         : <p className='red'>There was an error</p>
-    } else if (!note.id) {
+    } else if (!notes) {
       content = <div className='loading' />
     } else {
       content = this.renderNote()
@@ -84,15 +71,16 @@ export default class BookNotesPage extends React.Component {
   }
 }
 
-function NoteContent({ note }) {
+function NotesContent({ notes }) {
   return (
-    <div className='NotePage'>
-      <h1 className='NotePage_content'>
-        {note.note_name}
-      </h1>
-      <p className='NotePage_content'>
-        {note.content}
-      </p>
-    </div>
+    <ul>
+      {notes.map(note =>
+        <SingleNote
+          key={note.note_name}
+          book_id={note.book_id}
+          note={note}
+        />
+      )}
+    </ul>
   )
 }

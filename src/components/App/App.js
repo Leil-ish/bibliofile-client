@@ -35,7 +35,7 @@ class App extends Component {
       console.error(error)
       return {hasError: true}
     }
-  
+
   renderMainRoutes() {
     const {books, notes} = this.context
     return (
@@ -60,6 +60,7 @@ class App extends Component {
                 />
               )}
               <PrivateRoute
+                exact
                 path='/library/:bookId/notes'
                 component={routeProps => {
                   const {bookId} = routeProps.match.params

@@ -15,6 +15,7 @@ const BookContext = React.createContext({
   setError: () => {},
   clearError: () => { },
   setBook: () => {},
+  setNote: () => {},
   clearBook: () => {},
   setNotes: () => {},
   addNote: () => {},

@@ -20,20 +20,22 @@ class SingleBook extends Component {
 
   render() {
       let {book} = this.props
+      let authors = book.authors
+      let description = book.description
 
-      /*if (this.props.authors) {
-        authors = this.props.authors;
+      if (authors) {
+        authors = book.authors;
       }
       else (
         authors = "No authors listed"
       )
 
-      if (this.props.description) {
-        description = this.props.description;
+      if (description) {
+        description = book.description;
       }
       else (
         description = "No description included for this book."
-      )*/
+      )
 
 
     return (

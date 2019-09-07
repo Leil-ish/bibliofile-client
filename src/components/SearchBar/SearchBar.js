@@ -4,13 +4,15 @@ import Filters from '../Filters/Filters';
 import './SearchBar.css';
 
 class SearchBar extends Component {
+
   render() {
-  
+  console.log(this.props)
     return (
       <div className='searchTerms'>
         <SearchBox className onSubmit={this.props.onSubmit}/>
         <Filters className 
-          onBookFilter={this.props.onBookFilter}/>
+          onBookFilter={this.props.onBookFilter}
+          onBookSort={this.props.onBookSort}/>
       </div>
     );
   }
