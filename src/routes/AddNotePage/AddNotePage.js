@@ -90,5 +90,3 @@ export default class AddNotePage extends Component {
     )
   }
 }
-
-//Wasn't there an episode of Star Trek with sentient mists?

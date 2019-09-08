@@ -19,7 +19,8 @@ class SingleBook extends Component {
   }
 
   render() {
-      let {book} = this.props
+      let book = this.props
+      console.log(this.props)
       let authors = book.authors
       let description = book.description
 

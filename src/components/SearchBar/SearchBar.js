@@ -6,7 +6,6 @@ import './SearchBar.css';
 class SearchBar extends Component {
 
   render() {
-  console.log(this.props)
     return (
       <div className='searchTerms'>
         <SearchBox className onSubmit={this.props.onSubmit}/>

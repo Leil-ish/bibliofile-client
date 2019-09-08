@@ -1,10 +1,9 @@
 import React from 'react'
-import SingleBook from '../../components/SingleBook/SingleBook'
-import SearchBar from '../../components/SearchBar/SearchBar'
+import LibraryResults from '../../components/LibraryResults/LibraryResults'
+import Filters from '../../components/Filters/Filters'
 import LibraryContext from '../../contexts/LibraryContext'
 import BookApiService from '../../services/book-api-service'
-import config from '../../config'
-import {Section, sortBooks} from '../../components/Utils/Utils'
+import {Section} from '../../components/Utils/Utils'
 import './LibraryPage.css'
 
 export default class LibraryPage extends React.Component {
@@ -31,28 +30,6 @@ export default class LibraryPage extends React.Component {
     })
   }
 
-  handleSubmit(searchTerm) {
-
-    const url = `${config.API_ENDPOINT}/library?q=${searchTerm}`
-    
-    fetch(url)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error('Something went wrong, please try again later.');
-        }
-        return response;
-      })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-         books: data.items
-        })
-      })
-      .catch(err => this.setState({
-        error: err.message
-      }))
-  }
-
   static contextType = LibraryContext;
 
   componentDidMount() {
@@ -65,25 +42,17 @@ export default class LibraryPage extends React.Component {
 
   renderLibrary() {
 
-    const {books = []} = this.context
-    let property=this.state
-    books.sort(sortBooks(property))
-    console.log(this.state)
     return (
       <section className='LibraryPage'>
         <h2>Library</h2>
         <ul>
-          <h2>Search for a Book in Your Library </h2>
-              <SearchBar 
-                onSubmit={searchTerm => this.handleSubmit(searchTerm)}
-                onBookFilter={bookType => this.handleBookFilter(bookType)}
-                onBookSort={property => this.handleBookSort(property)}/>
-            {books.map(book =>
-              <SingleBook
-                key={book.id}
-                book={book}
-              />
-            )}
+            <Filters 
+              onBookFilter={bookType => this.handleBookFilter(bookType)}
+              onBookSort={property => this.handleBookSort(property)}/>
+            <LibraryResults 
+              books={this.context.books} 
+              bookFilter={this.state.bookType}
+              property={this.state.property}/>
         </ul>
       </section>
     )

@@ -8,7 +8,8 @@ class Results extends Component {
     const {bookFilter} = this.props;
     const list = this.props.books
     .filter(book => 
-      (bookFilter === "All" || (book.saleInfo.isEbook && bookFilter === "eBook") || (!book.saleInfo.isEbook && bookFilter === "paper")))    
+      (bookFilter === "All" || (book.saleInfo.isEbook && bookFilter === "eBook") || 
+      (!book.saleInfo.isEbook && bookFilter === "paper")))    
     .map((book, key) => <ApiBook {...book} key={key}/>);
 
     return (

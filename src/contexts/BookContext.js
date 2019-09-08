@@ -53,6 +53,10 @@ export class BookProvider extends Component {
     this.setState({notes})
   }
 
+  setBooks = books => {
+    this.setState({books})
+  }
+
   clearBook = () => {
     this.setBook(nullBook)
     this.setNotes([])
@@ -67,6 +71,13 @@ export class BookProvider extends Component {
     this.setNotes([
       ...this.state.notes,
       note
+    ])
+  }
+
+  addBook = book => {
+    this.setBooks([
+      ...this.state.books,
+      book
     ])
   }
 

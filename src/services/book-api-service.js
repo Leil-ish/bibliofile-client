@@ -77,6 +77,29 @@ const BookApiService = {
       )
   },
 
+  postBook(title, authors, description, categories, image_links, is_ebook) {
+    return fetch(`${config.API_ENDPOINT}/library`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        title,
+        authors,
+        description,
+        categories,
+        image_links,
+        is_ebook,
+      }),
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
 }
 
 export default BookApiService

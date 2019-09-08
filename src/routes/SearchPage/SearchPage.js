@@ -11,7 +11,8 @@ class SearchPage extends Component {
         this.state = {
             books:[],
             error: false,
-            bookType: "All"
+            bookType: "All",
+            property: "title",
         };
       }
 
@@ -20,6 +21,12 @@ class SearchPage extends Component {
           bookType: bookType
         })
       }
+
+    handleBookSort(property) {
+      this.setState({
+        property: property
+      })
+    }
     
       handleSubmit(searchTerm) {
     
@@ -69,7 +76,8 @@ class SearchPage extends Component {
             <h2>Search for a Book to Add to Your Library</h2>
             <SearchBar 
               onSubmit={searchTerm => this.handleSubmit(searchTerm)}
-              onBookFilter={bookType => this.handleBookFilter(bookType)}/>
+              onBookFilter={bookType => this.handleBookFilter(bookType)}
+              onBookSort={property => this.handleBookSort(property)}/>
              {error}
             <Results 
               books={this.state.books} 
