@@ -20,7 +20,7 @@ export default class NotesPage extends React.Component {
     BookApiService.getBooks()
       .then(this.context.setLibrary)
       .catch(this.context.setError)
-    BookApiService.getNotes()
+    BookApiService.getBookNotes()
       .then(this.context.setNoteList)
       .catch(this.context.setError)
   }
