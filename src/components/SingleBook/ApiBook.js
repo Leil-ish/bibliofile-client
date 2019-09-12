@@ -16,12 +16,12 @@ class ApiBook extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     BookApiService.postBook(
-      this.props.volumeInfo.title,
-      this.props.volumeInfo.authors,
-      this.props.volumeInfo.description,
-      this.props.volumeInfo.categories,
-      this.props.volumeInfo.imageLinks.thumbnail,
-      this.props.saleInfo.isEbook,       
+      this.props.volumeInfo.title || '',
+      this.props.volumeInfo.authors || '',
+      this.props.volumeInfo.description || '',
+      this.props.volumeInfo.categories || '',
+      this.props.volumeInfo.imageLinks || '',
+      this.props.saleInfo.isEbook,     
     )
     .then(this.context.addBook)
     .then(() => {
@@ -37,7 +37,7 @@ class ApiBook extends Component {
       author = this.props.volumeInfo.authors[0];
     }
     else (
-      author = "No authors listed"
+      author = 'No authors listed'
     )
 
     let description;
@@ -45,7 +45,7 @@ class ApiBook extends Component {
       description = this.props.volumeInfo.description;
     }
     else (
-      description = "No description included for this book."
+      description = 'No description included for this book.'
     )
 
     let image_links;
@@ -53,7 +53,7 @@ class ApiBook extends Component {
       image_links = this.props.volumeInfo.imageLinks.thumbnail;
     }
     else (
-      image_links = "No book cover image available for this book."
+      image_links = 'No book cover image available for this book.'
     )
 
     return (

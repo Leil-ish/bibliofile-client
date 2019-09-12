@@ -58,14 +58,6 @@ export default class LibraryNav extends React.Component {
             <li>
               <Link
                 className='LibraryNav_link'
-                to={`/notes`}
-              >
-                Notes
-              </Link>
-            </li>
-            <li>
-              <Link
-                className='LibraryNav_link'
                 to={`/find-book`}
               >
                 Find A Book

@@ -3,28 +3,32 @@ import {Link} from 'react-router-dom'
 import Form from '../../components/Form/Form'
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
+import {Button, Textarea} from '../../components/Utils/Utils';
 import './AddBookPage.css'
 
 export default class AddBookPage extends Component {
   static defaultProps = {
     match: { params: {} },
+    onSaveBookSuccess: () => {},
   }
 
   static contextType = BookContext
 
-  componentDidMount() {
-    const { bookId } = this.props.match.params
-    this.context.clearError()
-    BookApiService.getBook(bookId)
-      .then(this.context.setBook)
-      .catch(this.context.setError)
-    BookApiService.getBookNotes(bookId)
-      .then(this.context.setNotes)
-      .catch(this.context.setError)
-  }
-
-  componentWillUnmount() {
-    this.context.clearBook()
+  handleSubmit = ev => {
+    ev.preventDefault()
+    const {title, authors, description, categories} = ev.target
+    BookApiService.postCustomBook(title.value, authors.value, description.value, categories.value)
+      .then(() => {
+        title.value = ''
+        authors.value = ''
+        description.value = ''
+        categories.value = ''
+      })
+      .then(this.context.addBook)
+      .then(() => {
+        this.props.onSaveBookSuccess()
+      })
+        .catch(this.context.setError)
   }
 
   render() {
@@ -34,36 +38,45 @@ export default class AddBookPage extends Component {
         <h2>
           Add a Book to Your Library
         </h2>
-        <Form>
+        <Form 
+          className='AddBookForm'
+          onSubmit={this.handleSubmit}>
           <div className='field'>
             <label htmlFor='book-title-input'>
               Title
             </label>
-            <input type='text' id='book-title-input' />
+            <input type='text' name='title' id='title' />
           </div>
           <div className='field'>
             <label htmlFor='book-author-input'>
               Author
             </label>
-            <input type='text' id='book-author-input' />
+            <input type='text' name='authors' id='authors' />
           </div>
           <div className='field'>
             <label htmlFor='book-categories-input'>
               Genre 
             </label>
-            <input type='text' id='book-categories-input' />
+            <input type='text' name='category' id='category' />
           </div>
           <div className='field'>
             <label htmlFor='book-description-input'>
               Synopsis
             </label>
-            <textarea id='book-description-input' />
+            <Textarea 
+              required
+              aria-label='What is this book about?'
+              name='description' 
+              id='description'              
+              cols='30'
+              rows='3'
+              placeholder='What is this book about?' />
           </div>
           <div className='select-input'>
             <label htmlFor='book-rating-input'>
               Rating
             </label>
-            <select id='book-rating-input'>
+            <select name='rating' id='rating'>
                 <option value="1">1 &#9733;</option>
                 <option value="2">2 &#9733;</option>
                 <option value="3">3 &#9733;</option>
@@ -74,14 +87,13 @@ export default class AddBookPage extends Component {
           <br/>          
           <br/>
           <div className='buttons'>
-            <Link
-              to='/library'
-              type='button'
-              className='Add-book-button'
-            >
-            <br />
-              Add Book
-            </Link>
+            <Button
+                type='submit'
+                className='Add-book-button'
+              >
+              <br />
+                Add book to Library
+            </Button>
             <Link
               to='/find-book'
               type='button'

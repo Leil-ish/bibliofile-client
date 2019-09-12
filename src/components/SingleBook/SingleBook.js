@@ -62,7 +62,7 @@ class SingleBook extends Component {
               Add a note to this book
             </Link>
             <Link
-              to={`/notes/${book.id}`}
+              to={`/library/${book.id}/notes`}
               type='button'
               className='View-notes-button'
             >
