@@ -12,7 +12,6 @@ export default class BookNotesPage extends React.Component {
   static contextType = BookContext;
 
   static defaultProps ={
-    onDeleteNote: () => {},
     match: { params: {} },
     books: [],
     notes: []

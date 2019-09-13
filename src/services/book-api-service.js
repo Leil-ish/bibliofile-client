@@ -100,7 +100,7 @@ const BookApiService = {
       )
   },
 
-  postCustomBook(title, authors, description, categories) {
+  postCustomBook(title, authors, description, categories, rating) {
     return fetch(`${config.API_ENDPOINT}/library`, {
       method: 'POST',
       headers: {
@@ -112,6 +112,7 @@ const BookApiService = {
         authors,
         description,
         categories,
+        rating,
       }),
     })
       .then(res =>

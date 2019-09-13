@@ -7,15 +7,6 @@ import {Button, Textarea} from '../../components/Utils/Utils';
 import './AddBookPage.css'
 
 export default class AddBookPage extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
   static defaultProps = {
     match: { params: {} },
     onSaveBookSuccess: () => {},
@@ -23,23 +14,18 @@ export default class AddBookPage extends Component {
 
   static contextType = BookContext
 
-  handleChange(ev) {
-    this.setState({value: ev.target.value})
-  }
-
   handleSubmit = ev => {
-    console.log(ev)
     ev.preventDefault()
-    const {title, authors, description, categories} = ev.target.value
-    BookApiService.postCustomBook(title, authors, description, categories)
-      .then(this.context.addBook)
-
+    const {title, authors, description, categories, rating} = ev.target.value
+    BookApiService.postCustomBook(title, authors, description, categories, rating)
       .then(() => {
         title.value = ''
         authors.value = ''
         description.value = ''
         categories.value = ''
+        rating.value = ''
       })
+      .then(this.context.addBook)
       .then(() => {
         this.props.onSaveBookSuccess()
       })
@@ -55,7 +41,7 @@ export default class AddBookPage extends Component {
         </h2>
         <Form 
           className='AddBookForm'
-          onSubmit={this.handleSubmit}>
+          onSubmit={(e) => this.handleSubmit(e)}>
           <div className='field'>
             <label htmlFor='book-title-input'>
               Title
@@ -91,7 +77,7 @@ export default class AddBookPage extends Component {
             <label htmlFor='book-rating-input'>
               Rating
             </label>
-            <select name='rating' id='rating' value={this.state.rating} onChange={this.handleChange}>
+            <select name='rating' id='rating'>
                 <option value="1">1 &#9733;</option>
                 <option value="2">2 &#9733;</option>
                 <option value="3">3 &#9733;</option>
