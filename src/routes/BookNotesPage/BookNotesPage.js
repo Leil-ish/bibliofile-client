@@ -18,6 +18,10 @@ export default class BookNotesPage extends React.Component {
     notes: []
   }
 
+  handleDeleteNote = noteId => {
+    this.props.history.push(`/`)
+  }
+
 
   componentDidMount() {
     const {bookId} = this.props.match.params
@@ -79,6 +83,7 @@ function NotesContent({ notes }) {
           key={note.note_name}
           book_id={note.book_id}
           note={note}
+          onDeleteNote={this.handleDeleteNote}
         />
       )}
     </ul>

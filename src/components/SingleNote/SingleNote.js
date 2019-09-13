@@ -20,9 +20,7 @@ export default class SingleNote extends Component {
     const note = this.props
     const bookId = note.book_id
     const noteId = note.id
-    console.log(note.id)
-
-    debugger
+    console.log(this.props)
 
     fetch(`${config.API_ENDPOINT}/library/${bookId}/notes/${noteId}`, {
       method: 'DELETE',
@@ -54,12 +52,6 @@ export default class SingleNote extends Component {
       <ul className = 'single-note'>
             <h3>{note.note_name}</h3>
             <h4>{note.content}</h4>
-        <Link
-              to={`/library/${note.book_id}/notes`}
-              type='button'
-              className='View-note-button'>
-            <h3>View All Notes for this Book</h3>
-        </Link>
         <Button
           className='Note__delete'
           type='button'

@@ -58,7 +58,7 @@ const BookApiService = {
   },
 
   postNote(bookId, content, note_name) {
-    return fetch(`${config.API_ENDPOINT}/notes`, {
+    return fetch(`${config.API_ENDPOINT}/library/${bookId}/add-note`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

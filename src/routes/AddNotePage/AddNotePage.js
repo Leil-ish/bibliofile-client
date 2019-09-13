@@ -9,6 +9,7 @@ import './AddNotePage.css'
 export default class AddNotePage extends Component {
   static defaultProps = {
     match: { params: {} },
+    onSaveNoteSuccess: () => {},
   }
 
   static contextType = BookContext
@@ -22,6 +23,9 @@ export default class AddNotePage extends Component {
       .then(() => {
         content.value = ''
         note_name.value = ''
+      })
+      .then(() => {
+        this.props.onSaveNoteSuccess()
       })
       .catch(this.context.setError)
   }

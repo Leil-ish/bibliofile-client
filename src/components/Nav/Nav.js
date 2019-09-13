@@ -60,7 +60,7 @@ export default class LibraryNav extends React.Component {
                 className='LibraryNav_link'
                 to={`/find-book`}
               >
-                Find A Book
+                Search for a Book to Add to Your Library
               </Link>
             </li>
             <li>
@@ -68,7 +68,7 @@ export default class LibraryNav extends React.Component {
                 className='LibraryNav_link'
                 to={`/add-book`}
               >
-                Add A Book
+                Add A Book Manually
               </Link>
             </li>
         </ul>
