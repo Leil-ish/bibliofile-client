@@ -13,14 +13,7 @@ export default class BookNotesPage extends React.Component {
 
   static defaultProps ={
     match: { params: {} },
-    books: [],
-    notes: []
   }
-
-  handleDeleteNote = noteId => {
-    this.props.history.push(`/`)
-  }
-
 
   componentDidMount() {
     const {bookId} = this.props.match.params
@@ -31,15 +24,14 @@ export default class BookNotesPage extends React.Component {
     BookApiService.getBook(bookId)
       .then(this.context.setBook)
       .catch(this.context.setError)
-  }
+    }
 
   componentWillUnmount() {
     this.context.clearNote()
   }
-  
+
   renderNote() {
-    const { book, notes } = this.context
-    console.log(this.context)
+    const {book, notes} = this.context
     return <>
       <h2>Note for {book.title}</h2>
       <Link
@@ -49,7 +41,20 @@ export default class BookNotesPage extends React.Component {
           >
           <h3>Add a New Note to this Book</h3>
       </Link>
-      <NotesContent notes = {notes} />
+      <ul>
+        {notes.map(note =>
+          <SingleNote
+            key={note.note_name + 'key'}
+            noteId={note.id}
+            bookId={note.book_id}
+            note_name={note.note_name}
+            note={note}
+
+            onDeleteNote={this.handleDeleteNote}
+            {...book}
+          />
+        )}
+        </ul>
       <Form />
     </>
   }
@@ -72,19 +77,4 @@ export default class BookNotesPage extends React.Component {
       </Section>
     )
   }
-}
-
-function NotesContent({ notes }) {
-  return (
-    <ul>
-      {notes.map(note =>
-        <SingleNote
-          key={note.note_name}
-          book_id={note.book_id}
-          note={note}
-          onDeleteNote={this.handleDeleteNote}
-        />
-      )}
-    </ul>
-  )
 }

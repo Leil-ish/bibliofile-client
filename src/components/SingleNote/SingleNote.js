@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Button} from '../Utils/Utils'
+import BookContext from '../../contexts/BookContext';
 import TokenService from '../../services/token-service'
 import config from '../../config'
-import BookContext from '../../contexts/BookContext';
 import './SingleNote.css';
 
 export default class SingleNote extends Component {
@@ -14,14 +14,17 @@ export default class SingleNote extends Component {
     match: { params: {} },
   }
 
+  handleDeleteNote = (noteId, bookId) => {
+    this.props.history.push(`/library/${bookId}/notes`)
+  }
+
   handleClickDelete = e => {
     e.preventDefault()
-    const note = this.props
-    const bookId = note.book_id
-    const noteId = note.id
-    console.log(this.props)
 
-    fetch(`${config.API_ENDPOINT}/library/${bookId}/notes/${noteId}`, {
+    const bookId = this.props.id
+    const noteId = this.props.note.note_id
+    
+    fetch (`${config.API_ENDPOINT}/library/${bookId}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -30,8 +33,7 @@ export default class SingleNote extends Component {
     })
       .then(res => {
         if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-          return res.json()
+          return res.text().then(text => console.log(text))
       })
       .then(() => {
         this.context.deleteNote(noteId)
@@ -45,14 +47,13 @@ export default class SingleNote extends Component {
   render() {
 
     let {note} = this.props
-    console.log(note)
 
     return (
       <ul className = 'single-note'>
             <h3>{note.note_name}</h3>
             <h4>{note.content}</h4>
         <Button
-          className='Note__delete'
+          className='Note_delete'
           type='button'
           onClick={this.handleClickDelete}
         >

@@ -43,6 +43,20 @@ const BookApiService = {
       )
   },
 
+  getAllNotes() {
+    return fetch(`${config.API_ENDPOINT}/notes`, {
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
   getBookNotes(bookId) {
     return fetch(`${config.API_ENDPOINT}/library/${bookId}/notes`, {
       headers: {
@@ -101,7 +115,7 @@ const BookApiService = {
   },
 
   postCustomBook(title, authors, description, categories, rating) {
-    return fetch(`${config.API_ENDPOINT}/library`, {
+    return fetch(`${config.API_ENDPOINT}/library/add-book`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -112,7 +126,25 @@ const BookApiService = {
         authors,
         description,
         categories,
-        rating,
+        rating
+      }),
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+
+  patchBook(bookId, rating) {
+    return fetch(`${config.API_ENDPOINT}/library/${bookId}/edit-book`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        rating
       }),
     })
       .then(res =>

@@ -1,17 +1,28 @@
 import React, {Component} from 'react';
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
-import { Section } from '../../components/Utils/Utils'
+import { Section, Button } from '../../components/Utils/Utils'
 import Form from '../../components/Form/Form'
-import './SingleBookPage.css'
+import './EditBookPage.css'
 
-export default class SingleBookPage extends Component {
+export default class EditBookPage extends Component {
 
-    static defaultProps = {
+      static defaultProps = {
       match: { params: {} },
     }
   
     static contextType = BookContext
+
+    handleSubmit = ev => {
+      ev.preventDefault()
+      const {rating} = ev.target
+      BookApiService.patchBook(rating.value)
+        .then(this.context.editBook)
+        .then(() => {
+          rating.value = ''
+        })
+        .catch(this.context.setError)
+    }
   
     componentDidMount() {
       const { bookId } = this.props.match.params
@@ -29,12 +40,16 @@ export default class SingleBookPage extends Component {
     }
   
     renderBook() {
-      const { book, notes } = this.context
+      const { book   } = this.context
       return <>
         <h2>{book.title}</h2>
         <BookContent book={book} />
-        <BookNotes notes={notes} />
-        <Form />
+        <Form>
+          <BookRating />
+          <Button type='submit'>
+            Save Rating
+          </Button>
+        </Form>
       </>
     }
   
@@ -71,20 +86,19 @@ export default class SingleBookPage extends Component {
     )
   }
   
-  function BookNotes({ notes = [] }) {
+  function BookRating() {
     return (
-      <ul className='BookPage_note-list'>
-        <h2>Notes:</h2>
-        {notes.map(note =>
-          <li key={note.id} className='BookPage_note'>
-            <h3 className='BookPage_note-title'>
-              {note.note_name}
-            </h3>
-            <p className='BookPage_note-text'>
-              {note.content}
-            </p>
-          </li>
-        )}
-      </ul>
+      <div className='select-input'>
+        <label htmlFor='book-rating-input'>
+          Rating
+        </label>
+        <select name='rating' id='rating'>
+            <option value="1">1 &#9733;</option>
+            <option value="2">2 &#9733;</option>
+            <option value="3">3 &#9733;</option>
+            <option value="4">4 &#9733;</option>
+            <option value="5">5 &#9733;</option>
+        </select>
+      </div>
     )
   }

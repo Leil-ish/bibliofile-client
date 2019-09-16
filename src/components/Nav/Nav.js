@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Hyph } from '../Utils/Utils';
 import TokenService from '../../services/token-service';
 import './Nav.css';
 
@@ -29,7 +28,7 @@ export default class LibraryNav extends React.Component {
           to='/signup'>
           Register
         </Link>
-        <Hyph />
+        /
         <Link
           to='/login'>
           Log in
@@ -68,7 +67,7 @@ export default class LibraryNav extends React.Component {
                 className='LibraryNav_link'
                 to={`/add-book`}
               >
-                Add A Book Manually
+                Add A Book
               </Link>
             </li>
         </ul>

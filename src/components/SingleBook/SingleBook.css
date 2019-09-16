@@ -19,6 +19,16 @@ ul {
     padding: 5px;
 }
 
+.Edit-book-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #2E1114;
+    border: 1px solid #2E1114;
+    margin: 10px;
+    padding: 5px;
+}
+
 .View-notes-button {
     display: block;
     text-align: center;

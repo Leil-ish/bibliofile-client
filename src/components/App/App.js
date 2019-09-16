@@ -10,6 +10,7 @@ import SignUpPage from '../../routes/SignUpPage/SignUpPage';
 import LibraryPage from '../../routes/LibraryPage/LibraryPage';
 import NotesPage from '../../routes/NotesPage/NotesPage';
 import SingleBookPage from '../../routes/SingleBookPage/SingleBookPage';
+import EditBookPage from '../../routes/EditBookPage/EditBookPage';
 import BookNotesPage from '../../routes/BookNotesPage/BookNotesPage'
 import SearchPage from '../../routes/SearchPage/SearchPage';
 import LibraryContext from '../../contexts/LibraryContext';
@@ -34,6 +35,12 @@ class App extends Component {
     static getDerivedStateFromError(error) {
       console.error(error)
       return {hasError: true}
+    }
+
+    handleDeleteNote = noteId => {
+      this.setState({
+        notes: this.state.notes.filter(note => note.id !== noteId)
+      })
     }
 
   renderMainRoutes() {
@@ -98,6 +105,20 @@ class App extends Component {
                 }}
               />
             )}
+            {['/library/:bookId/edit-book'].map(path =>
+              <PrivateRoute
+                exact
+                key={path}
+                path={path}
+                component={routeProps => {
+                  return (
+                    <EditBookPage
+                      {...routeProps}
+                    />
+                  )
+                }}
+              />
+            )}
               <Route
                 exact path='/'
                 component={LandingPage}
@@ -145,6 +166,20 @@ class App extends Component {
               }
             />
           )}
+          {['/library/:bookId/edit-book'].map(path =>
+            <PrivateRoute
+              exact
+              key={path}
+              path={path}
+              component={routeProps =>
+                <Nav
+                  books={books}
+                  notes={notes}
+                  {...routeProps}
+                />
+              }
+            />
+          )}
           <PrivateRoute
             exact
             path='/library/:bookId/notes'
@@ -158,6 +193,10 @@ class App extends Component {
                 />
               )
             }}
+            />
+            <Route
+              exact path='/'
+              component={Nav}
             />
             <PrivateRoute
               exact

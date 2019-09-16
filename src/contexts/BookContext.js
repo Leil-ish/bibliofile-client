@@ -95,6 +95,13 @@ export class BookProvider extends Component {
     ])
   }
 
+  editBook = book => {
+    this.setBooks([
+      ...this.state.books,
+      book
+    ])
+  }
+
   render() {
     const value = {
       book: this.state.book,
@@ -112,6 +119,7 @@ export class BookProvider extends Component {
       addBook: this.addBook,
       deleteNote: this.deleteNote,
       deleteBook: this.deleteBook,
+      editBook: this.editBook,
     }
     return (
       <BookContext.Provider value={value}>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import LibraryContext from '../../contexts/LibraryContext';
+import BookContext from '../../contexts/BookContext';
 import './SingleBook.css';
 
-class SingleBook extends Component {
+export default class SingleBook extends Component {
 
-  static contextType = LibraryContext;
+  static contextType = BookContext;
 
   state = {
     borrowed:false,
@@ -19,8 +19,9 @@ class SingleBook extends Component {
   }
 
   render() {
+      const { notes=[] } = this.context
+      console.log(notes)
       let book = this.props
-      console.log(this.props)
       let authors = book.authors
       let description = book.description
 
@@ -28,52 +29,94 @@ class SingleBook extends Component {
         authors = book.authors;
       }
       else (
-        authors = "No authors listed"
+        authors = 'No authors listed'
       )
 
       if (description) {
         description = book.description;
       }
       else (
-        description = "No description included for this book."
+        description = 'No description included for this book.'
       )
 
-
-    return (
-        <div className = 'single-book'>
-          <ul>
-            <Link
-              to={`/library/${book.id}`}
-              type='button'
-              className='Add-note-button'>
-                <h3>{book.title}</h3>
-            </Link>
-            <h4>{book.authors}</h4>
-            <p>{book.description}</p>
-            <p>{book.rating} &#9733;</p>
-            <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
-            <div className='buttons'>
-            <Link
-              to={`/library/${book.id}/add-note`}
-              type='button'
-              className='Add-note-button'
-            >
-            <br />
-              Add a note to this book
-            </Link>
-            <Link
-              to={`/library/${book.id}/notes`}
-              type='button'
-              className='View-notes-button'
-            >
-            <br />
-              View notes for this book
-            </Link>
+      if (book.rating) {
+        return (
+            <div className = 'single-book'>
+              <ul>
+                <Link
+                  to={`/library/${book.id}`}
+                  type='button'
+                  className='Add-note-button'>
+                    <h3>{book.title}</h3>
+                </Link>
+                <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
+                <p>{book.description}</p>
+                <p>{book.rating} &#9733;</p>
+                <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
+                <div className='buttons'>
+                <Link
+                  to={`/library/${book.id}/add-note`}
+                  type='button'
+                  className='Add-note-button'
+                >
+                <br />
+                  Add a note to this book
+                </Link>
+                <Link
+                  to={`/library/${book.id}/notes`}
+                  type='button'
+                  className='View-notes-button'
+                >
+                <br />
+                  View notes for this book
+                  <br />
+                </Link>
+              </div>
+            </ul>
           </div>
-        </ul>
-      </div>
-    );
+        );
+      } else {
+        return (
+          <div className = 'single-book'>
+            <ul>
+              <Link
+                to={`/library/${book.id}`}
+                type='button'
+                className='Add-note-button'>
+                  <h3>{book.title}</h3>
+              </Link>
+              <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
+              <p>{book.description}</p>
+              <Link
+              to={`/library/${book.id}/edit-book`}
+              type='button'
+              className='Edit-book-button'>
+                <br />
+                Add a Rating for this Book
+              </Link>              
+              <div className='buttons'>
+              <Link
+                to={`/library/${book.id}/add-note`}
+                type='button'
+                className='Add-note-button'
+              >
+              <br />
+                Add a note to this book
+              </Link>
+              <Link
+                to={`/library/${book.id}/notes`}
+                type='button'
+                className='View-notes-button'
+              >
+              <br />
+                View notes for this book
+              <br />
+              </Link>
+              <button className='Borrowed-button' onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
+            </div>
+          </ul>
+        </div>
+      );
+    }
   }
 }
-
-export default SingleBook;

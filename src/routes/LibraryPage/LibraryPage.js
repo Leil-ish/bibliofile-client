@@ -37,11 +37,14 @@ export default class LibraryPage extends React.Component {
     BookApiService.getBooks()
       .then(this.context.setLibrary)
       .catch(this.context.setError)
+    BookApiService.getAllNotes()
+      .then(this.context.setNoteList)
+      .catch(this.context.setError)
   }
 
 
   renderLibrary() {
-
+    console.log(this.context)
     return (
       <section className='LibraryPage'>
         <h2>Library</h2>
@@ -51,6 +54,7 @@ export default class LibraryPage extends React.Component {
               onBookSort={property => this.handleBookSort(property)}/>
             <LibraryResults 
               books={this.context.books} 
+              notes={this.context.notes}
               bookFilter={this.state.bookType}
               property={this.state.property}/>
         </ul>

@@ -4,17 +4,20 @@ import {CompareValues} from '../Utils/Utils'
 import '../Results/Results.css';
 
 
-class Results extends Component {
+class LibraryResults extends Component {
   render() {
     const {bookFilter} = this.props;
     const {property} = this.props
-    console.log(this.props)
     const list = this.props.books
     .filter(book => 
       (bookFilter === 'All' || (book.is_ebook && bookFilter === 'eBook') || 
       (!book.is_ebook && bookFilter === 'paper')))   
     .sort(CompareValues(`${property}`, 'desc')) 
-    .map((book, key) => <SingleBook {...book} key={key}/>);
+    .map((book, key) => 
+      <SingleBook 
+        {...book} 
+        key={key}
+        />);
 
     return (
         <ul className='bookList'>
@@ -24,4 +27,4 @@ class Results extends Component {
   }
 }
 
-export default Results;
+export default LibraryResults;
