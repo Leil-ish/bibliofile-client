@@ -114,7 +114,7 @@ const BookApiService = {
       )
   },
 
-  postCustomBook(title, authors, description, categories, rating) {
+  postCustomBook(title, authors, description, categories) {
     return fetch(`${config.API_ENDPOINT}/library/add-book`, {
       method: 'POST',
       headers: {
@@ -126,7 +126,6 @@ const BookApiService = {
         authors,
         description,
         categories,
-        rating
       }),
     })
       .then(res =>
@@ -136,7 +135,7 @@ const BookApiService = {
       )
   },
 
-  patchBook(bookId, rating) {
+  /*patchBook(bookId, rating) {
     return fetch(`${config.API_ENDPOINT}/library/${bookId}/edit-book`, {
       method: 'PATCH',
       headers: {
@@ -152,8 +151,7 @@ const BookApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
-  },
-
+  },*/
 }
 
 export default BookApiService

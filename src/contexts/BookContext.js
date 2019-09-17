@@ -95,7 +95,7 @@ export class BookProvider extends Component {
     ])
   }
 
-  editBook = book => {
+  updateBook = book => {
     this.setBooks([
       ...this.state.books,
       book

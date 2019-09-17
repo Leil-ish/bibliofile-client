@@ -16,6 +16,7 @@ import SearchPage from '../../routes/SearchPage/SearchPage';
 import LibraryContext from '../../contexts/LibraryContext';
 import AddNotePage from '../../routes/AddNotePage/AddNotePage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
+import Error from '../Error/Error'
 import {getBooksForLibrary, getNotesForBook} from '../../library-helper';
 import './App.css';
 
@@ -234,10 +235,14 @@ class App extends Component {
             </h1>
           </header>
           <main className='App_main'>
-            {this.renderMainRoutes()}
+            <Error>
+              {this.renderMainRoutes()}
+            </Error>
           </main>
           <nav className='App_nav'>
-            {this.renderNavRoutes()}
+            <Error>
+              {this.renderNavRoutes()}
+            </Error>
           </nav>
         </div>
     )

@@ -39,7 +39,7 @@ export default class SingleBook extends Component {
         description = 'No description included for this book.'
       )
 
-      if (book.rating) {
+      /*if (book.rating) {
         return (
             <div className = 'single-book'>
               <ul>
@@ -75,7 +75,7 @@ export default class SingleBook extends Component {
             </ul>
           </div>
         );
-      } else {
+      } else {*/
         return (
           <div className = 'single-book'>
             <ul>
@@ -87,13 +87,13 @@ export default class SingleBook extends Component {
               </Link>
               <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
               <p>{book.description}</p>
-              <Link
+              {/*<Link
               to={`/library/${book.id}/edit-book`}
               type='button'
               className='Edit-book-button'>
                 <br />
                 Add a Rating for this Book
-              </Link>              
+              </Link> */}             
               <div className='buttons'>
               <Link
                 to={`/library/${book.id}/add-note`}
@@ -119,4 +119,4 @@ export default class SingleBook extends Component {
       );
     }
   }
-}
+// }

@@ -1,10 +1,19 @@
 .BookPage_content {
-    margin: 25px;
+    margin: 80px;
     border: 1px solid black;
     padding: 10px;
+    max-width: 75%;
 }
 
 .BookPage_note-list {
     margin: 25px;
     border: 1px solid black;
+    max-width: 75%;
+}
+
+.BookPage_note-list {
+    margin: 80px;
+    border: 1px solid black;
+    padding: 10px;
+    max-width: 75%;
 }

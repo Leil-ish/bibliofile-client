@@ -26,6 +26,7 @@ class ApiBook extends Component {
     .then(this.context.addBook)
     .then(() => {
       this.props.onSaveBookSuccess()
+      this.props.history.push(`/library`)
     })
       .catch(this.context.setError)
   }

@@ -7,6 +7,7 @@ import {Textarea, Button} from '../../components/Utils/Utils'
 import './AddNotePage.css'
 
 export default class AddNotePage extends Component {
+  
   static defaultProps = {
     match: { params: {} },
     onSaveNoteSuccess: () => {},
@@ -16,6 +17,7 @@ export default class AddNotePage extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
+    console.log(this.props)
     const {book} = this.context
     const {content, note_name} = ev.target
     BookApiService.postNote(book.id, content.value, note_name.value)
@@ -26,6 +28,7 @@ export default class AddNotePage extends Component {
       })
       .then(() => {
         this.props.onSaveNoteSuccess()
+        this.props.history.push(`/library/${book.id}`)
       })
       .catch(this.context.setError)
   }
@@ -77,7 +80,7 @@ export default class AddNotePage extends Component {
           </Textarea>
           </div>
           <div className='buttons'>
-            <Button type='submit'>
+            <Button type='submit' onClick={this.handleAddNote}>
               Add Note
             </Button>
             <Link

@@ -49,7 +49,6 @@ export default class BookNotesPage extends React.Component {
             bookId={note.book_id}
             note_name={note.note_name}
             note={note}
-
             onDeleteNote={this.handleDeleteNote}
             {...book}
           />

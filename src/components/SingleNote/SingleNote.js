@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom'
 import {Button} from '../Utils/Utils'
 import BookContext from '../../contexts/BookContext';
 import TokenService from '../../services/token-service'
 import config from '../../config'
 import './SingleNote.css';
 
-export default class SingleNote extends Component {
+class SingleNote extends Component {
 
   static contextType = BookContext;
 
@@ -14,15 +15,13 @@ export default class SingleNote extends Component {
     match: { params: {} },
   }
 
-  handleDeleteNote = (noteId, bookId) => {
-    this.props.history.push(`/library/${bookId}/notes`)
-  }
-
   handleClickDelete = e => {
     e.preventDefault()
 
     const bookId = this.props.id
     const noteId = this.props.note.note_id
+    const book = this.props
+    console.log(this.props)
     
     fetch (`${config.API_ENDPOINT}/library/${bookId}/notes/${noteId}`, {
       method: 'DELETE',
@@ -38,6 +37,9 @@ export default class SingleNote extends Component {
       .then(() => {
         this.context.deleteNote(noteId)
         this.props.onDeleteNote(noteId)
+      })
+      .then(() => {
+        this.props.history.push(`/library/${book.id}`)
       })
       .catch(error => {
         console.error({ error })
@@ -63,4 +65,6 @@ export default class SingleNote extends Component {
     );
   }
 }
+
+export default withRouter(SingleNote)
 

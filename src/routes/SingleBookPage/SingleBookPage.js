@@ -31,7 +31,6 @@ export default class SingleBookPage extends Component {
     renderBook() {
       const { book, notes } = this.context
       return <>
-        <h2>{book.title}</h2>
         <BookContent book={book} />
         <BookNotes notes={notes} />
         <Form />

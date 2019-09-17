@@ -7,11 +7,6 @@ import {Button, Input, Textarea} from '../../components/Utils/Utils';
 import './AddBookPage.css'
 
 export default class AddBookPage extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
   
   static defaultProps = {
     match: { params: {} },
@@ -31,6 +26,10 @@ export default class AddBookPage extends Component {
         description.value = ''
         categories.value = ''
       })
+      .then(() => {
+        this.props.onSaveBookSuccess()
+        this.props.history.push(`/library`)
+      })
       .catch(this.context.setError)
   }
 
@@ -43,24 +42,25 @@ export default class AddBookPage extends Component {
         </h2>
         <Form 
           className='AddBookForm'
-          onSubmit={(ev) => this.handleSubmit(ev)}>
+          onSubmit={this.handleSubmit}
+          >
           <div className='field'>
             <label htmlFor='book-title-input'>
               Title
             </label>
-            <Input type='text' name='title' id='title' />
+            <Input required type='text' name='title' id='title' />
           </div>
           <div className='field'>
             <label htmlFor='book-author-input'>
               Author
             </label>
-            <Input type='text' name='authors' id='authors' />
+            <Input required type='text' name='authors' id='authors' />
           </div>
           <div className='field'>
-            <label htmlFor='book-category-input'>
+            <label htmlFor='book-categories-input'>
               Genre 
             </label>
-            <Input type='text' name='category' id='category' />
+            <Input required type='text' name='categories' id='categories' />
           </div>
           <div className='field'>
             <label htmlFor='book-description-input'>

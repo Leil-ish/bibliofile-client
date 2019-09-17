@@ -27,7 +27,7 @@ class Filters extends Component {
                     <select id='book-sort' onChange={e => this.props.onBookSort(e.target.value)}>
                         <option value="title" defaultValue>Title</option>
                         <option value="author">Author</option>
-                        <option value="rating">Rating</option>
+                        {/*<option value="rating">Rating</option>*/}
                         <option value="borrowed">Borrowed</option>
                         <option value="genre">Genre</option>
                     </select>
