@@ -112,7 +112,7 @@ export default class SingleBook extends Component {
                 View notes for this book
               <br />
               </Link>
-              <button className='Borrowed-button' onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
+              <button className='Borrowed-button' onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Returned' : 'Borrowed'}</button>
             </div>
           </ul>
         </div>
