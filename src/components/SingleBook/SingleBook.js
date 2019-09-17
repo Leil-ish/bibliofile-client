@@ -51,6 +51,7 @@ export default class SingleBook extends Component {
                 </Link>
                 <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
                 <p>{book.description}</p>
+                <p>Genre: {book.categories.replace(/[^a-zA-Z ]/g, " ")}</p>
                 <p>{book.rating} &#9733;</p>
                 <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
                 <div className='buttons'>
@@ -87,6 +88,7 @@ export default class SingleBook extends Component {
               </Link>
               <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
               <p>{book.description}</p>
+              <p>Genre: {book.categories.replace(/[^a-zA-Z ]/g, " ")}</p>
               {/*<Link
               to={`/library/${book.id}/edit-book`}
               type='button'

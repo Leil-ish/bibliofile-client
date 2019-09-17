@@ -90,7 +90,7 @@ export class BookProvider extends Component {
 
   addBook = book => {
     this.setBooks([
-      ...this.state.books,
+      this.state.books,
       book
     ])
   }

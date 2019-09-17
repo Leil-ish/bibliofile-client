@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 import {Button} from '../../components/Utils/Utils'
 import BookApiService from '../../services/book-api-service'
 import BookContext from '../../contexts/BookContext'
@@ -83,4 +84,4 @@ class ApiBook extends Component {
   }
 }
 
-export default ApiBook;
+export default withRouter(ApiBook)
