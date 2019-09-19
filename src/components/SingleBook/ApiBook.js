@@ -21,7 +21,7 @@ class ApiBook extends Component {
       this.props.volumeInfo.authors || '',
       this.props.volumeInfo.description || '',
       this.props.volumeInfo.categories || '',
-      this.props.volumeInfo.imageLinks || '',
+      this.props.volumeInfo.imageLinks.thumbnail || '',
       this.props.saleInfo.isEbook,     
     )
     .then(this.context.addBook)

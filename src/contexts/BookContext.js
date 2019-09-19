@@ -21,7 +21,6 @@ const BookContext = React.createContext({
   addNote: () => {},
   addBook: () => {},
   deleteNote: () => {},
-  deleteBook: () => {},
   clearNote: () => {},
 })
 
@@ -82,12 +81,6 @@ export class BookProvider extends Component {
     })
   }
 
-  deleteBook = bookId => {
-    this.setState({
-      books: this.state.books.filter(book => book.id !== bookId)
-    })
-  }
-
   addBook = book => {
     this.setBooks([
       this.state.books,
@@ -118,7 +111,6 @@ export class BookProvider extends Component {
       addNote: this.addNote,
       addBook: this.addBook,
       deleteNote: this.deleteNote,
-      deleteBook: this.deleteBook,
       editBook: this.editBook,
     }
     return (

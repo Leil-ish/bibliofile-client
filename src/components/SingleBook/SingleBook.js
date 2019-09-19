@@ -1,15 +1,53 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import BookContext from '../../contexts/BookContext';
+import {Button} from '../Utils/Utils'
+import {withRouter} from 'react-router-dom'
+import LibraryContext from '../../contexts/LibraryContext';
+import TokenService from '../../services/token-service'
+import config from '../../config'
 import './SingleBook.css';
 
-export default class SingleBook extends Component {
+class SingleBook extends Component {
 
-  static contextType = BookContext;
+  static contextType = LibraryContext;
 
   state = {
     borrowed:false,
     book: []
+  }
+
+  static defaultProps ={
+    onDeleteBook: () => {},
+    match: { params: {} },
+  }
+
+  handleClickBookDelete = e => {
+    e.preventDefault()
+
+    const bookId = this.props.id
+    console.log(this.context)
+    
+    fetch (`${config.API_ENDPOINT}/library/${bookId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res => {
+        if (!res.ok)
+          return res.text().then(text => console.log(text))
+      })
+      .then(() => {
+        this.context.deleteBook(bookId)
+        this.props.onDeleteBook(bookId)
+      })
+      .then(() => {
+        this.props.history.push(`/library`)
+      })
+      .catch(error => {
+        console.error({ error })
+      })
   }
 
    handleClick = () => {
@@ -19,9 +57,9 @@ export default class SingleBook extends Component {
   }
 
   render() {
-      const { notes=[] } = this.context
-      console.log(notes)
       let book = this.props
+      console.log(book.image_links)
+
       let authors = book.authors
       let description = book.description
 
@@ -39,56 +77,19 @@ export default class SingleBook extends Component {
         description = 'No description included for this book.'
       )
 
-      /*if (book.rating) {
-        return (
-            <div className = 'single-book'>
-              <ul>
-                <Link
-                  to={`/library/${book.id}`}
-                  type='button'
-                  className='Add-note-button'>
-                    <h3>{book.title}</h3>
-                </Link>
-                <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
-                <p>{book.description}</p>
-                <p>Genre: {book.categories.replace(/[^a-zA-Z ]/g, " ")}</p>
-                <p>{book.rating} &#9733;</p>
-                <button onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Borrowed' : 'Returned'}</button>
-                <div className='buttons'>
-                <Link
-                  to={`/library/${book.id}/add-note`}
-                  type='button'
-                  className='Add-note-button'
-                >
-                <br />
-                  Add a note to this book
-                </Link>
-                <Link
-                  to={`/library/${book.id}/notes`}
-                  type='button'
-                  className='View-notes-button'
-                >
-                <br />
-                  View notes for this book
-                  <br />
-                </Link>
-              </div>
-            </ul>
-          </div>
-        );
-      } else {*/
         return (
           <div className = 'single-book'>
             <ul>
+              <h3>{book.title}</h3>
+              <img src={book.image_links} alt='book cover'/>
+              <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
+              <p>Genre: {book.categories.replace(/[^a-zA-Z ]/g, " ")}</p>
               <Link
                 to={`/library/${book.id}`}
                 type='button'
-                className='Add-note-button'>
-                  <h3>{book.title}</h3>
+                className='View-note-button'>
+                  <h3>View Description</h3>
               </Link>
-              <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
-              <p>{book.description}</p>
-              <p>Genre: {book.categories.replace(/[^a-zA-Z ]/g, " ")}</p>
               {/*<Link
               to={`/library/${book.id}/edit-book`}
               type='button'
@@ -114,6 +115,12 @@ export default class SingleBook extends Component {
                 View notes for this book
               <br />
               </Link>
+              <Button
+                className='Book_delete'
+                type='button'
+                onClick={this.handleClickBookDelete}>
+                <h3>Remove this Book from the Library</h3>
+              </Button>
               <button className='Borrowed-button' onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Returned' : 'Borrowed'}</button>
             </div>
           </ul>
@@ -122,3 +129,5 @@ export default class SingleBook extends Component {
     }
   }
 // }
+
+export default withRouter(SingleBook)
