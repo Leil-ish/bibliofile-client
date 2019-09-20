@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
 import { Section } from '../../components/Utils/Utils'
@@ -66,6 +67,14 @@ export default class SingleBookPage extends Component {
         <p className='BookPage_content'>
           {book.description}
         </p>
+        <Link
+                to={`/library/${book.id}/add-note`}
+                type='button'
+                className='Add-note-button'
+              >
+              <br />
+                Add a note to this book
+        </Link>
       </div>
     )
   }
@@ -75,7 +84,7 @@ export default class SingleBookPage extends Component {
       <ul className='BookPage_note-list'>
         <h2>Notes:</h2>
         {notes.map(note =>
-          <li key={note.id} className='BookPage_note'>
+          <li key={note.note_name + 'note-key'} className='BookPage_note'>
             <h3 className='BookPage_note-title'>
               {note.note_name}
             </h3>
