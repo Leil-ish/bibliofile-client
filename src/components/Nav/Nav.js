@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Hyph} from '../Utils/Utils'
 import TokenService from '../../services/token-service';
 import './Nav.css';
 
@@ -11,28 +12,63 @@ export default class LibraryNav extends React.Component {
 
   renderLogoutLink() {
     return (
-      <div className='LibraryNav_link'>
-        <Link
-          onClick={this.handleLogoutClick}
-          to='/'>
-          Logout
-        </Link>
+      <div className='LibraryNav_list'>
+        <ul>
+          <li>
+            <Link
+              onClick={this.handleLogoutClick}
+              to='/'>
+              <i className="fas fa-sign-out-alt"></i>
+            </Link>
+          </li>
+          <li>
+            <Link
+              className='LibraryNav_link'
+              to={`/library`}
+                >
+                <i className="fas fa-book"></i>
+            </Link>
+          </li>
+          <li>
+              <Link
+                className='LibraryNav_link'
+                to={`/find-book`}
+              >
+                <i className="fas fa-search"></i>
+              </Link>
+          </li>
+          <li>
+              <Link
+                className='LibraryNav_link'
+                to={`/add-book`}
+              >
+                <i className="fas fa-plus"></i>
+              </Link>
+          </li>
+        </ul>
       </div>
     )
   }
 
   renderLoginLink() {
     return (
-      <div className='LibraryNav_link'>
-        <Link
-          to='/signup'>
-          Register
-        </Link>
-        /
-        <Link
-          to='/login'>
-          Log in
-        </Link>
+      <div className='LibraryNav_list'>
+        <ul>
+          <li>
+            <Link
+              className='LibraryNav_link'
+              to='/signup'>
+              Register
+            </Link>
+          </li>
+          <li>
+            <Link
+              className='LibraryNav_link'
+              to='/login'>
+              Log in
+            </Link>
+          </li>
+        </ul>
       </div>
     )
   }
@@ -45,30 +81,6 @@ export default class LibraryNav extends React.Component {
               {TokenService.hasAuthToken()
                 ? this.renderLogoutLink()
                 : this.renderLoginLink()}
-            </li>
-            <li>
-              <Link
-                className='LibraryNav_link'
-                to={`/library`}
-              >
-                Library
-              </Link>
-            </li>
-            <li>
-              <Link
-                className='LibraryNav_link'
-                to={`/find-book`}
-              >
-                Search for a Book to Add to Your Library
-              </Link>
-            </li>
-            <li>
-              <Link
-                className='LibraryNav_link'
-                to={`/add-book`}
-              >
-                Add A Book
-              </Link>
             </li>
         </ul>
       </div>

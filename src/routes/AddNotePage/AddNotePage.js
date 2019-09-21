@@ -17,7 +17,6 @@ export default class AddNotePage extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    console.log(this.props)
     const {book} = this.context
     const {content, note_name} = ev.target
     BookApiService.postNote(book.id, content.value, note_name.value)

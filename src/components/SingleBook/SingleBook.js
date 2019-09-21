@@ -25,7 +25,6 @@ class SingleBook extends Component {
     e.preventDefault()
 
     const bookId = this.props.id
-    console.log(this.context)
     
     fetch (`${config.API_ENDPOINT}/library/${bookId}`, {
       method: 'DELETE',
@@ -34,10 +33,10 @@ class SingleBook extends Component {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then(res => {
-        if (!res.ok)
-          return res.text().then(text => console.log(text))
-      })
+    .then(res => {
+      if (!res.ok)
+        return res.json().then(e => Promise.reject(e))
+    })
       .then(() => {
         this.context.deleteBook(bookId)
         this.props.onDeleteBook(bookId)
@@ -58,7 +57,6 @@ class SingleBook extends Component {
 
   render() {
       let book = this.props
-      console.log(book.image_links)
 
       let authors = book.authors
       let description = book.description

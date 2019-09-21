@@ -10,7 +10,6 @@ class Error extends Component {
     }
 
     static getDerivedStateFromError(error) {
-        console.log('error function')
         return { hasError: true }
     }
 

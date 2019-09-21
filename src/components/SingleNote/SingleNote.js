@@ -21,7 +21,6 @@ class SingleNote extends Component {
     const bookId = this.props.id
     const noteId = this.props.note.note_id
     const book = this.props
-    console.log(this.props)
     
     fetch (`${config.API_ENDPOINT}/library/${bookId}/notes/${noteId}`, {
       method: 'DELETE',
@@ -32,7 +31,7 @@ class SingleNote extends Component {
     })
       .then(res => {
         if (!res.ok)
-          return res.text().then(text => console.log(text))
+          return res.json().then(e => Promise.reject(e))
       })
       .then(() => {
         this.context.deleteNote(noteId)

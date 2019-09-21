@@ -44,7 +44,6 @@ export default class LibraryPage extends React.Component {
 
 
   renderLibrary() {
-    console.log(this.context)
     return (
       <section className='LibraryPage'>
         <h2>Library</h2>

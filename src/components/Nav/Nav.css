@@ -7,19 +7,18 @@
 }
 
 .LibraryNav_link {
-  background-color: rgb(17, 8, 19);
-  color: #ADADAD;
+  background-color: rgb(34, 8, 49);
+  color: #6BBAA7;
   display: block;
   font-size: 20px;
-  margin: 0 auto 8px 0;
-  max-width: 180px;
-  padding: 8px 16px;
+  margin: 10px auto 8px 0;
+  max-width: 100px;
   text-decoration: none;
 }
 
 .LibraryNav_link:hover {
-  background-color: #83677B;
-  color: #2E1114;
+  background-color: #FBA100;
+  color: rgb(34, 8, 49);
   
 }
 
