@@ -1,4 +1,4 @@
-.LibraryNav_list {
+.LibraryNav_main {
   list-style-type: none;
   padding: 0;
   max-height: 50px;
@@ -17,12 +17,29 @@
 }
 
 .LibraryNav_link:hover {
-  background-color: #FBA100;
+  background-color: #6BBAA7;
   color: rgb(34, 8, 49);
-  
+}
+
+.LibraryNav_landing ul {
+  display:flex;
+  justify-content: center;
+  flex-direction:row;
+  background: #FBA100;
+  width: 100%;
+  background-color:none;
+  position:fixed;
+  top:0px;
+  left:0px;
+  font-size: 18px;
+  padding:0;
+}
+
+.LibraryNav_landing li {
+  padding: 10px;
 }
 
 a {
   text-decoration: none;
-  color: #ADADAD;
+  color: black;
 }

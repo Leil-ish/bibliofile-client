@@ -2,19 +2,6 @@
     box-sizing: border-box;
 }
 
-.Landing_Page h2 {
-    background-color: #83677B;
-    text-align: center;
-    margin-top: 0px;
-    padding: 0px 0px 50px 0px;
-    font-size: 30px;
-    font-style: none;
-    text-decoration: none;
-    color: #2E1114;
-    margin-bottom: 0;
-}
-
-
 .Landing_Page a {
     text-decoration: none;
     color: #83677B;
@@ -22,25 +9,19 @@
 
 .Landing_Page p {
     margin:0;
-    padding: 5% 30%;
+    padding: 5% 20%;
     background-color: #F1EDF1;
+    color: black;
 }
 
 .Landing_Page img {
-    width: 50px;
+    width: 30px;
     margin: 25px;
 }
 
 .contact {
     margin:0;
     text-align: center;
-    background-color: #2E1114;
+    background-color: #6C648B;
     color: #F1EDF1;
 }
-
-.Landing_Page h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    padding: 25px;
-}
-

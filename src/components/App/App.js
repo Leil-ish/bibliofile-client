@@ -237,8 +237,8 @@ class App extends Component {
           <header className='App_header'>
             <h1>
               <Link to='/'>Bibliofile</Link>
-              {' '}
             </h1>
+            <h2>Your Personal Virtual Library</h2>
           </header>
           <main className='App_main'>
             <Error>

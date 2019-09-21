@@ -6,7 +6,6 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <div className='Landing_Page'>
-          <h2>Your Personal Virtual Library</h2>
           <p>Bibliofile is a virtual library app that allows people to add any books they have in their personal 
               libraries to a digital management system. From there, they have options to post notes about each book - 
               such as, "Borrowed by John on 6/20" or "Give away." People can see all of their personal library in one 
