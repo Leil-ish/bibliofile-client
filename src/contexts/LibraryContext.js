@@ -8,6 +8,7 @@ const LibraryContext = React.createContext({
   clearError: () => {},
   setLibrary: () => {},
   setNoteList: () => {},
+  deleteBook: () => {},
 })
 export default LibraryContext
 
@@ -24,6 +25,12 @@ export class LibraryProvider extends Component {
 
   setNoteList = notes => {
     this.setState({ notes })
+  }
+
+  deleteBook = bookId => {
+    this.setState({
+      books: this.state.books.filter(book => book.id !== bookId)
+    })
   }
 
   setError = error => {
@@ -44,6 +51,7 @@ export class LibraryProvider extends Component {
       clearError: this.clearError,
       setLibrary: this.setLibrary,
       setNoteList: this.setNoteList,
+      deleteBook: this.deleteBook,
     }
     return (
       <LibraryContext.Provider value={value}>

@@ -44,6 +44,12 @@ class App extends Component {
       })
     }
 
+    handleDeleteBook = bookId => {
+      this.setState({
+        books: this.state.books.filter(book => book.id !==bookId)
+      })
+    }
+
   renderMainRoutes() {
     const {books, notes} = this.context
     return (

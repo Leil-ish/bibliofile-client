@@ -64,6 +64,7 @@ export default class SingleBookPage extends Component {
         <h1 className='BookPage_content'>
           {book.title}
         </h1>
+        <img src={book.image_links} alt='book cover'/>
         <p className='BookPage_content'>
           {book.description}
         </p>

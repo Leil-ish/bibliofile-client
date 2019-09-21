@@ -55,6 +55,7 @@ export default class LibraryPage extends React.Component {
             <LibraryResults 
               books={this.context.books} 
               notes={this.context.notes}
+              onDeleteBook={this.handleDeleteBook}
               bookFilter={this.state.bookType}
               property={this.state.property}/>
         </ul>

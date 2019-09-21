@@ -16,6 +16,7 @@ class LibraryResults extends Component {
     .map((book, key) => 
       <SingleBook 
         {...book} 
+        onDeleteBook={this.handleDeleteBook}
         key={key}
         />);
 

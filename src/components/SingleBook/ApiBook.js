@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 import {Button} from '../../components/Utils/Utils'
 import BookApiService from '../../services/book-api-service'
 import BookContext from '../../contexts/BookContext'
@@ -20,7 +21,7 @@ class ApiBook extends Component {
       this.props.volumeInfo.authors || '',
       this.props.volumeInfo.description || '',
       this.props.volumeInfo.categories || '',
-      this.props.volumeInfo.imageLinks || '',
+      this.props.volumeInfo.imageLinks.thumbnail || '',
       this.props.saleInfo.isEbook,     
     )
     .then(this.context.addBook)
@@ -83,4 +84,4 @@ class ApiBook extends Component {
   }
 }
 
-export default ApiBook;
+export default withRouter(ApiBook)

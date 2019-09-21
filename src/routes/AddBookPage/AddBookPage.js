@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Form from '../../components/Form/Form'
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
 import {Button, Input, Textarea} from '../../components/Utils/Utils';
 import './AddBookPage.css'
 
-export default class AddBookPage extends Component {
+class AddBookPage extends Component {
   
   static defaultProps = {
     match: { params: {} },
@@ -97,3 +97,5 @@ export default class AddBookPage extends Component {
     )
   }
 }
+
+export default withRouter(AddBookPage)
