@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
-import Landing from './Landing';
+import LibraryResults from './LibraryResults';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-        <Landing />
+        <LibraryResults />
     </BrowserRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
