@@ -20,8 +20,9 @@ class Error extends Component {
                 <h2>Oops! Could not display this right now.</h2>
             </div>
             );
+        } else {
+            return this.props.children;
         }
-        return this.props.children;
     }
 }
 
