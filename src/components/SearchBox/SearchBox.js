@@ -26,14 +26,14 @@ class SearchBox extends Component {
 
     return (
       <div>
-          <form className="searchBar" onSubmit={this.handleSubmit}>
-              <label htmlFor="search">Search: </label>
+          <form className="searchBox" onSubmit={this.handleSubmit}>
+              <label htmlFor="search">Search </label>
               <input 
               type="text" 
-              placeholder="Search for a book" 
+              placeholder="Search for a book by author, title, or ISBN" 
               id="search"
               onChange={e => this.searchTermChanged(e.target.value)} />
-              <button type="submit">Search</button>
+              <button type="submit" className='searchSubmit'>Search</button>
           </form>
       </div>
       

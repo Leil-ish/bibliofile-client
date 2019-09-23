@@ -73,7 +73,7 @@ class SearchPage extends Component {
     
         return (
           <main className='SearchPage'>
-            <h2>Search for a Book to Add to Your Library</h2>
+            <h2>Find a Book to Add to Your Library</h2>
             <SearchBar 
               onSubmit={searchTerm => this.handleSubmit(searchTerm)}
               onBookFilter={bookType => this.handleBookFilter(bookType)}

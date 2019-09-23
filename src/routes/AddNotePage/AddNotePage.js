@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Form from '../../components/Form/Form'
 import BookApiService from '../../services/book-api-service'
 import BookContext from '../../contexts/BookContext'
-import {Textarea, Button} from '../../components/Utils/Utils'
+import {Textarea, Button, Input} from '../../components/Utils/Utils'
 import './AddNotePage.css'
 
 export default class AddNotePage extends Component {
@@ -53,21 +53,24 @@ export default class AddNotePage extends Component {
     return (
       <section className='AddNotePage'>
         <h2>
-          Add Note for {book.title}
+          {book.title}
         </h2>
+        <h3 className='Add-note-subtitle'>Add Note</h3>
         <Form 
           className='AddNoteForm'
           onSubmit={this.handleSubmit}>
           <div className='field'>
             <label htmlFor='note-name-input'>
-              Name
+              Note Name:
             </label>
-            <input type='text' id='note_name' name='note_name' />
+            <br/>
+            <Input required type='text' id='note_name' name='note_name' />
           </div>
           <div className='text'>
             <label htmlFor='note-content-input'>
-              Content
+              Content:
             </label>
+            <br/>
             <Textarea
               required
               aria-label='Type your note...'
@@ -79,7 +82,7 @@ export default class AddNotePage extends Component {
           </Textarea>
           </div>
           <div className='buttons'>
-            <Button type='submit' onClick={this.handleAddNote}>
+            <Button type='submit' className='Add-note-button' onClick={this.handleAddNote}>
               Add Note
             </Button>
             <Link

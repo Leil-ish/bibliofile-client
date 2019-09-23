@@ -78,48 +78,45 @@ class SingleBook extends Component {
         return (
           <div className = 'single-book'>
             <ul>
-              <h3>{book.title}</h3>
               <img src={book.image_links} alt='book cover'/>
+              <h3>{book.title}</h3>
               <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
-              <p>Genre: {book.categories.replace(/[^a-zA-Z ]/g, " ")}</p>
-              <Link
-                to={`/library/${book.id}`}
-                type='button'
-                className='View-note-button'>
-                  <h3>View Description</h3>
-              </Link>
-              {/*<Link
-              to={`/library/${book.id}/edit-book`}
-              type='button'
-              className='Edit-book-button'>
-                <br />
-                Add a Rating for this Book
-              </Link> */}             
+              <h5>{book.categories.replace(/[^a-zA-Z ]/g, " ")}</h5>
               <div className='buttons'>
-              <Link
-                to={`/library/${book.id}/add-note`}
+                <Link
+                  to={`/library/${book.id}`}
+                  type='button'
+                  className='Book-description-button'>
+                  Full Description
+                </Link>
+                {/*<Link
+                to={`/library/${book.id}/edit-book`}
                 type='button'
-                className='Add-note-button'
-              >
-              <br />
-                Add a note to this book
-              </Link>
-              <Link
-                to={`/library/${book.id}/notes`}
-                type='button'
-                className='View-notes-button'
-              >
-              <br />
-                View notes for this book
-              <br />
-              </Link>
-              <Button
-                className='Book_delete'
-                type='button'
-                onClick={this.handleClickBookDelete}>
-                <h3>Remove this Book from the Library</h3>
-              </Button>
-              <button className='Borrowed-button' onClick={this.handleClick}>Mark Book as {this.state.borrowed ? 'Returned' : 'Borrowed'}</button>
+                className='Book-options-button'>
+                  <br />
+                  Add Rating
+                </Link> */}             
+                <Link
+                  to={`/library/${book.id}/add-note`}
+                  type='button'
+                  className='Book-add-note-button'
+                >                  
+                Add a Note
+                </Link>
+                <Link
+                  to={`/library/${book.id}/notes`}
+                  type='button'
+                  className='Book-view-notes-button'
+                >
+                  View Notes
+                </Link>
+                <button className='Book-borrowed-button' onClick={this.handleClick}>Mark as {this.state.borrowed ? 'Returned' : 'Borrowed'}</button>
+                <Button
+                  className='Book-remove-button'
+                  type='button'
+                  onClick={this.handleClickBookDelete}>
+                  Remove Book
+                </Button>
             </div>
           </ul>
         </div>

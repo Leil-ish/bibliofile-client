@@ -1,14 +1,20 @@
-.SearchError {
-    padding: 20px;
-}
-
 .SearchError a {
+    background-color: #FF3737;
+    display: block;
+    text-align: center;
+    margin:0 auto 0 auto;
     text-decoration: none;
-    color: #2E1112;
-    border: 1px solid #2E1112;
-    padding: 5px;
+    border-radius:5%;
+    border: 1px black;
+    color: black;
+    font-size: 16px;
+    width:200px;
+    height:30px;
+    padding-top:15px;
 }
 
 .SearchPage h2 {
+    padding:25px;
     text-align: center;
+    font-size: 30px;
 }

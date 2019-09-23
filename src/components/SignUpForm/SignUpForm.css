@@ -1,29 +1,36 @@
 .SignUpForm {
     display: block;
     max-width: 50%;
-    border: 1px solid #2E1114;
+    border: 3px solid #6C648B;
+    border-radius:5%;
     margin: 50px;
     padding: 50px;
 }
 
 Input {
-    margin-top: 25px;
+    margin: 25px 0;
     height: 40px;
-    width: 200px;
+    width: 90%;
 }
 
 label {
+    margin-top:15px;
     font-size: 20px;
-    margin-right: 10px;
+    text-align:center;
 }
 
 .SignUpForm_Submit {
     display: block;
     text-align: center;
-    margin: 20px;
     padding: 10px;
-    color: #2E1114;
-    border: 1px solid #2E1114;
-    background-color: #83677B;
+    color: black;
+    background-color: #6BBAA7;
     text-decoration: none;
+    border-radius:5%;
+    width:80%;
+    font-size:20px;
+}
+
+.SignUpForm_Submit:hover {
+    background-color:#6C648B;
 }

@@ -1,3 +1,11 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin:0;
+}
+
 .App_header {
     background-image: url("https://i.imgur.com/KYCL07Y.jpg");
     background-size: cover;
@@ -12,18 +20,20 @@
 
 .App_header a {
     text-decoration: none;
+    font-family: 'Libre Baskerville', serif;
     color: #cccccc;
 }
 
 .App_header h1 {
-    font-size: 60px;
-    margin: 15px;
+    letter-spacing: 2px;
+    font-size: 55px;
+    margin: 25px;
     color: #cccccc;
     text-align: center;
 }
 
 .App_header h2 {
-    font-size: 30px;
+    font-size: 20px;
     margin: 0;
     color: #cccccc;
     text-align: center;    

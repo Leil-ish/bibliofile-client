@@ -1,19 +1,64 @@
 .AddBookPage {
-    max-width: 70%;
+    max-width: 80%;
     display:block;
     padding: 15%;
 }
 
-.field {
-    padding: 15px;
-    display:block;
+.AddBookForm {
+    border:1px solid #FBA100;
+    padding:20px;
 }
- .Cancel-add-book-button {
+
+.AddBookPage h2 {
+    font-size: 22px;
+    margin-bottom:25px;
+}
+
+.AddBookPage .Add-book-button {
     display: block;
     text-align: center;
+    margin:15px auto 15px auto;
+    color: black;
+    background-color: #6C648B;
     text-decoration: none;
-    color: #2E1114;
-    border: 1px solid #2E1114;
-    margin: 10px;
-    padding: 5px;
- }
+    border-radius:5%;
+    border: 1px black;
+    font-size:20px;
+    width:200px;
+    height:55px;
+    padding:15px 0px 15px 0px;
+    cursor: pointer;
+}
+
+.AddBookPage .Cancel-add-book-button {
+    display: block;
+    text-align: center;
+    margin:15px auto 15px auto;
+    color: black;
+    background-color: #FF3737;
+    text-decoration: none;
+    border-radius:5%;
+    border: 1px black;
+    font-size:20px;
+    width:200px;
+    height:42px;
+    cursor: pointer;
+}
+
+.AddBookPage .Add-book-button:hover {
+    background-color:#FBA100;
+}
+
+.AddBookPage .Cancel-add-book-button:hover {
+    background-color:#FBA100;
+}
+
+.AddBookPage Input {
+    width:200px;
+    margin:15px;
+}
+
+.AddBookPage Textarea {
+    width:200px;
+    margin:15px;
+}

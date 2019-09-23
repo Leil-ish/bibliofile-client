@@ -2,28 +2,41 @@
   list-style-type: none;
   padding: 0;
   max-height: 50px;
-  position: absolute;
+  position: fixed;
   top: 0px;
+  left:0px;
 }
 
 .LibraryNav_link {
-  background-color: rgb(34, 8, 49);
   color: #6BBAA7;
-  display: block;
+  display: inline-block;
   font-size: 20px;
-  margin: 10px auto 8px 0;
+  margin: 10px 10px;
   max-width: 100px;
   text-decoration: none;
 }
 
+.fa-sign-out-alt {
+  color: #6BBAA7;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 10px;
+  max-width: 100px;
+  text-decoration: none;
+}
+
+.fa-sign-out-alt:hover {
+  color: #FBA100;
+}
+
 .LibraryNav_link:hover {
-  background-color: #6BBAA7;
-  color: rgb(34, 8, 49);
+  color: #FBA100;
 }
 
 .LibraryNav_landing ul {
   display:flex;
   justify-content: center;
+  letter-spacing: 1px;
   flex-direction:row;
   background: #FBA100;
   width: 100%;

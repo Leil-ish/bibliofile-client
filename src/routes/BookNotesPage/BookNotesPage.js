@@ -1,7 +1,6 @@
 import React from 'react'
 import {Section} from '../../components/Utils/Utils'
 import {Link} from 'react-router-dom'
-import Form from '../../components/Form/Form'
 import BookContext from '../../contexts/BookContext'
 import SingleNote from '../../components/SingleNote/SingleNote'
 import BookApiService from '../../services/book-api-service'
@@ -32,30 +31,32 @@ export default class BookNotesPage extends React.Component {
 
   renderNote() {
     const {book, notes} = this.context
-    return <>
-      <h2>Note for {book.title}</h2>
-      <Link
-            to={`/library/${book.id}/add-note`}
-            type='button'
-            className='Add-note-button'
-          >
-          <h3>Add a New Note to this Book</h3>
-      </Link>
-      <ul>
-        {notes.map(note =>
-          <SingleNote
-            key={note.note_name + 'key'}
-            noteId={note.id}
-            bookId={note.book_id}
-            note_name={note.note_name}
-            note={note}
-            onDeleteNote={this.handleDeleteNote}
-            {...book}
-          />
-        )}
-        </ul>
-      <Form />
-    </>
+    return (
+      <div className='BookNotesPage'>
+        <h2>{book.title}</h2>
+        <h3 className='Notes-subtitle'>Notes</h3>
+        <ul className='BookNotesPage_note-list'>
+          {notes.map(note =>
+            <SingleNote
+              key={note.note_name + 'key'}
+              noteId={note.id}
+              bookId={note.book_id}
+              note_name={note.note_name}
+              note={note}
+              onDeleteNote={this.handleDeleteNote}
+              {...book}
+            />
+          )}
+          </ul>
+          <Link
+              to={`/library/${book.id}/add-note`}
+              type='button'
+              className='Add-book-note-button'
+            >
+            <p>Add Note</p>
+          </Link> 
+      </div>
+    )
   }
 
   render() {

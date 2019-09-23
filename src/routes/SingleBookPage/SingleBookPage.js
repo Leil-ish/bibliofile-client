@@ -61,10 +61,9 @@ export default class SingleBookPage extends Component {
   function BookContent({ book }) {
     return (
       <div className='BookPage'>
-        <h1 className='BookPage_content'>
+        <h1 className='BookPage_title'>
           {book.title}
         </h1>
-        <img src={book.image_links} alt='book cover'/>
         <p className='BookPage_content'>
           {book.description}
         </p>
@@ -73,8 +72,7 @@ export default class SingleBookPage extends Component {
                 type='button'
                 className='Add-note-button'
               >
-              <br />
-                Add a note to this book
+                Add Note
         </Link>
       </div>
     )
@@ -92,6 +90,7 @@ export default class SingleBookPage extends Component {
             <p className='BookPage_note-text'>
               {note.content}
             </p>
+            <hr />
           </li>
         )}
       </ul>

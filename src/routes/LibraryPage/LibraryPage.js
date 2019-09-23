@@ -49,7 +49,6 @@ export default class LibraryPage extends React.Component {
         <h2>Library</h2>
         <ul>
             <Filters 
-              onBookFilter={bookType => this.handleBookFilter(bookType)}
               onBookSort={property => this.handleBookSort(property)}/>
             <LibraryResults 
               books={this.context.books} 

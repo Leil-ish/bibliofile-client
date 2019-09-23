@@ -51,14 +51,15 @@ class SingleNote extends Component {
 
     return (
       <ul className = 'single-note'>
-            <h3>{note.note_name}</h3>
-            <h4>{note.content}</h4>
+            <h3 className='Single_note_name'>{note.note_name}</h3>
+            <hr/>
+            <p>{note.content}</p>
         <Button
           className='Note_delete'
           type='button'
           onClick={this.handleClickDelete}
         >
-          <h3>Delete this Note</h3>
+          <h4>Delete Note</h4>
         </Button>
         </ul>
     );

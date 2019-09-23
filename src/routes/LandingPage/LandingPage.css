@@ -9,14 +9,15 @@
 
 .Landing_Page p {
     margin:0;
-    padding: 5% 20%;
+    padding: 10% 20%;
+    font-size: 20px;
     background-color: #F1EDF1;
     color: black;
 }
 
 .Landing_Page img {
-    width: 30px;
-    margin: 25px;
+    width: 40px;
+    margin: 15px;
 }
 
 .contact {

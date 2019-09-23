@@ -60,10 +60,12 @@ class ApiBook extends Component {
 
     return (
       <ul className = 'api-book'>
-          <h3>Title: {this.props.volumeInfo.title}</h3>
-          <h4>Author: {author}</h4>
+          <img src={image_links} alt='book cover thumbnail'></img>
+          <h3>{this.props.volumeInfo.title}</h3>
+          <h4>{author}</h4>
+          <h5>{this.props.volumeInfo.categories}</h5>
+          <hr/>
           <div className = 'api-book-content'>
-            <img src={image_links} alt='book cover thumbnail'></img>
             <p>Description: {description}</p>
           </div>
           <Form 

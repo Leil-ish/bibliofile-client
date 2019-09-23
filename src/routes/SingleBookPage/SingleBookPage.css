@@ -1,9 +1,18 @@
-.BookPage_content {
-    margin: 80px;
-    border: 1px solid black;
-    padding: 10px;
-    max-width: 75%;
+.BookPage_title {
+    font-size:30px;
+    margin:40px;
+    text-align:center;
+    max-width: 80%;
+    border:none;
 }
+
+.BookPage_content {
+    margin: 50px;
+    font-size:20px;
+    text-align:center;
+    padding:15px;
+}
+
 
 .BookPage_note-list {
     margin: 25px;
@@ -13,7 +22,22 @@
 
 .BookPage_note-list {
     margin: 80px;
-    border: 1px solid black;
+    border: 3px solid #FBA100;
     padding: 10px;
     max-width: 75%;
+}
+
+.BookPage .Add-note-button {
+    display: block;
+    text-align: center;
+    margin:15px 80px;
+    color: black;
+    background-color: #6C648B;
+    text-decoration: none;
+    border-radius:5%;
+    border: 1px black;
+    font-size:20px;
+    width:200px;
+    height:45px;
+    padding:15px 0px 0px 0px;
 }

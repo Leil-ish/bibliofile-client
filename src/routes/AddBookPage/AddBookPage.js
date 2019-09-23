@@ -46,32 +46,36 @@ class AddBookPage extends Component {
           >
           <div className='field'>
             <label htmlFor='book-title-input'>
-              Title
+              Title:
             </label>
+            <br/>
             <Input required type='text' name='title' id='title' />
           </div>
           <div className='field'>
             <label htmlFor='book-author-input'>
-              Author
+              Author:
             </label>
+            <br/>
             <Input required type='text' name='authors' id='authors' />
           </div>
           <div className='field'>
             <label htmlFor='book-categories-input'>
-              Genre 
+              Genre:
             </label>
+            <br/>
             <Input required type='text' name='categories' id='categories' />
           </div>
           <div className='field'>
             <label htmlFor='book-description-input'>
-              Synopsis
+              Synopsis:
             </label>
+            <br/>
             <Textarea 
               required
               aria-label='What is this book about?'
               name='description' 
               id='description'              
-              cols='30'
+              cols='15'
               rows='3'
               placeholder='What is this book about?' />
           </div>
@@ -80,7 +84,6 @@ class AddBookPage extends Component {
                 type='submit'
                 className='Add-book-button'
               >
-              <br />
                 Add book to Library
             </Button>
             <Link
@@ -88,7 +91,6 @@ class AddBookPage extends Component {
               type='button'
               className='Cancel-add-book-button'
             >
-            <br />
               Cancel
             </Link>
           </div>

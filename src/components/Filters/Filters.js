@@ -7,7 +7,7 @@ class Filters extends Component {
   
     return (
         <div className='customize-results'>
-            <div className="Filters">
+            {/*<div className="Filters">
                 <div className='filter-selection'>
                     <label htmlFor='book-filter-input'>
                     Filter by:
@@ -18,7 +18,7 @@ class Filters extends Component {
                         <option value="paper">Physical Book</option>
                     </select>
                 </div>
-            </div>
+            </div>*/}
             <div className="Sort">
                 <div className="sort-selection">
                     <label htmlFor='book-sort-input'>

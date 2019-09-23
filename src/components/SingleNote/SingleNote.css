@@ -1,15 +1,38 @@
 .single-note {
-    border: solid #2E1114;
-    padding: 20px;
+    padding: 30px;
     margin: 20px;
+    border:1px solid #FBA100;
 }
 
-.View-note-button {
+.Single_note_name {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+.single-note p {
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+}
+
+.single-note .Note_delete {
+    background-color: #FF3737;
     display: block;
     text-align: center;
     text-decoration: none;
-    color: #2E1114;
-    border: 1px solid #2E1114;
-    margin: 10px;
-    padding: 5px;
+    border-radius:5%;
+    color: black;
+    font-size: 18px;
+    width:150px;
+    height:40px;
+    margin:0 auto 0 auto;
+}
+
+.single-note .Note_delete h4 {
+    margin:0px;
+}
+
+.Note_delete:hover {
+    background-color:#C2B8FF;
 }

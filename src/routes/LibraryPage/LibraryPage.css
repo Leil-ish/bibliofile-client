@@ -3,6 +3,9 @@
 }
 
 .LibraryPage h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size:45px;
+    margin-top:50px;
     text-align: center;
 }
 

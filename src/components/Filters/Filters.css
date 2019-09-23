@@ -1,0 +1,9 @@
+.customize-results {
+    display:flex;
+    justify-content:space-between;
+    margin:0 0 0 15%;
+}
+
+.customize-results select {
+    font-size: 18px;
+}
