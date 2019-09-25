@@ -36,17 +36,19 @@ export default class BookNotesPage extends React.Component {
         <h2>{book.title}</h2>
         <h3 className='Notes-subtitle'>Notes</h3>
         <ul className='BookNotesPage_note-list'>
-          {notes.map(note =>
-            <SingleNote
-              key={note.note_name + 'key'}
-              noteId={note.id}
-              bookId={note.book_id}
-              note_name={note.note_name}
-              note={note}
-              onDeleteNote={this.handleDeleteNote}
-              {...book}
-            />
-          )}
+          <li>
+            {notes.map(note =>
+              <SingleNote
+                key={note.note_name + 'key'}
+                noteId={note.id}
+                bookId={note.book_id}
+                note_name={note.note_name}
+                note={note}
+                onDeleteNote={this.handleDeleteNote}
+                {...book}
+              />
+            )}
+            </li>
           </ul>
           <Link
               to={`/library/${book.id}/add-note`}

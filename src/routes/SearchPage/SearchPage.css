@@ -18,3 +18,17 @@
     text-align: center;
     font-size: 30px;
 }
+
+@media only screen and (min-width: 600px) {
+    .SearchPage {
+        max-width: 70%;
+        margin: 10px auto 10px auto;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .SearchPage {
+        max-width: 50%;
+        margin: 10px auto 10px auto;
+    }
+}

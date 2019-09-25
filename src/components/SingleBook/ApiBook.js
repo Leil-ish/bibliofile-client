@@ -12,6 +12,18 @@ class ApiBook extends Component {
     match: { params: {} },
   }
 
+  constructor(props){
+    super(props);
+      this.state = {
+        open: false
+      }
+      this.togglePanel = this.togglePanel.bind(this);
+    }
+
+  togglePanel(e){
+    this.setState({open: !this.state.open})
+    }
+
   static contextType = BookContext
 
   handleSubmit = ev => {
@@ -60,27 +72,28 @@ class ApiBook extends Component {
 
     return (
       <ul className = 'api-book'>
-          <img src={image_links} alt='book cover thumbnail'></img>
-          <h3>{this.props.volumeInfo.title}</h3>
-          <h4>{author}</h4>
-          <h5>{this.props.volumeInfo.categories}</h5>
-          <hr/>
-          <div className = 'api-book-content'>
-            <p>Description: {description}</p>
-          </div>
-          <Form 
-            className='AddNoteForm'
-            onSubmit={this.handleSubmit}>
-            <div className='buttons'>
-              <Button
-                type='submit'
-                className='Add-book-button'
-              >
-              <br />
-                Add book to Library
-              </Button>
-            </div>
-          </Form>
+          <li><img src={image_links} alt='book cover thumbnail'></img></li>
+          <li><h3>{this.props.volumeInfo.title}</h3></li>
+          <li><h4>{author}</h4></li>
+          <li><h5>{this.props.volumeInfo.categories}</h5></li>
+          <li><hr/></li>
+          <li><div onClick={(e)=>this.togglePanel(e)} className = 'collapsible'>
+              <p className='Description-button'>Description</p>
+              {this.state.open ? (
+                <div className='api-book-content'>
+                  <p>{description}</p>
+                </div>) : null}
+            </div></li>
+            <li><Form 
+              className='AddBookButton'
+              onSubmit={this.handleSubmit}>
+                <Button
+                  type='submit'
+                  className='Add-book-button'
+                >
+                  Add book to Library
+                </Button>
+            </Form></li>
       </ul>
     );
   }

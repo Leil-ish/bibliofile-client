@@ -48,14 +48,18 @@ export default class LibraryPage extends React.Component {
       <section className='LibraryPage'>
         <h2>Library</h2>
         <ul>
-            <Filters 
-              onBookSort={property => this.handleBookSort(property)}/>
-            <LibraryResults 
-              books={this.context.books} 
-              notes={this.context.notes}
-              onDeleteBook={this.handleDeleteBook}
-              bookFilter={this.state.bookType}
-              property={this.state.property}/>
+            <li>
+              <Filters 
+                onBookSort={property => this.handleBookSort(property)}/>
+            </li>
+            <li>
+              <LibraryResults 
+                books={this.context.books} 
+                notes={this.context.notes}
+                onDeleteBook={this.handleDeleteBook}
+                bookFilter={this.state.bookType}
+                property={this.state.property}/>
+            </li>
         </ul>
       </section>
     )

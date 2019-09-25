@@ -4,6 +4,11 @@
     padding: 15%;
 }
 
+.AddNoteForm {
+    border:1px solid #FBA100;
+    padding:20px;
+}
+
 .AddNotePage h2 {
     text-align:center;
     font-size: 22px;
@@ -14,7 +19,7 @@
     text-align: center;
     margin:0 auto 15px auto;
     color: black;
-    background-color: #6C648B;
+    background-color: #8C8AB7;
     text-decoration: none;
     border-radius:5%;
     border: 1px black;
@@ -61,4 +66,33 @@
 .AddNotePage Textarea {
     width:200px;
     margin:15px;
+}
+
+@media only screen and (min-width: 600px) {
+    .AddNotePage .Cancel-add-book-button {
+        padding-top:15px;
+        height:38px;
+    }
+
+    .AddNotePage {
+        max-width: 40%;
+        margin: 5% auto;
+        padding:50px;
+    }
+
+    .AddNotePage Input {
+        width:80%;
+        padding-left:30px;
+    }
+    
+    .AddNotePage Textarea {
+        width:90%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .AddNotePage .Cancel-add-book-button {
+        padding-top:15px;
+        height:38px;
+    }
 }

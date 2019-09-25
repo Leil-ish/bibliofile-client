@@ -50,7 +50,7 @@ class SingleNote extends Component {
     let {note} = this.props
 
     return (
-      <ul className = 'single-note'>
+      <div className = 'single-note'>
             <h3 className='Single_note_name'>{note.note_name}</h3>
             <hr/>
             <p>{note.content}</p>
@@ -61,7 +61,7 @@ class SingleNote extends Component {
         >
           <h4>Delete Note</h4>
         </Button>
-        </ul>
+      </div>
     );
   }
 }

@@ -76,50 +76,52 @@ class SingleBook extends Component {
       )
 
         return (
-          <div className = 'single-book'>
-            <ul>
-              <img src={book.image_links} alt='book cover'/>
-              <h3>{book.title}</h3>
-              <h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4>
-              <h5>{book.categories.replace(/[^a-zA-Z ]/g, " ")}</h5>
-              <div className='buttons'>
+          <ul className = 'single-book'>
+              <li><img src={book.image_links} alt='book cover'/></li>
+              <li><h3>{book.title}</h3></li>
+              <li><h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4></li>
+              <li><h5>{book.categories.replace(/[^a-zA-Z ]/g, " ")}</h5></li>
+              <li className='buttons'>
                 <Link
                   to={`/library/${book.id}`}
                   type='button'
                   className='Book-description-button'>
-                  Full Description
+                  Description
                 </Link>
-                {/*<Link
+                {/*<li><Link
                 to={`/library/${book.id}/edit-book`}
                 type='button'
                 className='Book-options-button'>
                   <br />
                   Add Rating
-                </Link> */}             
+                </Link></li> */}             
+                  <Link
+                    to={`/library/${book.id}/add-note`}
+                    type='button'
+                    className='Book-add-note-button'
+                  >                  
+                  Add a Note
+                  </Link>
                 <Link
-                  to={`/library/${book.id}/add-note`}
-                  type='button'
-                  className='Book-add-note-button'
-                >                  
-                Add a Note
-                </Link>
-                <Link
-                  to={`/library/${book.id}/notes`}
-                  type='button'
-                  className='Book-view-notes-button'
-                >
-                  View Notes
-                </Link>
-                <button className='Book-borrowed-button' onClick={this.handleClick}>Mark as {this.state.borrowed ? 'Returned' : 'Borrowed'}</button>
-                <Button
-                  className='Book-remove-button'
-                  type='button'
-                  onClick={this.handleClickBookDelete}>
-                  Remove Book
+                    to={`/library/${book.id}/notes`}
+                    type='button'
+                    className='Book-view-notes-button'
+                  >
+                    View Notes
+                  </Link>
+                <Button 
+                  className='Book-borrowed-button' 
+                  onClick={this.handleClick}>
+                    Mark as {this.state.borrowed ? 'Returned' : 'Borrowed'}
                 </Button>
-            </div>
-          </ul>
-        </div>
+                <Button
+                    className='Book-remove-button'
+                    type='button'
+                    onClick={this.handleClickBookDelete}>
+                    Remove Book
+                  </Button>
+            </li>
+        </ul>
       );
     }
   }

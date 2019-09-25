@@ -18,7 +18,7 @@
 }
 
 .Add-book-note-button {
-    background-color: #6C648B;
+    background-color: #8C8AB7;
     display: block;
     text-align: center;
     margin:0 auto 0 auto;
@@ -34,4 +34,23 @@
 
 .Add-book-note-button:hover {
     background-color:#C2B8FF;
+}
+
+@media only screen and (min-width: 600px) {
+    .BookNotesPage {
+        max-width: 50%;
+        margin:0px auto;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .BookNotesPage {
+        max-width: 40%;
+        margin:0px auto;
+    }
+
+    .Add-book-note-button {
+        font-size:18px;
+        height:40px;
+    }
 }

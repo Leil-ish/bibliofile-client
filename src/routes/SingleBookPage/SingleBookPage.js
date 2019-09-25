@@ -60,10 +60,11 @@ export default class SingleBookPage extends Component {
   
   function BookContent({ book }) {
     return (
-      <div className='BookPage'>
+      <div className='BookPage_content'>
         <h1 className='BookPage_title'>
           {book.title}
         </h1>
+        <hr/>
         <p className='BookPage_content'>
           {book.description}
         </p>

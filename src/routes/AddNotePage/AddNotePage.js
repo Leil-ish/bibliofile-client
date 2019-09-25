@@ -58,13 +58,14 @@ export default class AddNotePage extends Component {
         <h3 className='Add-note-subtitle'>Add Note</h3>
         <Form 
           className='AddNoteForm'
+          aria-label='Add-note-form'
           onSubmit={this.handleSubmit}>
           <div className='field'>
             <label htmlFor='note-name-input'>
               Note Name:
             </label>
             <br/>
-            <Input required type='text' id='note_name' name='note_name' />
+            <Input required type='text' id='note_name' name='note_name' aria-label='Note name'/>
           </div>
           <div className='text'>
             <label htmlFor='note-content-input'>
@@ -73,7 +74,7 @@ export default class AddNotePage extends Component {
             <br/>
             <Textarea
               required
-              aria-label='Type your note...'
+              aria-label='Note content...'
               name='content'
               id='content'
               cols='30'

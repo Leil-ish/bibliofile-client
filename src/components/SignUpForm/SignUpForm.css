@@ -1,9 +1,9 @@
 .SignUpForm {
     display: block;
     max-width: 50%;
-    border: 3px solid #6C648B;
+    border: 3px solid #8C8AB7;
     border-radius:5%;
-    margin: 50px;
+    margin: 50px auto 50px auto;
     padding: 50px;
 }
 
@@ -27,10 +27,23 @@ label {
     background-color: #6BBAA7;
     text-decoration: none;
     border-radius:5%;
-    width:80%;
+    width:140px;
     font-size:20px;
+    margin: 10px auto 10px auto;
 }
 
 .SignUpForm_Submit:hover {
-    background-color:#6C648B;
+    background-color:#8C8AB7;
+}
+
+@media only screen and (min-width: 600px) {
+    .SignUpForm {
+        max-width: 40%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .SignUpForm {
+        max-width: 30%;
+    }
 }

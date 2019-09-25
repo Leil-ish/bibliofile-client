@@ -19,7 +19,7 @@
     text-align: center;
     margin:15px auto 15px auto;
     color: black;
-    background-color: #6C648B;
+    background-color: #8C8AB7;
     text-decoration: none;
     border-radius:5%;
     border: 1px black;
@@ -61,4 +61,33 @@
 .AddBookPage Textarea {
     width:200px;
     margin:15px;
+}
+
+@media only screen and (min-width: 600px) {
+    .AddBookPage .Cancel-add-book-button {
+        padding-top:15px;
+        height:38px;
+    }
+
+    .AddBookPage {
+        max-width: 40%;
+        margin: 5% auto;
+        padding:50px;
+    }
+
+    .AddBookPage Input {
+        width:80%;
+        padding-left:30px;
+    }
+    
+    .AddBookPage Textarea {
+        width:90%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .AddBookPage .Cancel-add-book-button {
+        padding-top:15px;
+        height:38px;
+    }
 }

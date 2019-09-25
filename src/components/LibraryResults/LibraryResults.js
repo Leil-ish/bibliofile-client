@@ -22,7 +22,7 @@ class LibraryResults extends Component {
 
     return (
         <ul className='bookList'>
-            {list}
+            <li>{list}</li>
         </ul>
     );
   }

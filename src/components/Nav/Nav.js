@@ -15,6 +15,8 @@ export default class LibraryNav extends React.Component {
         <ul>
           <li>
             <Link
+              className='LibraryNav_logout_link'
+              aria-label='Logout'
               onClick={this.handleLogoutClick}
               to='/'>
               <i className="fas fa-sign-out-alt"></i>
@@ -23,6 +25,7 @@ export default class LibraryNav extends React.Component {
           <li>
             <Link
               className='LibraryNav_link'
+              aria-label='Library-link'
               to={`/library`}
                 >
                 <i className="fas fa-book"></i>
@@ -31,6 +34,7 @@ export default class LibraryNav extends React.Component {
           <li>
               <Link
                 className='LibraryNav_link'
+                aria-label='Find-book-link'
                 to={`/find-book`}
               >
                 <i className="fas fa-search"></i>
@@ -39,6 +43,7 @@ export default class LibraryNav extends React.Component {
           <li>
               <Link
                 className='LibraryNav_link'
+                aria-label='Add-book-link'
                 to={`/add-book`}
               >
                 <i className="fas fa-plus"></i>

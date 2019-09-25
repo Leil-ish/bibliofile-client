@@ -42,6 +42,7 @@ class AddBookPage extends Component {
         </h2>
         <Form 
           className='AddBookForm'
+          aria-label='Add-book-form'
           onSubmit={this.handleSubmit}
           >
           <div className='field'>
@@ -49,21 +50,21 @@ class AddBookPage extends Component {
               Title:
             </label>
             <br/>
-            <Input required type='text' name='title' id='title' />
+            <Input required type='text' name='title' id='title' aria-label='Title'/>
           </div>
           <div className='field'>
             <label htmlFor='book-author-input'>
               Author:
             </label>
             <br/>
-            <Input required type='text' name='authors' id='authors' />
+            <Input required type='text' name='authors' id='authors' aria-label='Author'/>
           </div>
           <div className='field'>
             <label htmlFor='book-categories-input'>
               Genre:
             </label>
             <br/>
-            <Input required type='text' name='categories' id='categories' />
+            <Input required type='text' name='categories' id='categories' aria-label='Genre'/>
           </div>
           <div className='field'>
             <label htmlFor='book-description-input'>
@@ -72,7 +73,7 @@ class AddBookPage extends Component {
             <br/>
             <Textarea 
               required
-              aria-label='What is this book about?'
+              aria-label='Synopsis'
               name='description' 
               id='description'              
               cols='15'
