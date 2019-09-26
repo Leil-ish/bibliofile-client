@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
-import { Section } from '../../components/Utils/Utils'
+import {Section} from '../../components/Utils/Utils'
 import Form from '../../components/Form/Form'
 import './SingleBookPage.css'
 
@@ -83,6 +83,7 @@ export default class SingleBookPage extends Component {
     return (
       <ul className='BookPage_note-list'>
         <h2>Notes:</h2>
+        <hr />
         {notes.map(note =>
           <li key={note.note_name + 'note-key'} className='BookPage_note'>
             <h3 className='BookPage_note-title'>

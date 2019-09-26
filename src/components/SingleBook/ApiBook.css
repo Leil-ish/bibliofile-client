@@ -39,8 +39,7 @@
 }
 
 .api-book img {
-    float:left;
-    margin: 0 15px 15px 0;
+    margin: 0 auto;
     width:100%;
     height:auto;
 }
@@ -82,9 +81,9 @@
     }
 
     .api-book img {
-        width:auto;
-        height:30%;
-        margin:5% auto;
+        width:35%;
+        height:auto;
+        margin:5% 32%;
     }
     
     .api-book .buttons {
@@ -93,5 +92,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-
+    .api-book img {
+        margin:5% 32%;
+    }
 }

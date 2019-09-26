@@ -134,24 +134,6 @@ const BookApiService = {
           : res.json()
       )
   },
-
-  /*patchBook(bookId, rating) {
-    return fetch(`${config.API_ENDPOINT}/library/${bookId}/edit-book`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify({
-        rating
-      }),
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
-  },*/
 }
 
 export default BookApiService

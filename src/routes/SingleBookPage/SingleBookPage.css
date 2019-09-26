@@ -10,6 +10,10 @@
     border:none;
 }
 
+.BookPage_note-title {
+    font-weight:bold;
+}
+
 .BookPage_content {
     margin: 50px;
     font-size:20px;

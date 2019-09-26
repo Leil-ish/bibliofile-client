@@ -87,28 +87,21 @@ class SingleBook extends Component {
                   type='button'
                   className='Book-description-button'>
                   Description
-                </Link>
-                {/*<li><Link
-                to={`/library/${book.id}/edit-book`}
-                type='button'
-                className='Book-options-button'>
-                  <br />
-                  Add Rating
-                </Link></li> */}             
-                  <Link
+                </Link>            
+                <Link
                     to={`/library/${book.id}/add-note`}
                     type='button'
                     className='Book-add-note-button'
                   >                  
                   Add a Note
-                  </Link>
+                </Link>
                 <Link
                     to={`/library/${book.id}/notes`}
                     type='button'
                     className='Book-view-notes-button'
                   >
                     View Notes
-                  </Link>
+                </Link>
                 <Button 
                   className='Book-borrowed-button' 
                   onClick={this.handleClick}>
@@ -119,12 +112,11 @@ class SingleBook extends Component {
                     type='button'
                     onClick={this.handleClickBookDelete}>
                     Remove Book
-                  </Button>
+                </Button>
             </li>
         </ul>
       );
     }
   }
-// }
 
 export default withRouter(SingleBook)
