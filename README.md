@@ -26,8 +26,9 @@ To get started, click "Register" on the landing page and enter your name, userna
 From there, you can navigate using the fixed nav icons at the top left.
 <br>
 ![Landing Page](https://i.imgur.com/ZXs9P3Y.png)
+<br>
 From the top:
-* Click on <i class="fas fa-sign-out-alt"></i> to log out of your account.
-* Click on <i class="fas fa-book"></i> to visit your library.
-* Click on <i class="fas fa-search"></i> to search for a book to add automatically.
-* Click on <i class="fas fa-plus"></i> to add book details manually.
+* Click on the logout arrow icon to log out of your account.
+* Click on the book icon to visit your library.
+* Click on the magnifying glass icon to search for a book to add automatically.
+* Click on the plus icon to add book details manually.
