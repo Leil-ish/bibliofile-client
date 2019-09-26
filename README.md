@@ -43,3 +43,5 @@ From the top:
 * Click on the plus icon to add book details manually.
 
 You may search for books to add by title, author, or ISBN number (but don't include the dashes in the ISBN). When you click "Add Book," the book will be added to your library for you to add notes to!
+
+This project was created using React on the frontend and Node.js, Express, and PostgreSQL on the backend. If you like this repo, you can find its companion at <https://github.com/Leil-ish/bibliofile-api>!
