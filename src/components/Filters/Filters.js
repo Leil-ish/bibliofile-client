@@ -14,9 +14,9 @@ class Filters extends Component {
                     </label>
                     <select id='book-sort' aria-label='library-sort' onChange={e => this.props.onBookSort(e.target.value)}>
                         <option value='title' aria-label='title' defaultValue>Title</option>
-                        <option value='author' aria-label='author'>Author</option>
+                        <option value='authors' aria-label='author'>Author</option>
                         <option value='borrowed' aria-label='borrowed'>Borrowed</option>
-                        <option value='genre' aria-label='genre'>Genre</option>
+                        <option value='categories' aria-label='genre'>Genre</option>
                     </select>
                 </form>
             </div>

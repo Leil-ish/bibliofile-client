@@ -16,6 +16,7 @@ class SearchBox extends Component {
         });
     }
 
+    //Handles submission of search term within the Google Books API
     handleSubmit = (e) => {
         e.preventDefault();
         const search = this.state.searchTerm.split(' ').join('+');

@@ -20,6 +20,7 @@ const BookContext = React.createContext({
   setNotes: () => {},
   addNote: () => {},
   addBook: () => {},
+  updateBook: () => {},
   deleteNote: () => {},
   clearNote: () => {},
 })
@@ -90,7 +91,7 @@ export class BookProvider extends Component {
 
   updateBook = book => {
     this.setBooks([
-      ...this.state.books,
+      this.state.books,
       book
     ])
   }

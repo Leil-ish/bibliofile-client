@@ -134,6 +134,21 @@ const BookApiService = {
           : res.json()
       )
   },
+
+  patchBook(bookId, rating, borrowed) {
+    return fetch(`${config.API_ENDPOINT}/library/${bookId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        book_id: bookId,
+        rating,
+        borrowed
+      }),
+    })
+  },
 }
 
 export default BookApiService

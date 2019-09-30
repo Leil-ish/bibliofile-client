@@ -56,10 +56,14 @@ class SingleBook extends Component {
   }
 
   render() {
-      let book = this.props
 
+      /*Some logic to make sure that an error won't be thrown if 
+      a library book does not have one of these keys */
+      let book = this.props
       let authors = book.authors
       let description = book.description
+      let image = book.image_links
+      let borrowed = book.borrowed
 
       if (authors) {
         authors = book.authors;
@@ -68,19 +72,39 @@ class SingleBook extends Component {
         authors = 'No authors listed'
       )
 
+      if (borrowed) {
+        borrowed = 'Book has been borrowed.';
+      }
+      else (
+        borrowed = 'Book is currently in library.'
+      )
+
+      if (image) {
+        image = book.image_links;
+      }
+      else (
+        image = 'https://i.imgur.com/SLnbcls.jpg'
+      )
+
       if (description) {
         description = book.description;
       }
       else (
         description = 'No description included for this book.'
       )
-
+      
+      if (book.rating) {
         return (
           <ul className = 'single-book'>
-              <li><img src={book.image_links} alt='book cover'/></li>
+              <li><img src={image} alt='book cover'/></li>
               <li><h3>{book.title}</h3></li>
-              <li><h4>{book.authors.replace(/[^a-zA-Z ]/g, " ")}</h4></li>
+              <li><h4>{authors.replace(/[^a-zA-Z ]/g, " ")}</h4></li>
               <li><h5>{book.categories.replace(/[^a-zA-Z ]/g, " ")}</h5></li>
+              <li><h5>{book.rating} &#9733;</h5></li>
+              <hr/>
+              <li><p>{borrowed}</p></li>
+              <hr/>
+
               <li className='buttons'>
                 <Link
                   to={`/library/${book.id}`}
@@ -89,34 +113,73 @@ class SingleBook extends Component {
                   Description
                 </Link>            
                 <Link
-                    to={`/library/${book.id}/add-note`}
-                    type='button'
-                    className='Book-add-note-button'
-                  >                  
-                  Add a Note
-                </Link>
-                <Link
                     to={`/library/${book.id}/notes`}
                     type='button'
                     className='Book-view-notes-button'
                   >
                     View Notes
                 </Link>
-                <Button 
-                  className='Book-borrowed-button' 
-                  onClick={this.handleClick}>
-                    Mark as {this.state.borrowed ? 'Returned' : 'Borrowed'}
-                </Button>
+                <Link
+                  to={`/library/${book.id}/edit-book`}
+                  type='button'
+                  className='Book-options-button'>
+                    Edit Book
+                </Link>
                 <Button
                     className='Book-remove-button'
                     type='button'
-                    onClick={this.handleClickBookDelete}>
+                    onClick={e =>
+                      window.confirm("Are you sure you wish to remove this book? Notes associated with the book will be deleted also.") &&
+                      this.handleClickBookDelete(e)
+                    }>
                     Remove Book
                 </Button>
             </li>
         </ul>
       );
+      } else {
+        return(
+          <ul className = 'single-book'>
+                <li><img src={image} alt='book cover'/></li>
+                <li><h3>{book.title}</h3></li>
+                <li><h4>{authors.replace(/[^a-zA-Z ]/g, " ")}</h4></li>
+                <li><h5>{book.categories.replace(/[^a-zA-Z ]/g, " ")}</h5></li>
+
+                <li className='buttons'>
+                  <Link
+                    to={`/library/${book.id}`}
+                    type='button'
+                    className='Book-description-button'>
+                    Description
+                  </Link>            
+                  <Link
+                      to={`/library/${book.id}/notes`}
+                      type='button'
+                      className='Book-view-notes-button'
+                    >
+                      View Notes
+                  </Link>
+                  <Link
+                    to={`/library/${book.id}/edit-book`}
+                    type='button'
+                    className='Book-options-button'>
+                      Edit Book
+                  </Link>
+                  <Button
+                      className='Book-remove-button'
+                      type='button'
+                      onClick={e =>
+                        window.confirm("Are you sure you wish to remove this book? Notes associated with the book will be deleted also.") &&
+                        this.handleClickBookDelete(e)
+                      }>
+                      Remove Book
+                  </Button>
+              </li>
+          </ul> 
+        );
+      }
     }
   }
+
 
 export default withRouter(SingleBook)

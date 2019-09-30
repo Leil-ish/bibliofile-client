@@ -19,7 +19,8 @@ class ApiBook extends Component {
       }
       this.togglePanel = this.togglePanel.bind(this);
     }
-
+  
+  //Collapsible for the book description
   togglePanel(e){
     this.setState({open: !this.state.open})
     }
@@ -46,6 +47,8 @@ class ApiBook extends Component {
 
   render() {
     
+    /*Some logic to make sure that an error won't be thrown if 
+    Google Books API JSON does not have one of these keys */
     let author;
     if (this.props.volumeInfo.authors) {
       author = this.props.volumeInfo.authors[0];
@@ -64,7 +67,7 @@ class ApiBook extends Component {
 
     let image_links;
     if (this.props.volumeInfo.imageLinks) {
-      image_links = this.props.volumeInfo.imageLinks.thumbnail;
+      image_links = this.props.volumeInfo.imageLinks.thumbnail
     }
     else (
       image_links = 'No book cover image available for this book.'
@@ -91,7 +94,7 @@ class ApiBook extends Component {
                   type='submit'
                   className='Add-book-button'
                 >
-                  Add book to Library
+                  Add Book to Library
                 </Button>
             </Form></li>
       </ul>

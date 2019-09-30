@@ -22,14 +22,14 @@ class SearchPage extends Component {
         })
       }
 
-    handleBookSort(property) {
-      this.setState({
-        property: property
-      })
-    }
+      handleBookSort(property) {
+        this.setState({
+          property: property
+        })
+      }
     
       handleSubmit(searchTerm) {
-    
+        //This is pulling from the Google Books API
         const url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${process.env.REACT_APP_API_KEY}`
         
         fetch(url)
@@ -54,7 +54,8 @@ class SearchPage extends Component {
           })
           .then(data => {
             this.setState({
-             books: data.items
+             books: data.items,
+             error:false
             })
           })
           .catch(err => this.setState({

@@ -1,25 +1,44 @@
 import React, {Component} from 'react';
 import BookContext from '../../contexts/BookContext'
 import BookApiService from '../../services/book-api-service'
-import { Section, Button } from '../../components/Utils/Utils'
+import {Section, Button} from '../../components/Utils/Utils'
 import Form from '../../components/Form/Form'
 import './EditBookPage.css'
 
 export default class EditBookPage extends Component {
 
-      static defaultProps = {
+    static defaultProps = {
       match: { params: {} },
     }
+
+    constructor(props){
+      super(props);
+        this.state = {
+          open: false
+        }
+        this.togglePanel = this.togglePanel.bind(this);
+      }
+
+    //Collapsible for the book description
+    togglePanel(e){
+      this.setState({open: !this.state.open})
+      }
   
     static contextType = BookContext
 
     handleSubmit = ev => {
       ev.preventDefault()
-      const {rating} = ev.target
-      BookApiService.patchBook(rating.value)
-        .then(this.context.editBook)
+      const {book} = this.context
+      const {borrowed, rating} = ev.target
+      
+      BookApiService.patchBook(book.id, rating.value, borrowed.checked)
+        .then(this.context.updateBook)
         .then(() => {
           rating.value = ''
+          borrowed.checked =''
+        })
+        .then(() => {
+          this.props.history.push(`/library`)
         })
         .catch(this.context.setError)
     }
@@ -40,21 +59,32 @@ export default class EditBookPage extends Component {
     }
   
     renderBook() {
-      const { book   } = this.context
-      return <>
+      const {book} = this.context
+      return (
+      <div className='BookEditPage_Content'>
         <h2>{book.title}</h2>
-        <BookContent book={book} />
-        <Form>
+        <hr/>
+        <div onClick={(e)=>this.togglePanel(e)} className = 'collapsible'>
+            <p className='Description-button'>View Full Description</p>
+            {this.state.open ? (
+              <div className='api-book-content'>
+                <BookContent book={book} />
+              </div>) : null}
+        </div>
+        <hr/>
+        <Form className='EditBookForm' aria-label='Edit-book-form'
+          onSubmit={this.handleSubmit}>
           <BookRating />
-          <Button type='submit'>
-            Save Rating
+          <BookBorrowed />
+          <Button type='submit' name='editBook' className='Submit-book-edits'>
+            Submit Changes
           </Button>
         </Form>
-      </>
+      </div>)
     }
   
     render() {
-      const { error, book } = this.context
+      const {error, book} = this.context
       let content
       if (error) {
         content = (error.error === `Book doesn't exist`)
@@ -66,7 +96,7 @@ export default class EditBookPage extends Component {
         content = this.renderBook()
       }
       return (
-        <Section className='BookPage'>
+        <Section className='BookEditPage'>
           {content}
         </Section>
       )
@@ -75,13 +105,21 @@ export default class EditBookPage extends Component {
   
   function BookContent({ book }) {
     return (
-      <div className='BookPage'>
-        <h1 className='BookPage_content'>
-          {book.title}
-        </h1>
-        <p className='BookPage_content'>
+      <div>
+        <p className='BookEditPage_content'>
           {book.description}
         </p>
+      </div>
+    )
+  }
+
+  function BookBorrowed({ book }) {
+    return (
+      <div className='borrowed-checkbox'>
+        <label htmlFor='book-borrowed-input'>
+          Book is Borrowed
+        </label>
+        <input type='checkbox' id='borrowed' name='borrowed'></input>
       </div>
     )
   }
@@ -90,15 +128,9 @@ export default class EditBookPage extends Component {
     return (
       <div className='select-input'>
         <label htmlFor='book-rating-input'>
-          Rating
+          Rating (1 to 5)
         </label>
-        <select name='rating' id='rating'>
-            <option value="1">1 &#9733;</option>
-            <option value="2">2 &#9733;</option>
-            <option value="3">3 &#9733;</option>
-            <option value="4">4 &#9733;</option>
-            <option value="5">5 &#9733;</option>
-        </select>
+        <input required type='number' id='rating' name='rating' min='1' max='5'></input>
       </div>
     )
   }

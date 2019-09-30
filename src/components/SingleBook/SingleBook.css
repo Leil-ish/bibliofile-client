@@ -9,23 +9,7 @@ ul {
     padding: 15px;
 }
 
-.single-book .Book-borrowed-button {
-    display: block;
-    text-align: center;
-    margin: 10px auto 10px auto;
-    color: black;
-    background-color: #4EB34A;
-    text-decoration: none;
-    border-radius:5%;
-    border: 1px black;
-    font-size:20px;
-    height:55px;
-    padding:10px 5px;
-    width:200px;
-    cursor: pointer;
-}
-
-.single-book .Book-add-note-button {
+.single-book .Book-options-button {
     display: block;
     text-align: center;
     margin: 10px auto 10px auto;
@@ -35,9 +19,10 @@ ul {
     border-radius:5%;
     border: 1px black;
     font-size:20px;
-    width:200px;
     height:45px;
-    padding:15px 0px 0px 0px;
+    padding:15px 0 0 0;
+    width:200px;
+    cursor: pointer;
 }
 
 .single-book .Book-view-notes-button {
@@ -86,31 +71,27 @@ ul {
     margin: 10px auto 10px auto;
 }
 
-.single-book .Book-borrowed-button:hover {
-    background-color:#C2B8FF;
+.single-book .Book-options-button:hover {
+    background-color:#4EB34A;
 }
 
 .single-book .Book-remove-button:hover {
-    background-color:#C2B8FF;
+    background-color:#4EB34A;
 }
 
 .single-book .Book-description-button:hover {
-    background-color:#C2B8FF;
-}
-
-.single-book .Book-add-note-button:hover {
-    background-color:#C2B8FF;
+    background-color:#4EB34A;
 }
 
 .single-book .Book-view-notes-button:hover {
-    background-color:#C2B8FF;
+    background-color:#4EB34A;
 }
 
 
 .single-book img {
-    float:left;
-    margin: 0 15px 15px 0;
-    width:100%;
+    display:block;
+    margin: 15px auto;
+    width:60%;
     height:auto;
 }
 
@@ -132,6 +113,12 @@ ul {
     margin:5px;
 }
 
+.single-book p {
+    text-align:center;    
+    font-size:18px;
+    margin:5px;
+}
+
 @media only screen and (min-width: 600px) {
     .single-book {
         position:relative;
@@ -142,8 +129,8 @@ ul {
 
     .single-book img {
         display:block;
-        height:60%;
-        width:auto;
+        width:20%;
+        height:auto;
     }
 
     .single-book .buttons {
@@ -155,11 +142,11 @@ ul {
         align-content: space-around;
     }
 
-    .single-book .Book-borrowed-button {
+    .single-book .Book-options-button {
         width:80px;
-        height:45px;
+        height:33px;
         font-size:14px;
-        padding:5px;
+        padding:12px 0 0 0;
     }
     
     .single-book .Book-remove-button {
@@ -205,11 +192,11 @@ ul {
         align-content: space-around;
     }
 
-    .single-book .Book-borrowed-button {
+    .single-book .Book-options-button {
         width:100px;
-        height:45px;
+        height:32px;
         font-size:16px;
-        padding:5px;
+        padding: 13px 0 0 0;
     }
     
     .single-book .Book-remove-button {

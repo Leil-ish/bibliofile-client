@@ -36,6 +36,29 @@
     background-color:#C2B8FF;
 }
 
+.Back-to-book-button {
+    background-color: #FBA100;
+    display: block;
+    text-align: center;
+    margin:30px auto 0px auto;
+    text-decoration: none;
+    border-radius:5%;
+    border: 1px black;
+    color: black;
+    font-size: 20px;
+    width:150px;
+    height:45px;
+    padding: 15px 0 0 0;
+}
+
+.Back-to-book-button p {
+    margin:0;
+}
+
+.Back-to-book-button:hover {
+    background-color:#C2B8FF;
+}
+
 @media only screen and (min-width: 600px) {
     .BookNotesPage {
         max-width: 50%;

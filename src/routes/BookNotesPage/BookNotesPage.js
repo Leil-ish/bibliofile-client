@@ -31,25 +31,12 @@ export default class BookNotesPage extends React.Component {
 
   renderNote() {
     const {book, notes} = this.context
-    return (
-      <div className='BookNotesPage'>
+
+    if (notes.length===0) {
+      return (
+        <div className='BookNotesPage'>
         <h2>{book.title}</h2>
-        <h3 className='Notes-subtitle'>Notes</h3>
-        <ul className='BookNotesPage_note-list'>
-          <li>
-            {notes.map(note =>
-              <SingleNote
-                key={note.note_name + 'key'}
-                noteId={note.id}
-                bookId={note.book_id}
-                note_name={note.note_name}
-                note={note}
-                onDeleteNote={this.handleDeleteNote}
-                {...book}
-              />
-            )}
-            </li>
-          </ul>
+        <h3 className='Notes-subtitle'>No Notes Yet</h3>
           <Link
               to={`/library/${book.id}/add-note`}
               type='button'
@@ -57,8 +44,52 @@ export default class BookNotesPage extends React.Component {
             >
             <p>Add Note</p>
           </Link> 
+          <Link
+              to={`/library/${book.id}`}
+              type='button'
+              className='Back-to-book-button'
+            >
+            <p>Back to Book</p>
+          </Link> 
       </div>
-    )
+      )
+    } else {
+      return (
+        <div className='BookNotesPage'>
+          <h2>{book.title}</h2>
+          <h3 className='Notes-subtitle'>Notes</h3>
+          <ul className='BookNotesPage_note-list'>
+            <li>
+              {notes.map(note =>
+                <SingleNote
+                  key={note.note_name + 'key'}
+                  noteId={note.id}
+                  bookId={note.book_id}
+                  note_name={note.note_name}
+                  note={note}
+                  onDeleteNote={this.handleDeleteNote}
+                  {...book}
+                />
+              )}
+              </li>
+            </ul>
+            <Link
+                to={`/library/${book.id}/add-note`}
+                type='button'
+                className='Add-book-note-button'
+              >
+              <p>Add Note</p>
+            </Link> 
+            <Link
+                to={`/library/${book.id}`}
+                type='button'
+                className='Back-to-book-button'
+              >
+              <p>Back to Book</p>
+            </Link> 
+        </div>
+      ) 
+    }
   }
 
   render() {

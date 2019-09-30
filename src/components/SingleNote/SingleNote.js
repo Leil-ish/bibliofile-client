@@ -15,6 +15,7 @@ class SingleNote extends Component {
     match: { params: {} },
   }
 
+  //Delete for note
   handleClickDelete = e => {
     e.preventDefault()
 
@@ -57,7 +58,11 @@ class SingleNote extends Component {
         <Button
           className='Note_delete'
           type='button'
-          onClick={this.handleClickDelete}
+          //Confirmation of delete
+          onClick={e =>
+            window.confirm("Are you sure you wish to delete this item?") &&
+            this.handleClickDelete(e)
+          }
         >
           <h4>Delete Note</h4>
         </Button>

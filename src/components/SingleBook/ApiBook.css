@@ -32,9 +32,14 @@
     width:150px;
     height:35px;
     padding-top:10px;
+    cursor: pointer;
 }
 
 .api-book .Add-book-button:hover {
+    background-color:#FBA100;
+}
+
+.api-book .Description-button:hover {
     background-color:#FBA100;
 }
 
@@ -78,6 +83,16 @@
         flex-direction:column;
         max-width:70%;
         margin: 10px auto 10px auto;
+    }
+
+    .api-book .Add-book-button {
+        font-size: 16px;
+        width:130px;
+    }
+    
+    .api-book .Description-button {
+        font-size: 16px;
+        width:130px;
     }
 
     .api-book img {

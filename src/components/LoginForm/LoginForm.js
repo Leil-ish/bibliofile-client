@@ -11,6 +11,7 @@ export default class LoginForm extends Component {
 
   state = {error: null}
 
+  //Handle JWT auth login
   handleSubmitJwtAuth = ev => {
     ev.preventDefault()
     this.setState({ error: null })

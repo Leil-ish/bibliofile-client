@@ -9,6 +9,8 @@ class Error extends Component {
         };
     }
 
+
+    //Error boundary for app
     static getDerivedStateFromError(error) {
         return { hasError: true }
     }

@@ -34,7 +34,18 @@ export function Required({ className, ...props }) {
   )
 }
 
-export function CompareValues(key, order='asc') {
+export function Section({ className, list, ...props }) {
+  const classes = [
+    'Section',
+    list && 'Section--list',
+    className,
+  ].filter(Boolean).join(' ')
+  return (
+    <section className={classes} {...props} />
+  )
+}
+
+export function compareValues(key, order='asc') {
   return function(a, b) {
     if(!a.hasOwnProperty(key) || 
        !b.hasOwnProperty(key)) {
@@ -52,21 +63,10 @@ export function CompareValues(key, order='asc') {
     } else if (varA < varB) {
       comparison = -1;
     }
+    
     return (
       (order === 'desc') ? 
       (comparison * -1) : comparison
     );
   };
-}
-
-
-export function Section({ className, list, ...props }) {
-  const classes = [
-    'Section',
-    list && 'Section--list',
-    className,
-  ].filter(Boolean).join(' ')
-  return (
-    <section className={classes} {...props} />
-  )
 }

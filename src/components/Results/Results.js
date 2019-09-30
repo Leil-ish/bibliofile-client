@@ -4,6 +4,8 @@ import './Results.css';
 
 
 class Results extends Component {
+
+  //Handle filtering for results from Google Books API
   render() {
     const {bookFilter} = this.props;
     const list = this.props.books

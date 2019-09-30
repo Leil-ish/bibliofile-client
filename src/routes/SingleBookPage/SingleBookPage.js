@@ -30,10 +30,9 @@ export default class SingleBookPage extends Component {
     }
   
     renderBook() {
-      const { book, notes } = this.context
+      const {book} = this.context
       return <>
         <BookContent book={book} />
-        <BookNotes notes={notes} />
         <Form />
       </>
     }
@@ -65,36 +64,16 @@ export default class SingleBookPage extends Component {
           {book.title}
         </h1>
         <hr/>
-        <p className='BookPage_content'>
+        <p className='BookPage_description'>
           {book.description}
         </p>
         <Link
-                to={`/library/${book.id}/add-note`}
+                to={`/library/${book.id}/notes`}
                 type='button'
                 className='Add-note-button'
               >
-                Add Note
+                View/Add Notes
         </Link>
       </div>
-    )
-  }
-  
-  function BookNotes({ notes = [] }) {
-    return (
-      <ul className='BookPage_note-list'>
-        <h2>Notes:</h2>
-        <hr />
-        {notes.map(note =>
-          <li key={note.note_name + 'note-key'} className='BookPage_note'>
-            <h3 className='BookPage_note-title'>
-              {note.note_name}
-            </h3>
-            <p className='BookPage_note-text'>
-              {note.content}
-            </p>
-            <hr />
-          </li>
-        )}
-      </ul>
     )
   }
