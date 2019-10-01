@@ -9,7 +9,7 @@
 
 .Landing_Page p {
     margin:0;
-    padding: 10% 20%;
+    padding: 20% 20%;
     font-size: 20px;
     background-color: #F1EDF1;
     color: black;
@@ -25,4 +25,10 @@
     text-align: center;
     background-color: #8C8AB7;
     color: #F1EDF1;
+}
+
+@media only screen and (min-width: 992px) {
+    .Landing_Page p {
+        padding: 5% 20%;
+    }
 }

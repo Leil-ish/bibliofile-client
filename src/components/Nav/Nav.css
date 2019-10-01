@@ -38,10 +38,10 @@
   justify-content: center;
   letter-spacing: 1px;
   flex-direction:row;
-  background: #FBA100;
+  background: #668F80;
   width: 100%;
   background-color:none;
-  position:fixed;
+  position:absolute;
   top:0px;
   left:0px;
   font-size: 18px;
@@ -49,10 +49,22 @@
 }
 
 .LibraryNav_landing li {
-  padding: 10px;
+  text-align:center;
+  padding: 5px 5%;
+  cursor:pointer;
+}
+
+.LibraryNav_landing li:hover {
+  background-color: #DADFF7;
 }
 
 a {
   text-decoration: none;
   color: black;
+}
+
+@media only screen and (min-width: 992px) {
+  .LibraryNav_landing li {
+    padding: 5px 8%;
+  }
 }

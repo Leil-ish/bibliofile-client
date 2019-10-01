@@ -14,7 +14,7 @@ body {
     font-style: none;
     text-decoration: none;
     color: #cccccc;
-    height: 150px;
+    height: 200px;
     padding: 20px;
 }
 
@@ -30,6 +30,7 @@ body {
     margin: 25px;
     color: #cccccc;
     text-align: center;
+    margin-top:40px;
 }
 
 .App_header h2 {

@@ -10,7 +10,6 @@ class LibraryResults extends Component {
   render() {
     const {bookFilter} = this.props;
     const {property} = this.props;
-    console.log(property)
     const list = this.props.books
     .filter(book => 
       (bookFilter === 'All' || (book.is_ebook && bookFilter === 'eBook') || 
@@ -22,8 +21,6 @@ class LibraryResults extends Component {
         onDeleteBook={this.handleDeleteBook}
         key={key}
         />);
-
-        console.log(list)
 
     return (
         <ul className='bookList'>

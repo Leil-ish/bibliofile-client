@@ -19,8 +19,8 @@ ul {
     border-radius:5%;
     border: 1px black;
     font-size:20px;
-    height:45px;
-    padding:15px 0 0 0;
+    height:40px;
+    padding:18px 0 0 0;
     width:200px;
     cursor: pointer;
 }
@@ -36,8 +36,8 @@ ul {
     border: 1px black;
     font-size:20px;
     width:200px;
-    height:45px;
-    padding:15px 0px 0px 0px;
+    height:40px;
+    padding:18px 0px 0px 0px;
 }
 
 .buttons .Book-description-button {
@@ -66,7 +66,7 @@ ul {
     font-size: 20px;
     width:200px;
     height:55px;
-    padding:10px 0px;
+    padding:15px 0px;
     cursor: pointer;
     margin: 10px auto 10px auto;
 }
@@ -144,9 +144,9 @@ ul {
 
     .single-book .Book-options-button {
         width:80px;
-        height:33px;
+        height:30px;
         font-size:14px;
-        padding:12px 0 0 0;
+        padding:15px 0 0 0;
     }
     
     .single-book .Book-remove-button {
@@ -171,7 +171,8 @@ ul {
     .single-book .Book-view-notes-button {
         width:80px;
         font-size:14px;
-        height:30px;
+        height:33px;
+        padding:14px 0 0 0;
     }
 }
 

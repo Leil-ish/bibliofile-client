@@ -1,4 +1,5 @@
 .BookNotesPage h2 {
+    font-size: 30px;
     text-align:center;
     margin:50px 15px 0px 15px;
 }
@@ -40,7 +41,7 @@
     background-color: #FBA100;
     display: block;
     text-align: center;
-    margin:30px auto 0px auto;
+    margin:15px auto 0px auto;
     text-decoration: none;
     border-radius:5%;
     border: 1px black;

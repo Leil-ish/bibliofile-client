@@ -36,7 +36,11 @@ export default class BookNotesPage extends React.Component {
       return (
         <div className='BookNotesPage'>
         <h2>{book.title}</h2>
+        <hr/>
+
         <h3 className='Notes-subtitle'>No Notes Yet</h3>
+        <hr/>
+        <br/>
           <Link
               to={`/library/${book.id}/add-note`}
               type='button'
