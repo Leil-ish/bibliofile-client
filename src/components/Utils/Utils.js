@@ -45,6 +45,7 @@ export function Section({ className, list, ...props }) {
   )
 }
 
+//Comparison function for sorting library by various properties (called within LibraryResults.js)
 export function compareValues(key, order='asc') {
   return function(a, b) {
     if(!a.hasOwnProperty(key) || 
@@ -63,7 +64,7 @@ export function compareValues(key, order='asc') {
     } else if (varA < varB) {
       comparison = -1;
     }
-    
+
     return (
       (order === 'desc') ? 
       (comparison * -1) : comparison
